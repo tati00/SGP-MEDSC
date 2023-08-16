@@ -36,36 +36,42 @@ public class AnamnesisNacional extends javax.swing.JInternalFrame {
         txtFieldPeso = new javax.swing.JTextField();
         txtFieldEstatura = new javax.swing.JTextField();
         txtFieldFecha = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
 
         setMinimumSize(new java.awt.Dimension(820, 640));
         setPreferredSize(new java.awt.Dimension(820, 640));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblFechaInscripcion.setText("Fecha de inscripción: ");
-        getContentPane().add(lblFechaInscripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, -1, -1));
+        getContentPane().add(lblFechaInscripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, -1, -1));
 
         lblPresion.setText("Presión: ");
-        getContentPane().add(lblPresion, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, -1, -1));
+        getContentPane().add(lblPresion, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, -1, -1));
 
         lblTemperatura.setText("Temperatura: ");
-        getContentPane().add(lblTemperatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, -1, -1));
+        getContentPane().add(lblTemperatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, -1, -1));
 
         lblPeso.setText("Peso: ");
-        getContentPane().add(lblPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 300, -1, -1));
+        getContentPane().add(lblPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, -1, -1));
 
         lblEstatura.setText("Estatura: ");
-        getContentPane().add(lblEstatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 350, -1, -1));
-        getContentPane().add(txtFieldPresion, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 180, -1, -1));
-        getContentPane().add(txtFieldTemperatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, -1, -1));
-        getContentPane().add(txtFieldPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 290, -1, -1));
-        getContentPane().add(txtFieldEstatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 350, -1, -1));
-        getContentPane().add(txtFieldFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, 110, -1));
+        getContentPane().add(lblEstatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, -1, -1));
+        getContentPane().add(txtFieldPresion, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, -1, -1));
+        getContentPane().add(txtFieldTemperatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, -1, -1));
+        getContentPane().add(txtFieldPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, -1, -1));
+        getContentPane().add(txtFieldEstatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, -1, -1));
+        getContentPane().add(txtFieldFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, 110, -1));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 610, 270));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblEstatura;
     private javax.swing.JLabel lblFechaInscripcion;
     private javax.swing.JLabel lblPeso;

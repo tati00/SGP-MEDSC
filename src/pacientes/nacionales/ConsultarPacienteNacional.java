@@ -5,7 +5,7 @@
 package pacientes.nacionales;
 
 import pacientes.extranjeros.*;
-import pacientes.PacienteNacional;
+import interfacesPacientes.PacienteNacional;
 
 /**
  *

@@ -35,37 +35,43 @@ public class AntecedenteFamiliarNacional extends javax.swing.JInternalFrame {
         txtFieldGrado = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtTratamiento = new javax.swing.JTextArea();
+        jPanel1 = new javax.swing.JPanel();
 
         setMinimumSize(new java.awt.Dimension(820, 640));
         setPreferredSize(new java.awt.Dimension(820, 640));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblNombre.setText("Nombre de la enfermedad: ");
-        getContentPane().add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, -1, -1));
+        getContentPane().add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, -1, -1));
 
         lblTiempo.setText("Tiempo: ");
-        getContentPane().add(lblTiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, -1, -1));
+        getContentPane().add(lblTiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, -1, -1));
 
         lblGrado.setText("Grado de ascendencia: ");
-        getContentPane().add(lblGrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, -1));
+        getContentPane().add(lblGrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, -1, -1));
 
         lblTratamiento.setText("Tratamiento: ");
-        getContentPane().add(lblTratamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, -1, -1));
-        getContentPane().add(txtFieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, 234, -1));
-        getContentPane().add(txtFieldTiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 234, -1));
-        getContentPane().add(txtFieldGrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 234, -1));
+        getContentPane().add(lblTratamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, -1, -1));
+        getContentPane().add(txtFieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, 234, -1));
+        getContentPane().add(txtFieldTiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 234, -1));
+        getContentPane().add(txtFieldGrado, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, 234, -1));
 
         txtTratamiento.setColumns(20);
         txtTratamiento.setRows(5);
         jScrollPane1.setViewportView(txtTratamiento);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, -1, -1));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, -1, -1));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 610, 260));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblGrado;
     private javax.swing.JLabel lblNombre;

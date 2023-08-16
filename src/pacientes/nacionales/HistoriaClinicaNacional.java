@@ -4,7 +4,7 @@
  */
 package pacientes.nacionales;
 
-import pacientes.PacienteNacional;
+import interfacesPacientes.PacienteNacional;
 
 /**
  *
