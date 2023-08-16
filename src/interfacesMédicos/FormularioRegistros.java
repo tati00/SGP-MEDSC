@@ -116,7 +116,7 @@ public class FormularioRegistros extends javax.swing.JInternalFrame {
         });
         jPanel2.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 370, 107, 29));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 410, 420));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 410, 420));
         jPanel2.getAccessibleContext().setAccessibleDescription("");
 
         pack();

@@ -15,6 +15,7 @@ public class CitaMédica extends javax.swing.JFrame {
     /**
      * Creates new form CitaMédica
      */
+    static String parametro;
     public CitaMédica() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -29,13 +30,33 @@ public class CitaMédica extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pantalla2 = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuREGIS = new javax.swing.JMenu();
         Consultar = new javax.swing.JMenu();
+        telefonoPaciente = new javax.swing.JMenuItem();
+        nombresCitas = new javax.swing.JMenuItem();
+        fechaCitas = new javax.swing.JMenuItem();
+        doctor = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         updateMenu = new javax.swing.JMenu();
+        upfecha = new javax.swing.JMenuItem();
+        upNúmero = new javax.swing.JMenuItem();
+        UpNombres = new javax.swing.JMenuItem();
         regresarMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout pantalla2Layout = new javax.swing.GroupLayout(pantalla2);
+        pantalla2.setLayout(pantalla2Layout);
+        pantalla2Layout.setHorizontalGroup(
+            pantalla2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 734, Short.MAX_VALUE)
+        );
+        pantalla2Layout.setVerticalGroup(
+            pantalla2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 414, Short.MAX_VALUE)
+        );
 
         menuREGIS.setText("Registrar");
         menuREGIS.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -46,9 +67,75 @@ public class CitaMédica extends javax.swing.JFrame {
         jMenuBar1.add(menuREGIS);
 
         Consultar.setText("Consultar");
+
+        telefonoPaciente.setText("Número de teléfono paciente");
+        telefonoPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                telefonoPacienteActionPerformed(evt);
+            }
+        });
+        Consultar.add(telefonoPaciente);
+
+        nombresCitas.setText("Nombres Paciente");
+        nombresCitas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombresCitasActionPerformed(evt);
+            }
+        });
+        Consultar.add(nombresCitas);
+
+        fechaCitas.setText("Fecha Asignada");
+        fechaCitas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fechaCitasActionPerformed(evt);
+            }
+        });
+        Consultar.add(fechaCitas);
+
+        doctor.setText("Médico Asignado");
+        doctor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                doctorActionPerformed(evt);
+            }
+        });
+        Consultar.add(doctor);
+
+        jMenuItem1.setText("Listado Citas");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        Consultar.add(jMenuItem1);
+
         jMenuBar1.add(Consultar);
 
         updateMenu.setText("Actualizar");
+
+        upfecha.setText("Fecha Asignada");
+        upfecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                upfechaActionPerformed(evt);
+            }
+        });
+        updateMenu.add(upfecha);
+
+        upNúmero.setText("Número celular Paciente");
+        upNúmero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                upNúmeroActionPerformed(evt);
+            }
+        });
+        updateMenu.add(upNúmero);
+
+        UpNombres.setText("Nombres Paciente");
+        UpNombres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpNombresActionPerformed(evt);
+            }
+        });
+        updateMenu.add(UpNombres);
+
         jMenuBar1.add(updateMenu);
 
         regresarMenu.setText("Regresar");
@@ -65,11 +152,15 @@ public class CitaMédica extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pantalla2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pantalla2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -77,6 +168,11 @@ public class CitaMédica extends javax.swing.JFrame {
 
     private void menuREGISMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuREGISMouseClicked
         // TODO add your handling code here:
+        FormAgendarCita formulario = new FormAgendarCita();
+        pantalla2.removeAll();
+        pantalla2.add(formulario);
+        pantalla2.revalidate();
+        formulario.setVisible(true);
     }//GEN-LAST:event_menuREGISMouseClicked
 
     private void regresarMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresarMenuMouseClicked
@@ -85,6 +181,84 @@ public class CitaMédica extends javax.swing.JFrame {
         sgci.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_regresarMenuMouseClicked
+
+    private void fechaCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaCitasActionPerformed
+        // TODO add your handling code here:
+        parametro = "Fecha";
+        FormConsultasCitas formulario = new  FormConsultasCitas();
+        pantalla2.removeAll();
+        pantalla2.add(formulario);
+        pantalla2.revalidate();
+        formulario.setVisible(true);
+    }//GEN-LAST:event_fechaCitasActionPerformed
+
+    private void telefonoPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telefonoPacienteActionPerformed
+        // TODO add your handling code here:
+        parametro = "Teléfono Celular";
+        FormConsultasCitas formulario = new  FormConsultasCitas();
+        pantalla2.removeAll();
+        pantalla2.add(formulario);
+        pantalla2.revalidate();
+        formulario.setVisible(true);
+    }//GEN-LAST:event_telefonoPacienteActionPerformed
+
+    private void nombresCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombresCitasActionPerformed
+        // TODO add your handling code here:
+        parametro = "Nombres Paciente";
+        FormConsultasCitas formulario = new  FormConsultasCitas();
+        pantalla2.removeAll();
+        pantalla2.add(formulario);
+        pantalla2.revalidate();
+        formulario.setVisible(true);
+    }//GEN-LAST:event_nombresCitasActionPerformed
+
+    private void doctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctorActionPerformed
+        // TODO add your handling code here:
+        parametro = "Cédula Médico";
+        FormConsultasCitas formulario = new  FormConsultasCitas();
+        pantalla2.removeAll();
+        pantalla2.add(formulario);
+        pantalla2.revalidate();
+        formulario.setVisible(true);
+    }//GEN-LAST:event_doctorActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        FormConsultarLista formulario = new FormConsultarLista();
+        pantalla2.removeAll();
+        pantalla2.add(formulario);
+        pantalla2.revalidate();
+        formulario.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void upfechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upfechaActionPerformed
+        // TODO add your handling code here:
+        FormCambioFecha formulario = new FormCambioFecha();
+        pantalla2.removeAll();
+        pantalla2.add(formulario);
+        pantalla2.revalidate();
+        formulario.setVisible(true);
+    }//GEN-LAST:event_upfechaActionPerformed
+
+    private void upNúmeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upNúmeroActionPerformed
+        // TODO add your handling code here:
+        parametro = "Número Celular";
+        FormConsultasCitas formulario = new  FormConsultasCitas();
+        pantalla2.removeAll();
+        pantalla2.add(formulario);
+        pantalla2.revalidate();
+        formulario.setVisible(true);
+    }//GEN-LAST:event_upNúmeroActionPerformed
+
+    private void UpNombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpNombresActionPerformed
+        // TODO add your handling code here:
+        parametro = "Nombres";
+        FormConsultasCitas formulario = new  FormConsultasCitas();
+        pantalla2.removeAll();
+        pantalla2.add(formulario);
+        pantalla2.revalidate();
+        formulario.setVisible(true);
+    }//GEN-LAST:event_UpNombresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,9 +297,18 @@ public class CitaMédica extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Consultar;
+    private javax.swing.JMenuItem UpNombres;
+    private javax.swing.JMenuItem doctor;
+    private javax.swing.JMenuItem fechaCitas;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu menuREGIS;
+    private javax.swing.JMenuItem nombresCitas;
+    private javax.swing.JDesktopPane pantalla2;
     private javax.swing.JMenu regresarMenu;
+    private javax.swing.JMenuItem telefonoPaciente;
+    private javax.swing.JMenuItem upNúmero;
     private javax.swing.JMenu updateMenu;
+    private javax.swing.JMenuItem upfecha;
     // End of variables declaration//GEN-END:variables
 }
