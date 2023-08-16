@@ -15,6 +15,7 @@ public class AdministracionUsuario extends javax.swing.JFrame {
      */
     public AdministracionUsuario() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

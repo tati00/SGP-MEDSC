@@ -15,6 +15,7 @@ public class AdministracionParametro extends javax.swing.JFrame {
      */
     public AdministracionParametro() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

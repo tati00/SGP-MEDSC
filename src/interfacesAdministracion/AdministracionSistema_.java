@@ -30,9 +30,12 @@ public class AdministracionSistema_ extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
+        setMaximumSize(new java.awt.Dimension(560, 780));
+        setMinimumSize(new java.awt.Dimension(560, 780));
+        setPreferredSize(new java.awt.Dimension(560, 780));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jSplitPane1.setDividerLocation(405);
+        jSplitPane1.setDividerLocation(290);
 
         jButton1.setText("Administración de Usuarios");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -50,7 +53,7 @@ public class AdministracionSistema_ extends javax.swing.JInternalFrame {
         });
         jSplitPane1.setRightComponent(jButton2);
 
-        getContentPane().add(jSplitPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(3, -24, 800, 630));
+        getContentPane().add(jSplitPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-7, -34, 560, 780));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
