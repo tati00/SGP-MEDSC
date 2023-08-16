@@ -4,6 +4,9 @@
  */
 package interfacesMédicos;
 
+import interfacesPrincipales.SGP_MEDSC;
+
+
 /**
  *
  * @author Usuario
@@ -13,8 +16,16 @@ public class Médico extends javax.swing.JFrame {
     /**
      * Creates new form Médico
      */
+    int weight;
+    int height;
+    static String dato;
     public Médico() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        weight = 600;
+        height = 600;
+        pantalla.setSize(weight,height);
+        dato = "";
     }
 
     /**
@@ -26,56 +37,172 @@ public class Médico extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pantalla = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
+        Registro = new javax.swing.JMenu();
+        consultar = new javax.swing.JMenu();
+        nombre = new javax.swing.JMenuItem();
+        apellidos = new javax.swing.JMenuItem();
+        fecha = new javax.swing.JMenuItem();
+        celular = new javax.swing.JMenuItem();
+        email = new javax.swing.JMenuItem();
+        especialidad = new javax.swing.JMenuItem();
+        address = new javax.swing.JMenuItem();
+        actualizar = new javax.swing.JMenu();
+        updatenombres = new javax.swing.JMenuItem();
+        updateApellidos = new javax.swing.JMenuItem();
+        updateCelular = new javax.swing.JMenuItem();
+        updateEmail = new javax.swing.JMenuItem();
+        updateEspecialidad = new javax.swing.JMenuItem();
+        updateDirección = new javax.swing.JMenuItem();
+        javax.swing.JMenu regresarMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("Registrar");
-        jMenu1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu1ActionPerformed(evt);
+        pantalla.setBackground(new java.awt.Color(255, 255, 255));
+        pantalla.setDragMode(javax.swing.JDesktopPane.OUTLINE_DRAG_MODE);
+
+        javax.swing.GroupLayout pantallaLayout = new javax.swing.GroupLayout(pantalla);
+        pantalla.setLayout(pantallaLayout);
+        pantallaLayout.setHorizontalGroup(
+            pantallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 506, Short.MAX_VALUE)
+        );
+        pantallaLayout.setVerticalGroup(
+            pantallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 456, Short.MAX_VALUE)
+        );
+
+        jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        Registro.setText("Registrar");
+        Registro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RegistroMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(Registro);
 
-        jMenu2.setText("Actualizar");
+        consultar.setText("Consultar");
 
-        jMenuItem1.setText("nombres");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        nombre.setText("nombres");
+        nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                nombreActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem1);
+        consultar.add(nombre);
 
-        jMenuItem2.setText("apellidos");
-        jMenu2.add(jMenuItem2);
+        apellidos.setText("apellidos");
+        apellidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                apellidosActionPerformed(evt);
+            }
+        });
+        consultar.add(apellidos);
 
-        jMenuItem3.setText("fecha Nacimiento");
-        jMenu2.add(jMenuItem3);
+        fecha.setText("fecha Nacimiento");
+        fecha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fechaActionPerformed(evt);
+            }
+        });
+        consultar.add(fecha);
 
-        jMenuItem4.setText("número de celular");
-        jMenu2.add(jMenuItem4);
+        celular.setText("Número de celular");
+        celular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                celularActionPerformed(evt);
+            }
+        });
+        consultar.add(celular);
 
-        jMenuItem5.setText("correo electrónico");
-        jMenu2.add(jMenuItem5);
+        email.setText("correo electrónico");
+        email.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailActionPerformed(evt);
+            }
+        });
+        consultar.add(email);
 
-        jMenuItem6.setText("especialidad");
-        jMenu2.add(jMenuItem6);
+        especialidad.setText("especialidad");
+        especialidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                especialidadActionPerformed(evt);
+            }
+        });
+        consultar.add(especialidad);
 
-        jMenuBar1.add(jMenu2);
+        address.setText("Dirección Domiciliaria");
+        address.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addressActionPerformed(evt);
+            }
+        });
+        consultar.add(address);
 
-        jMenu3.setText("Consultar");
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(consultar);
+
+        actualizar.setText("Actualizar");
+
+        updatenombres.setText("Nombres");
+        updatenombres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatenombresActionPerformed(evt);
+            }
+        });
+        actualizar.add(updatenombres);
+
+        updateApellidos.setText("Apellidos");
+        updateApellidos.setToolTipText("");
+        updateApellidos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateApellidosActionPerformed(evt);
+            }
+        });
+        actualizar.add(updateApellidos);
+
+        updateCelular.setText("Número de celular");
+        updateCelular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateCelularActionPerformed(evt);
+            }
+        });
+        actualizar.add(updateCelular);
+
+        updateEmail.setText("Correo Electrónico");
+        updateEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateEmailActionPerformed(evt);
+            }
+        });
+        actualizar.add(updateEmail);
+
+        updateEspecialidad.setText("Especialidad");
+        updateEspecialidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateEspecialidadActionPerformed(evt);
+            }
+        });
+        actualizar.add(updateEspecialidad);
+
+        updateDirección.setText("Dirección Domiciliaria");
+        updateDirección.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateDirecciónActionPerformed(evt);
+            }
+        });
+        actualizar.add(updateDirección);
+
+        jMenuBar1.add(actualizar);
+
+        regresarMenu.setText("Regresar");
+        regresarMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                regresarMenuMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(regresarMenu);
 
         setJMenuBar(jMenuBar1);
 
@@ -83,23 +210,181 @@ public class Médico extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(pantalla)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pantalla)
+                .addGap(0, 0, 0))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void RegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistroMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+        FormularioRegistros formulario = new  FormularioRegistros();
+        formulario.setSize(weight-50, height);
+        pantalla.removeAll();
+        pantalla.add(formulario);
+        pantalla.revalidate();
+        formulario.setVisible(true);
 
-    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+    }//GEN-LAST:event_RegistroMouseClicked
+
+    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenu1ActionPerformed
+        dato = "Nombres";
+        Consultar consultaNombres = new  Consultar();
+        consultaNombres.setSize(weight-98, height-90);
+        pantalla.removeAll();
+        pantalla.add(consultaNombres);
+        pantalla.revalidate();
+        consultaNombres.setVisible(true);
+        
+    }//GEN-LAST:event_nombreActionPerformed
+
+    private void apellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidosActionPerformed
+        // TODO add your handling code here:
+        dato = "Apellidos";
+        Consultar consultaNombres = new  Consultar();
+        consultaNombres.setSize(weight-98, height-90);
+        pantalla.removeAll();
+        pantalla.add(consultaNombres);
+        pantalla.revalidate();
+        consultaNombres.setVisible(true);
+    }//GEN-LAST:event_apellidosActionPerformed
+
+    private void fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaActionPerformed
+        // TODO add your handling code here:
+        dato = "Fecha de Nacimiento";
+        Consultar consultaNombres = new  Consultar();
+        consultaNombres.setSize(weight-98, height-90);
+        pantalla.removeAll();
+        pantalla.add(consultaNombres);
+        pantalla.revalidate();
+        consultaNombres.setVisible(true);
+    }//GEN-LAST:event_fechaActionPerformed
+
+    private void celularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_celularActionPerformed
+        // TODO add your handling code here:
+        dato = "Número de celular";
+        Consultar consultaNombres = new  Consultar();
+        consultaNombres.setSize(weight-98, height-90);
+        pantalla.removeAll();
+        pantalla.add(consultaNombres);
+        pantalla.revalidate();
+        consultaNombres.setVisible(true);
+    }//GEN-LAST:event_celularActionPerformed
+
+    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
+        // TODO add your handling code here:
+        dato = "Correo electrónico";
+        Consultar consultaNombres = new  Consultar();
+        consultaNombres.setSize(weight-98, height-90);
+        pantalla.removeAll();
+        pantalla.add(consultaNombres);
+        pantalla.revalidate();
+        consultaNombres.setVisible(true);
+    }//GEN-LAST:event_emailActionPerformed
+
+    private void especialidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_especialidadActionPerformed
+        // TODO add your handling code here:
+        dato = "Especialidad";
+        Consultar consultaNombres = new  Consultar();
+        consultaNombres.setSize(weight-98, height-90);
+        pantalla.removeAll();
+        pantalla.add(consultaNombres);
+        pantalla.revalidate();
+        consultaNombres.setVisible(true);
+    }//GEN-LAST:event_especialidadActionPerformed
+
+    private void addressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressActionPerformed
+        // TODO add your handling code here:
+        dato = "Dirección";
+        Consultar consultaNombres = new  Consultar();
+        consultaNombres.setSize(weight-98, height-90);
+        pantalla.removeAll();
+        pantalla.add(consultaNombres);
+        pantalla.revalidate();
+        consultaNombres.setVisible(true);
+    }//GEN-LAST:event_addressActionPerformed
+
+    private void updatenombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatenombresActionPerformed
+        // TODO add your handling code here:
+        dato = "Nombre ";
+        ActualizarDatos consultaNombres = new  ActualizarDatos();
+        consultaNombres.setSize(weight-98, height-160);
+        pantalla.removeAll();
+        pantalla.add(consultaNombres);
+        pantalla.revalidate();
+        consultaNombres.setVisible(true);
+    }//GEN-LAST:event_updatenombresActionPerformed
+
+    private void updateApellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateApellidosActionPerformed
+        // TODO add your handling code here:
+        dato = "Apellidos ";
+        ActualizarDatos consultaNombres = new  ActualizarDatos();
+        consultaNombres.setSize(weight-98, height-160);
+        pantalla.removeAll();
+        pantalla.add(consultaNombres);
+        pantalla.revalidate();
+        consultaNombres.setVisible(true);
+    }//GEN-LAST:event_updateApellidosActionPerformed
+
+    private void updateCelularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateCelularActionPerformed
+        // TODO add your handling code here:
+        dato = "Número Celular ";
+        ActualizarDatos consultaNombres = new  ActualizarDatos();
+        consultaNombres.setSize(weight-98, height-160);
+        pantalla.removeAll();
+        pantalla.add(consultaNombres);
+        pantalla.revalidate();
+        consultaNombres.setVisible(true);
+    }//GEN-LAST:event_updateCelularActionPerformed
+
+    private void updateEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateEmailActionPerformed
+        // TODO add your handling code here:
+        dato = "Correo Electrónico ";
+        ActualizarDatos consultaNombres = new  ActualizarDatos();
+        consultaNombres.setSize(weight-98, height-160);
+        pantalla.removeAll();
+        pantalla.add(consultaNombres);
+        pantalla.revalidate();
+        consultaNombres.setVisible(true);
+    }//GEN-LAST:event_updateEmailActionPerformed
+
+    private void updateEspecialidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateEspecialidadActionPerformed
+        // TODO add your handling code here:
+        dato = "Especialidad ";
+        ActualizarDatos consultaNombres = new  ActualizarDatos();
+        consultaNombres.setSize(weight-98, height-160);
+        pantalla.removeAll();
+        pantalla.add(consultaNombres);
+        pantalla.revalidate();
+        consultaNombres.setVisible(true);
+    }//GEN-LAST:event_updateEspecialidadActionPerformed
+
+    private void updateDirecciónActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateDirecciónActionPerformed
+        // TODO add your handling code here:
+        dato = "Dirección ";
+        ActualizarDatos consultaNombres = new  ActualizarDatos();
+        consultaNombres.setSize(weight-98, height-160);
+        pantalla.removeAll();
+        pantalla.add(consultaNombres);
+        pantalla.revalidate();
+        consultaNombres.setVisible(true);
+    }//GEN-LAST:event_updateDirecciónActionPerformed
+
+    private void regresarMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresarMenuMouseClicked
+        // TODO add your handling code here:
+        SGP_MEDSC sgci = new SGP_MEDSC();
+        sgci.setVisible(true);
+        this.dispose();
+            
+
+    }//GEN-LAST:event_regresarMenuMouseClicked
 
     /**
      * @param args the command line arguments
@@ -137,15 +422,23 @@ public class Médico extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu Registro;
+    private javax.swing.JMenu actualizar;
+    private javax.swing.JMenuItem address;
+    private javax.swing.JMenuItem apellidos;
+    private javax.swing.JMenuItem celular;
+    private javax.swing.JMenu consultar;
+    private javax.swing.JMenuItem email;
+    private javax.swing.JMenuItem especialidad;
+    private javax.swing.JMenuItem fecha;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem nombre;
+    private javax.swing.JDesktopPane pantalla;
+    private javax.swing.JMenuItem updateApellidos;
+    private javax.swing.JMenuItem updateCelular;
+    private javax.swing.JMenuItem updateDirección;
+    private javax.swing.JMenuItem updateEmail;
+    private javax.swing.JMenuItem updateEspecialidad;
+    private javax.swing.JMenuItem updatenombres;
     // End of variables declaration//GEN-END:variables
 }

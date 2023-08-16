@@ -4,6 +4,8 @@
  */
 package interfacesPrincipales;
 
+import interfacesCitas.CitaMédica;
+import interfacesMédicos.Médico;
 import javax.swing.JDesktopPane;
 
 /**
@@ -91,6 +93,11 @@ public class SGP_MEDSC extends javax.swing.JFrame {
         btnCitas.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnCitas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnCitas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnCitas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCitasActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnCitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, 150, 40));
 
         btnHistorial.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
@@ -98,6 +105,11 @@ public class SGP_MEDSC extends javax.swing.JFrame {
         btnHistorial.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnHistorial.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnHistorial.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnHistorial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHistorialActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 420, 150, 40));
 
         btnAtencion.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
@@ -128,6 +140,7 @@ public class SGP_MEDSC extends javax.swing.JFrame {
 
     private void btnAtencionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtencionActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_btnAtencionActionPerformed
 
     private void btnPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPacientesActionPerformed
@@ -135,6 +148,20 @@ public class SGP_MEDSC extends javax.swing.JFrame {
         jDesktopPane2.add(pa);
         pa.setVisible(true);
     }//GEN-LAST:event_btnPacientesActionPerformed
+
+    private void btnHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistorialActionPerformed
+        // TODO add your handling code here:
+        Médico moduloMed = new Médico();
+        moduloMed.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnHistorialActionPerformed
+
+    private void btnCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCitasActionPerformed
+        // TODO add your handling code here:
+        CitaMédica moduloMed = new CitaMédica();
+        moduloMed.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnCitasActionPerformed
 
     /**
      * @param args the command line arguments
