@@ -4,8 +4,8 @@
  */
 package interfacesPrincipales;
 
-import interfacesPacientes.PacienteExtranjero;
-import interfacesPacientes.PacienteNacional;
+import pacientes.PacienteExtranjero;
+import pacientes.PacienteNacional;
 import javax.swing.JDesktopPane;
 
 /**
@@ -33,7 +33,6 @@ public class Paciente extends javax.swing.JInternalFrame {
         PacienteNacional = new javax.swing.JButton();
         btnPacienteExtranjero = new javax.swing.JButton();
 
-        setClosable(true);
         setMaximumSize(new java.awt.Dimension(560, 780));
         setMinimumSize(new java.awt.Dimension(560, 780));
         setPreferredSize(new java.awt.Dimension(560, 780));

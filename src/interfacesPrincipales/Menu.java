@@ -5,23 +5,29 @@
 package interfacesPrincipales;
 
 import java.awt.Color;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 public class Menu extends javax.swing.JFrame {
 
     private int intentos;
+    public static String jtf;
+
     public Menu() {
         initComponents();
         this.setTitle("SISTEMA DE GESTIÓN DE PACIENTES PARA LA CLÍNICA MEDSC");
         this.setLocationRelativeTo(null);
         this.intentos = 0;
+        this.jtf = " ";
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         lblClinica = new javax.swing.JLabel();
         lblUsuarioIcon = new javax.swing.JLabel();
+        cbTipoDeUsuarios = new javax.swing.JComboBox<>();
         btnIniciarSesion = new javax.swing.JButton();
         txtFldUsuario = new javax.swing.JTextField();
         jPasswordField = new javax.swing.JPasswordField();
@@ -36,11 +42,14 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblClinica.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
-        lblClinica.setText("Clínica Illicachi Manzano");
-        getContentPane().add(lblClinica, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, -1, -1));
+        lblClinica.setText("Clínica MEDSC");
+        getContentPane().add(lblClinica, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, -1, -1));
 
         lblUsuarioIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/user25px.png"))); // NOI18N
-        getContentPane().add(lblUsuarioIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, -1, -1));
+        getContentPane().add(lblUsuarioIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, -1, -1));
+
+        cbTipoDeUsuarios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Principal", "General" }));
+        getContentPane().add(cbTipoDeUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 250, -1));
 
         btnIniciarSesion.setText("Iniciar sesión");
         btnIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -48,7 +57,7 @@ public class Menu extends javax.swing.JFrame {
                 btnIniciarSesionActionPerformed(evt);
             }
         });
-        getContentPane().add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 330, 250, -1));
+        getContentPane().add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, 250, -1));
 
         txtFldUsuario.setText("Usuario");
         txtFldUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -60,45 +69,63 @@ public class Menu extends javax.swing.JFrame {
                 txtFldUsuarioFocusLost(evt);
             }
         });
-        getContentPane().add(txtFldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, 250, -1));
+        getContentPane().add(txtFldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 250, -1));
 
         jPasswordField.setText("Contraseña");
-        getContentPane().add(jPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, 250, -1));
+        getContentPane().add(jPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 250, -1));
 
         lblContraseñaIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/password25px-m.png"))); // NOI18N
-        getContentPane().add(lblContraseñaIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, -1, -1));
+        getContentPane().add(lblContraseñaIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 310, -1, -1));
 
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/luxa.org-opacity-changed-pexels-mart-production-7088498.jpg"))); // NOI18N
         lblFondo.setToolTipText("");
-        getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 400));
+        getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 420));
         lblFondo.getAccessibleContext().setAccessibleName("jLabelFondo");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
-        
-        String passcode = "Abcd3";//descifrarContraseña();
-        System.out.println(passcode + intentos);
-        if (!(txtFldUsuario.getText().equals("grupo1")  && passcode.equals("Abcd3"))){
-            intentos++;
-            if (intentos > 0 && intentos < 3) {
-                JOptionPane.showMessageDialog(null, "Revise sus datos proporcionados. Intentos restantes: " + (3 - intentos), "INGRESO FALLIDO", JOptionPane.ERROR_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(null, "Ha excedido el número máximo de intentos. Se bloqueará el acceso.", "INGRESO FALLIDO", JOptionPane.ERROR_MESSAGE);
-            }
-        } else {
-            SGP_MEDSC sgci = new SGP_MEDSC();
-            sgci.setVisible(true);
-            
-            //limpiarBoxes();
+
+        String passcode = descifrarContraseña();
+
+        switch (cbTipoDeUsuarios.getSelectedIndex()) {
+            case 0:
+                if (!(txtFldUsuario.getText().equals("grupo1admin") && passcode.equals("Abcd3.0"))) {
+                    intentos++;
+                    if (intentos > 0 && intentos < 3) {
+                        JOptionPane.showMessageDialog(null, "Revise sus datos proporcionados. Intentos restantes: " + (3 - intentos), "INGRESO FALLIDO", JOptionPane.WARNING_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Ha excedido el número máximo de intentos. Se bloqueará el acceso.", "INGRESO FALLIDO", JOptionPane.ERROR_MESSAGE);
+
+                    }
+                } else {
+                    SGP_MEDSC_admin sgp = new SGP_MEDSC_admin();
+                    sgp.setVisible(true);
+                    jtf = txtFldUsuario.getText();
+                    System.out.println(jtf + "    ");
+                    this.dispose();
+                }
+                break;
+            case 1:
+                if (!(txtFldUsuario.getText().equals("grupo1") && passcode.equals("Abcd3"))) {
+                    intentos++;
+                    if (intentos > 0 && intentos < 3) {
+                        JOptionPane.showMessageDialog(null, "Revise sus datos proporcionados. Intentos restantes: " + (3 - intentos), "INGRESO FALLIDO", JOptionPane.WARNING_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Ha excedido el número máximo de intentos. Se bloqueará el acceso.", "INGRESO FALLIDO", JOptionPane.ERROR_MESSAGE);
+                    }
+                } else {
+                    SGP_MEDSC sgp = new SGP_MEDSC();
+                    sgp.setVisible(true);
+                    jtf = txtFldUsuario.getText();
+                    System.out.println(jtf + "    ");
+                    this.dispose();
+                }
+                break;
         }
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
-    private void limpiarBoxes(){
-        txtFldUsuario.setText("");
-        jPasswordField.setText("");
-    }
     private void txtFldUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFldUsuarioFocusGained
         // TODO add your handling code here:
         if (txtFldUsuario.getText().equals("Usuario")) {
@@ -118,10 +145,14 @@ public class Menu extends javax.swing.JFrame {
     private String descifrarContraseña() {
         String passcode = "";
         char[] password = jPasswordField.getPassword();
-        for(int i = 0; i < password.length; i++){
+        for (int i = 0; i < password.length; i++) {
             passcode += password[i];
         }
         return passcode;
+    }
+
+    public JLabel getLblUsuarioIcon() {
+        return lblUsuarioIcon;
     }
 
     /**
@@ -161,6 +192,7 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIniciarSesion;
+    private javax.swing.JComboBox<String> cbTipoDeUsuarios;
     private javax.swing.JPasswordField jPasswordField;
     private javax.swing.JLabel lblClinica;
     private javax.swing.JLabel lblContraseñaIcon;
@@ -168,4 +200,5 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel lblUsuarioIcon;
     private javax.swing.JTextField txtFldUsuario;
     // End of variables declaration//GEN-END:variables
+
 }

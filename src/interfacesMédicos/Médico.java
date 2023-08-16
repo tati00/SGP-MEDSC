@@ -5,6 +5,7 @@
 package interfacesMédicos;
 
 import interfacesPrincipales.SGP_MEDSC;
+import interfacesPrincipales.SGP_MEDSC_admin;
 
 
 /**
@@ -379,7 +380,7 @@ public class Médico extends javax.swing.JFrame {
 
     private void regresarMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresarMenuMouseClicked
         // TODO add your handling code here:
-        SGP_MEDSC sgci = new SGP_MEDSC();
+        SGP_MEDSC_admin sgci = new SGP_MEDSC_admin();
         sgci.setVisible(true);
         this.dispose();
             
