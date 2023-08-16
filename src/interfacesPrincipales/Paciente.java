@@ -4,8 +4,8 @@
  */
 package interfacesPrincipales;
 
-import pacientes.PacienteExtranjero;
-import pacientes.PacienteNacional;
+import interfacesPacientes.PacienteExtranjero;
+import interfacesPacientes.PacienteNacional;
 import javax.swing.JDesktopPane;
 
 /**

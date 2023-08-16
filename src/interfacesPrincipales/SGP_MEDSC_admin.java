@@ -4,6 +4,7 @@
  */
 package interfacesPrincipales;
 
+import interfacesAdministracion.AdministracionSistema_;
 import interfacesCitas.CitaMédica;
 import interfacesMédicos.Médico;
 import javax.swing.JOptionPane;
@@ -80,10 +81,15 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
         jPanel2.add(lblMedicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, -1, -1));
 
         btnAdminsitracion.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
-        btnAdminsitracion.setText("Administración de Usuarios");
+        btnAdminsitracion.setText("Administración del Sistema");
         btnAdminsitracion.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnAdminsitracion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAdminsitracion.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnAdminsitracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdminsitracionActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnAdminsitracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 210, 40));
 
         btnSalir.setText("Cerrar sesión");
@@ -187,6 +193,12 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
         médicos.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnMedicosActionPerformed
+
+    private void btnAdminsitracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminsitracionActionPerformed
+        AdministracionSistema_ as = new AdministracionSistema_();
+        jDesktopPane1.add(as);
+        as.setVisible(true);
+    }//GEN-LAST:event_btnAdminsitracionActionPerformed
 
     /**
      * @param args the command line arguments
