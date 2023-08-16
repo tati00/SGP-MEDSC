@@ -53,175 +53,74 @@ public class InformacionPersonalExtranjero extends javax.swing.JInternalFrame {
         cbxTipoSangre = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jPanel1 = new javax.swing.JPanel();
 
         setMinimumSize(new java.awt.Dimension(820, 640));
         setPreferredSize(new java.awt.Dimension(820, 640));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblPasaporte.setText("N° pasaporte: ");
+        getContentPane().add(lblPasaporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 33, -1, -1));
 
         lblNombres.setText("Nombres: ");
+        getContentPane().add(lblNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, -1, -1));
 
         lblApellidos.setText("Apellidos: ");
+        getContentPane().add(lblApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, -1, -1));
 
         lblDireccion.setText("Dirección domiciliaria: ");
+        getContentPane().add(lblDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, -1, -1));
 
         lblTelefonoMovil.setText("N° teléfono móvil: ");
+        getContentPane().add(lblTelefonoMovil, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, -1, -1));
 
         lblEdad.setText("Edad: ");
+        getContentPane().add(lblEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, -1, -1));
 
         lblSexo.setText("Sexo: ");
+        getContentPane().add(lblSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 312, -1, -1));
 
         lblTrabajo.setText("Tipo de trabajo: ");
+        getContentPane().add(lblTrabajo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 412, -1, -1));
 
         lblTipoSangre.setText("Tipo de sangre: ");
+        getContentPane().add(lblTipoSangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 452, -1, -1));
 
         lblSituacionEconomica.setText("Situación económica: ");
+        getContentPane().add(lblSituacionEconomica, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 500, -1, -1));
 
         lblCorreoElectronico.setText("Correo electrónico: ");
+        getContentPane().add(lblCorreoElectronico, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 550, -1, -1));
+        getContentPane().add(txtFieldCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 30, 102, -1));
+        getContentPane().add(txtFieldNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 202, -1));
+        getContentPane().add(txtFieldApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 200, -1));
+        getContentPane().add(txtFieldDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, 200, -1));
 
         txtFieldTelefono.setText("09");
+        getContentPane().add(txtFieldTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 90, -1));
+        getContentPane().add(txtFieldEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 34, -1));
+        getContentPane().add(txtFieldSituacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 500, 110, -1));
+        getContentPane().add(txtFieldTrabajo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 412, 110, -1));
 
         rdBtnFemenino.setText("Femenino");
+        getContentPane().add(rdBtnFemenino, new org.netbeans.lib.awtextra.AbsoluteConstraints(359, 310, -1, -1));
 
         rdBtnMasculino.setText("Masculino");
+        getContentPane().add(rdBtnMasculino, new org.netbeans.lib.awtextra.AbsoluteConstraints(459, 310, -1, -1));
+        getContentPane().add(txtFieldCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 550, 110, -1));
 
         cbxTipoSangre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A+", "A-\t", "B+", "B-", "AB+", "AB-", "O+", "O-" }));
+        getContentPane().add(cbxTipoSangre, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 452, -1, -1));
 
         jLabel1.setText("Estado Civil: ");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 352, -1, -1));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Soltero(a)", "Divorciado(a)", "Unión libre", "Viudo(a)" }));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 349, 110, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(290, 290, 290)
-                        .addComponent(lblApellidos)
-                        .addGap(15, 15, 15)
-                        .addComponent(txtFieldApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(230, 230, 230)
-                        .addComponent(lblDireccion)
-                        .addGap(9, 9, 9)
-                        .addComponent(txtFieldDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(250, 250, 250)
-                        .addComponent(lblTelefonoMovil)
-                        .addGap(10, 10, 10)
-                        .addComponent(txtFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(275, 275, 275)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(310, 310, 310)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblSexo)
-                                .addGap(18, 18, 18)
-                                .addComponent(rdBtnFemenino)
-                                .addGap(24, 24, 24)
-                                .addComponent(rdBtnMasculino))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblEdad)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtFieldEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(240, 240, 240)
-                            .addComponent(lblCorreoElectronico)
-                            .addGap(16, 16, 16)
-                            .addComponent(txtFieldCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(230, 230, 230)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblTipoSangre)
-                                        .addGap(17, 17, 17)
-                                        .addComponent(cbxTipoSangre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblTrabajo)
-                                        .addGap(15, 15, 15)
-                                        .addComponent(txtFieldTrabajo, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lblSituacionEconomica)
-                                    .addGap(13, 13, 13)
-                                    .addComponent(txtFieldSituacion, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(270, 270, 270)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblPasaporte)
-                            .addComponent(lblNombres))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(txtFieldNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(txtFieldCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(163, 163, 163))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFieldCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPasaporte))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(lblNombres))
-                    .addComponent(txtFieldNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblApellidos)
-                    .addComponent(txtFieldApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDireccion)
-                    .addComponent(txtFieldDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTelefonoMovil)
-                    .addComponent(txtFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblEdad)
-                    .addComponent(txtFieldEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(rdBtnFemenino)
-                        .addComponent(lblSexo))
-                    .addComponent(rdBtnMasculino))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTrabajo)
-                    .addComponent(txtFieldTrabajo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTipoSangre)
-                    .addComponent(cbxTipoSangre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblSituacionEconomica)
-                    .addComponent(txtFieldSituacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCorreoElectronico)
-                    .addComponent(txtFieldCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32))
-        );
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 610, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -231,6 +130,7 @@ public class InformacionPersonalExtranjero extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> cbxTipoSangre;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblApellidos;
     private javax.swing.JLabel lblCorreoElectronico;
     private javax.swing.JLabel lblDireccion;

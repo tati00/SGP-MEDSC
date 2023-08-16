@@ -32,6 +32,7 @@ public class ActualizarDireccionExtranjero extends javax.swing.JInternalFrame {
         lblDireccion = new javax.swing.JLabel();
         txtFieldNumeroHC = new javax.swing.JTextField();
         txtFieldDireccion = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
 
         setMinimumSize(new java.awt.Dimension(820, 640));
         setPreferredSize(new java.awt.Dimension(820, 640));
@@ -45,11 +46,16 @@ public class ActualizarDireccionExtranjero extends javax.swing.JInternalFrame {
         getContentPane().add(txtFieldNumeroHC, new org.netbeans.lib.awtextra.AbsoluteConstraints(403, 26, -1, -1));
         getContentPane().add(txtFieldDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(403, 69, 250, -1));
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 610, 120));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblDireccion;
     private javax.swing.JLabel lblNumeroHC;
     private javax.swing.JTextField txtFieldDireccion;

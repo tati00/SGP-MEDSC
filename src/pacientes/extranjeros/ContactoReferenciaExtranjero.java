@@ -36,6 +36,7 @@ public class ContactoReferenciaExtranjero extends javax.swing.JInternalFrame {
         txtFieldApellidos = new javax.swing.JTextField();
         txtFieldTelefono = new javax.swing.JTextField();
         txtFieldParentesco = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
 
         setMinimumSize(new java.awt.Dimension(820, 640));
         setPreferredSize(new java.awt.Dimension(820, 640));
@@ -59,11 +60,16 @@ public class ContactoReferenciaExtranjero extends javax.swing.JInternalFrame {
         getContentPane().add(txtFieldTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 130, 164, -1));
         getContentPane().add(txtFieldParentesco, new org.netbeans.lib.awtextra.AbsoluteConstraints(345, 178, 164, -1));
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 610, 210));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblApellidos;
     private javax.swing.JLabel lblNombres;
     private javax.swing.JLabel lblParentesco;

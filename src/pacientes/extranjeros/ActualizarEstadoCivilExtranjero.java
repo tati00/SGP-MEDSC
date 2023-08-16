@@ -32,6 +32,7 @@ public class ActualizarEstadoCivilExtranjero extends javax.swing.JInternalFrame 
         lblEstadoCivil = new javax.swing.JLabel();
         txtFieldNumeroHC = new javax.swing.JTextField();
         cbEstadoCivil = new javax.swing.JComboBox<>();
+        jPanel1 = new javax.swing.JPanel();
 
         setMinimumSize(new java.awt.Dimension(820, 640));
         setPreferredSize(new java.awt.Dimension(820, 640));
@@ -47,12 +48,17 @@ public class ActualizarEstadoCivilExtranjero extends javax.swing.JInternalFrame 
         cbEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Soltero(a)", "Divorciado(a)", "Unión libre", "Viudo(a)" }));
         getContentPane().add(cbEstadoCivil, new org.netbeans.lib.awtextra.AbsoluteConstraints(416, 66, -1, -1));
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 610, 100));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbEstadoCivil;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblEstadoCivil;
     private javax.swing.JLabel lblNumeroHC;
     private javax.swing.JTextField txtFieldNumeroHC;

@@ -32,53 +32,32 @@ public class ActualizarNumeroPasaporte extends javax.swing.JInternalFrame {
         txtFieldApellidos = new javax.swing.JTextField();
         lblNombres = new javax.swing.JLabel();
         txtFieldNombres = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblPasaporte.setText("Nuevo n° pasaporte: ");
+        getContentPane().add(lblPasaporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 107, -1, -1));
 
         lblApellidos.setText("Apellidos:");
+        getContentPane().add(lblApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 67, -1, -1));
+        getContentPane().add(txtFieldPasaporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 104, 110, -1));
+        getContentPane().add(txtFieldApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 64, 200, -1));
 
         lblNombres.setText("Nombres:");
+        getContentPane().add(lblNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 33, -1, -1));
+        getContentPane().add(txtFieldNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(314, 30, 200, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(176, 176, 176)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblPasaporte)
-                    .addComponent(lblApellidos)
-                    .addComponent(lblNombres))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtFieldApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFieldNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFieldPasaporte, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(294, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNombres)
-                    .addComponent(txtFieldNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblApellidos)
-                    .addComponent(txtFieldApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPasaporte)
-                    .addComponent(txtFieldPasaporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(478, Short.MAX_VALUE))
-        );
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 610, 140));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblApellidos;
     private javax.swing.JLabel lblNombres;
     private javax.swing.JLabel lblPasaporte;
