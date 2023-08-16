@@ -5,6 +5,7 @@
 package interfacesPrincipales;
 
 import interfacesAdministracion.AdministracionSistema_;
+import interfacesAtencion.AtencionMedica;
 import interfacesCitas.CitaMédica;
 import interfacesMédicos.Médico;
 import javax.swing.JOptionPane;
@@ -177,7 +178,9 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPacientesActionPerformed
 
     private void btnAtencionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtencionActionPerformed
-        // TODO add your handling code here:
+        AtencionMedica am = new AtencionMedica();
+        am.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnAtencionActionPerformed
 
     private void btnCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCitasActionPerformed

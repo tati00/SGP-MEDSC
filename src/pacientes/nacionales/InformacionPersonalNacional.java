@@ -53,6 +53,7 @@ public class InformacionPersonalNacional extends javax.swing.JInternalFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
 
+        setAutoscrolls(true);
         setMinimumSize(new java.awt.Dimension(820, 640));
         setPreferredSize(new java.awt.Dimension(820, 640));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

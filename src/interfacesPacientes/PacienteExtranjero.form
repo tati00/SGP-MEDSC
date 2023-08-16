@@ -83,7 +83,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="imEstadoCivil_a">
               <Properties>
-                <Property name="text" type="java.lang.String" value="estado civ&#xed;l"/>
+                <Property name="text" type="java.lang.String" value="estado civil"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="imEstadoCivil_aActionPerformed"/>

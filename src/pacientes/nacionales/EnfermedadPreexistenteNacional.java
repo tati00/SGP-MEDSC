@@ -37,6 +37,7 @@ public class EnfermedadPreexistenteNacional extends javax.swing.JInternalFrame {
         txtTratamiento = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
 
+        setAutoscrolls(true);
         setMinimumSize(new java.awt.Dimension(820, 640));
         setPreferredSize(new java.awt.Dimension(820, 640));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

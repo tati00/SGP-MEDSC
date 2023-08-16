@@ -164,7 +164,7 @@ public class PacienteExtranjero extends javax.swing.JFrame {
         });
         mnActualizar.add(imDireccion_a);
 
-        imEstadoCivil_a.setText("estado civíl");
+        imEstadoCivil_a.setText("estado civil");
         imEstadoCivil_a.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 imEstadoCivil_aActionPerformed(evt);
