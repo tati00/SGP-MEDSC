@@ -98,7 +98,9 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
-
+        SGP_MEDSC sgp = new SGP_MEDSC();
+        sgp.setVisible(true);
+        this.dispose();
 
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
