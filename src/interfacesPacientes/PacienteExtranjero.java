@@ -63,7 +63,6 @@ public class PacienteExtranjero extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         mnRegistrar = new javax.swing.JMenu();
         imInformacionPersonal = new javax.swing.JMenuItem();
-        imAnamnesis = new javax.swing.JMenuItem();
         imEnfermedadPreexistente = new javax.swing.JMenuItem();
         imContactoReferencia = new javax.swing.JMenuItem();
         imHistoriaClínica = new javax.swing.JMenuItem();
@@ -74,15 +73,9 @@ public class PacienteExtranjero extends javax.swing.JFrame {
         imNombres = new javax.swing.JMenuItem();
         imApellidos = new javax.swing.JMenuItem();
         imPasaporte_a = new javax.swing.JMenuItem();
+        mnGenerarHC = new javax.swing.JMenu();
         mnConsultar = new javax.swing.JMenu();
-        imCorreoElectronico_c = new javax.swing.JMenuItem();
-        imEdad_c = new javax.swing.JMenuItem();
-        imTelefonoMovil_c = new javax.swing.JMenuItem();
-        imTipoSangre_c = new javax.swing.JMenuItem();
-        imContactoReferencia_c = new javax.swing.JMenuItem();
-        imEnfermedadPreexistente_c = new javax.swing.JMenuItem();
         imHistoriaClinica_c = new javax.swing.JMenuItem();
-        imPaciente = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(840, 800));
@@ -111,14 +104,6 @@ public class PacienteExtranjero extends javax.swing.JFrame {
             }
         });
         mnRegistrar.add(imInformacionPersonal);
-
-        imAnamnesis.setText("Anamnesis");
-        imAnamnesis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                imAnamnesisActionPerformed(evt);
-            }
-        });
-        mnRegistrar.add(imAnamnesis);
 
         imEnfermedadPreexistente.setText("Enfermedad preexistente");
         imEnfermedadPreexistente.addActionListener(new java.awt.event.ActionListener() {
@@ -198,55 +183,10 @@ public class PacienteExtranjero extends javax.swing.JFrame {
 
         jMenuBar1.add(mnActualizar);
 
+        mnGenerarHC.setText("Generar");
+        jMenuBar1.add(mnGenerarHC);
+
         mnConsultar.setText("Consultar");
-
-        imCorreoElectronico_c.setText("correo electrónico");
-        imCorreoElectronico_c.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                imCorreoElectronico_cActionPerformed(evt);
-            }
-        });
-        mnConsultar.add(imCorreoElectronico_c);
-
-        imEdad_c.setText("edad");
-        imEdad_c.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                imEdad_cActionPerformed(evt);
-            }
-        });
-        mnConsultar.add(imEdad_c);
-
-        imTelefonoMovil_c.setText("número de teléfono móvil");
-        imTelefonoMovil_c.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                imTelefonoMovil_cActionPerformed(evt);
-            }
-        });
-        mnConsultar.add(imTelefonoMovil_c);
-
-        imTipoSangre_c.setText("tipo de sangre");
-        imTipoSangre_c.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                imTipoSangre_cActionPerformed(evt);
-            }
-        });
-        mnConsultar.add(imTipoSangre_c);
-
-        imContactoReferencia_c.setText("contacto de referencia");
-        imContactoReferencia_c.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                imContactoReferencia_cActionPerformed(evt);
-            }
-        });
-        mnConsultar.add(imContactoReferencia_c);
-
-        imEnfermedadPreexistente_c.setText("enfermedad preexistente");
-        imEnfermedadPreexistente_c.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                imEnfermedadPreexistente_cActionPerformed(evt);
-            }
-        });
-        mnConsultar.add(imEnfermedadPreexistente_c);
 
         imHistoriaClinica_c.setText("historia clínica");
         imHistoriaClinica_c.addActionListener(new java.awt.event.ActionListener() {
@@ -255,14 +195,6 @@ public class PacienteExtranjero extends javax.swing.JFrame {
             }
         });
         mnConsultar.add(imHistoriaClinica_c);
-
-        imPaciente.setText("paciente");
-        imPaciente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                imPacienteActionPerformed(evt);
-            }
-        });
-        mnConsultar.add(imPaciente);
 
         jMenuBar1.add(mnConsultar);
 
@@ -282,12 +214,6 @@ public class PacienteExtranjero extends javax.swing.JFrame {
         jDesktopPane1.add(ipextranjero);
         ipextranjero.setVisible(true);
     }//GEN-LAST:event_imInformacionPersonalActionPerformed
-
-    private void imAnamnesisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imAnamnesisActionPerformed
-        AnamnesisExtranjero amExtranjero = new AnamnesisExtranjero();
-        jDesktopPane1.add(amExtranjero);
-        amExtranjero.setVisible(true);
-    }//GEN-LAST:event_imAnamnesisActionPerformed
 
     private void imEnfermedadPreexistenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imEnfermedadPreexistenteActionPerformed
         EnfermedadPreexistenteExtranjero epExtranjero = new EnfermedadPreexistenteExtranjero();
@@ -324,40 +250,6 @@ public class PacienteExtranjero extends javax.swing.JFrame {
         ecExtranjero.setVisible(true);
     }//GEN-LAST:event_imEstadoCivil_aActionPerformed
 
-    private void imCorreoElectronico_cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imCorreoElectronico_cActionPerformed
-        ConsultarCorreoEdadTelefonoSangreExtranjero cetsExtranjero = new ConsultarCorreoEdadTelefonoSangreExtranjero();
-        jDesktopPane1.add(cetsExtranjero);
-        cetsExtranjero.setVisible(true);
-    }//GEN-LAST:event_imCorreoElectronico_cActionPerformed
-
-    private void imEdad_cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imEdad_cActionPerformed
-        ConsultarCorreoEdadTelefonoSangreExtranjero cetsExtranjero = new ConsultarCorreoEdadTelefonoSangreExtranjero();
-        jDesktopPane1.add(cetsExtranjero);
-        cetsExtranjero.setVisible(true);
-    }//GEN-LAST:event_imEdad_cActionPerformed
-
-    private void imTelefonoMovil_cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imTelefonoMovil_cActionPerformed
-        ConsultarCorreoEdadTelefonoSangreExtranjero cetsExtranjero = new ConsultarCorreoEdadTelefonoSangreExtranjero();
-        jDesktopPane1.add(cetsExtranjero);
-        cetsExtranjero.setVisible(true);
-    }//GEN-LAST:event_imTelefonoMovil_cActionPerformed
-
-    private void imContactoReferencia_cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imContactoReferencia_cActionPerformed
-        ConsultarContactoExtranjero ctsExtranjero = new ConsultarContactoExtranjero();
-        ctsExtranjero.setVisible(true);
-    }//GEN-LAST:event_imContactoReferencia_cActionPerformed
-
-    private void imEnfermedadPreexistente_cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imEnfermedadPreexistente_cActionPerformed
-        ConsultarContactoExtranjero ctsExtranjero = new ConsultarContactoExtranjero();
-        ctsExtranjero.setVisible(true);
-    }//GEN-LAST:event_imEnfermedadPreexistente_cActionPerformed
-
-    private void imTipoSangre_cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imTipoSangre_cActionPerformed
-        ConsultarCorreoEdadTelefonoSangreExtranjero cetsExtranjero = new ConsultarCorreoEdadTelefonoSangreExtranjero();
-        jDesktopPane1.add(cetsExtranjero);
-        cetsExtranjero.setVisible(true);
-    }//GEN-LAST:event_imTipoSangre_cActionPerformed
-
     private void imHistoriaClinica_cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imHistoriaClinica_cActionPerformed
         ConsultarHistoriaClinicaExtranjero chcExtranjero = new ConsultarHistoriaClinicaExtranjero();
         chcExtranjero.setVisible(true);
@@ -380,12 +272,6 @@ public class PacienteExtranjero extends javax.swing.JFrame {
         jDesktopPane1.add(aPasaporte);
         aPasaporte.setVisible(true);
     }//GEN-LAST:event_imPasaporte_aActionPerformed
-
-    private void imPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imPacienteActionPerformed
-        ConsultarPacienteExtranjero pej = new ConsultarPacienteExtranjero();
-        pej.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_imPacienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -424,29 +310,22 @@ public class PacienteExtranjero extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegresar;
-    private javax.swing.JMenuItem imAnamnesis;
     private javax.swing.JMenuItem imApellidos;
     private javax.swing.JMenuItem imContactoReferencia;
-    private javax.swing.JMenuItem imContactoReferencia_c;
-    private javax.swing.JMenuItem imCorreoElectronico_c;
     private javax.swing.JMenuItem imDireccion_a;
-    private javax.swing.JMenuItem imEdad_c;
     private javax.swing.JMenuItem imEnfermedadPreexistente;
-    private javax.swing.JMenuItem imEnfermedadPreexistente_c;
     private javax.swing.JMenuItem imEstadoCivil_a;
     private javax.swing.JMenuItem imHistoriaClinica_c;
     private javax.swing.JMenuItem imHistoriaClínica;
     private javax.swing.JMenuItem imInformacionPersonal;
     private javax.swing.JMenuItem imNombres;
-    private javax.swing.JMenuItem imPaciente;
     private javax.swing.JMenuItem imPasaporte_a;
     private javax.swing.JMenuItem imTelefonoMovil_a;
-    private javax.swing.JMenuItem imTelefonoMovil_c;
-    private javax.swing.JMenuItem imTipoSangre_c;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu mnActualizar;
     private javax.swing.JMenu mnConsultar;
+    private javax.swing.JMenu mnGenerarHC;
     private javax.swing.JMenu mnRegistrar;
     // End of variables declaration//GEN-END:variables
 }

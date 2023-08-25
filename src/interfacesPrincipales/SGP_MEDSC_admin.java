@@ -38,10 +38,6 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         lblTitulo = new javax.swing.JLabel();
         lblClinica = new javax.swing.JLabel();
-        lblPacientes = new javax.swing.JLabel();
-        lblAtencionMedica = new javax.swing.JLabel();
-        lblCitasMedicas = new javax.swing.JLabel();
-        lblMedicos = new javax.swing.JLabel();
         btnAdminsitracion = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         btnPacientes = new javax.swing.JButton();
@@ -69,19 +65,8 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
         lblClinica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/clínica.png"))); // NOI18N
         jPanel2.add(lblClinica, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
 
-        lblPacientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/paciente.png"))); // NOI18N
-        jPanel2.add(lblPacientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
-
-        lblAtencionMedica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/atencion.png"))); // NOI18N
-        jPanel2.add(lblAtencionMedica, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, -1));
-
-        lblCitasMedicas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/citas.png"))); // NOI18N
-        jPanel2.add(lblCitasMedicas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
-
-        lblMedicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/doctor.png"))); // NOI18N
-        jPanel2.add(lblMedicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, -1, -1));
-
-        btnAdminsitracion.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
+        btnAdminsitracion.setBackground(new java.awt.Color(192, 192, 190));
+        btnAdminsitracion.setFont(new java.awt.Font("Sitka Subheading", 1, 18)); // NOI18N
         btnAdminsitracion.setText("Administración del Sistema");
         btnAdminsitracion.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnAdminsitracion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -91,7 +76,7 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
                 btnAdminsitracionActionPerformed(evt);
             }
         });
-        jPanel2.add(btnAdminsitracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 210, 40));
+        jPanel2.add(btnAdminsitracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 240, 60));
 
         btnSalir.setText("Cerrar sesión");
         btnSalir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 10));
@@ -102,53 +87,62 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
         });
         jPanel2.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 730, -1, -1));
 
-        btnPacientes.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
-        btnPacientes.setText("Pacientes");
+        btnPacientes.setBackground(new java.awt.Color(192, 192, 190));
+        btnPacientes.setFont(new java.awt.Font("Sitka Subheading", 1, 18)); // NOI18N
+        btnPacientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/paciente-.png"))); // NOI18N
+        btnPacientes.setText("    Pacientes");
         btnPacientes.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnPacientes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnPacientes.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        btnPacientes.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnPacientes.setMaximumSize(new java.awt.Dimension(180, 177));
         btnPacientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPacientesActionPerformed(evt);
             }
         });
-        jPanel2.add(btnPacientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 150, 40));
+        jPanel2.add(btnPacientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 230, 60));
 
-        btnCitas.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
-        btnCitas.setText("Citas Médicas");
+        btnCitas.setBackground(new java.awt.Color(192, 192, 190));
+        btnCitas.setFont(new java.awt.Font("Sitka Subheading", 1, 18)); // NOI18N
+        btnCitas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/citaMedica-.png"))); // NOI18N
+        btnCitas.setText("   Citas Médicas");
         btnCitas.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnCitas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnCitas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnCitas.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        btnCitas.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnCitas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCitasActionPerformed(evt);
             }
         });
-        jPanel2.add(btnCitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, 150, 40));
+        jPanel2.add(btnCitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 230, 60));
 
-        btnMedicos.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
-        btnMedicos.setText("Médicos");
+        btnMedicos.setBackground(new java.awt.Color(192, 192, 190));
+        btnMedicos.setFont(new java.awt.Font("Sitka Subheading", 1, 18)); // NOI18N
+        btnMedicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/medico-.png"))); // NOI18N
+        btnMedicos.setText("   Médicos");
         btnMedicos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnMedicos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnMedicos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnMedicos.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        btnMedicos.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnMedicos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMedicosActionPerformed(evt);
             }
         });
-        jPanel2.add(btnMedicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 420, 150, 40));
+        jPanel2.add(btnMedicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 230, 60));
 
-        btnAtencion.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
-        btnAtencion.setText("Atención Médica");
+        btnAtencion.setBackground(new java.awt.Color(192, 192, 190));
+        btnAtencion.setFont(new java.awt.Font("Sitka Subheading", 1, 18)); // NOI18N
+        btnAtencion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/atencion-.png"))); // NOI18N
+        btnAtencion.setText("   Atención Médica");
         btnAtencion.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnAtencion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnAtencion.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnAtencion.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        btnAtencion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnAtencion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAtencionActionPerformed(evt);
             }
         });
-        jPanel2.add(btnAtencion, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 150, 40));
+        jPanel2.add(btnAtencion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 230, 60));
 
         lblFondoModulos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.jpg"))); // NOI18N
         lblFondoModulos.setText("jLabel1");
@@ -248,12 +242,8 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JLabel lblAtencionMedica;
-    private javax.swing.JLabel lblCitasMedicas;
     private javax.swing.JLabel lblClinica;
     private javax.swing.JLabel lblFondoModulos;
-    private javax.swing.JLabel lblMedicos;
-    private javax.swing.JLabel lblPacientes;
     private javax.swing.JLabel lblTitulo;
     // End of variables declaration//GEN-END:variables
 }

@@ -26,14 +26,6 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="imInformacionPersonalActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="imAnamnesis">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Anamnesis"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="imAnamnesisActionPerformed"/>
-              </Events>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="imEnfermedadPreexistente">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Enfermedad preexistente"/>
@@ -115,73 +107,22 @@
             </MenuItem>
           </SubComponents>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="mnGenerarHC">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Generar"/>
+          </Properties>
+        </Menu>
         <Menu class="javax.swing.JMenu" name="mnConsultar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Consultar"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="imCorreoElectronico_c">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="correo electr&#xf3;nico"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="imCorreoElectronico_cActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="imEdad_c">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="edad"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="imEdad_cActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="imTelefonoMovil_c">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="n&#xfa;mero de tel&#xe9;fono m&#xf3;vil"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="imTelefonoMovil_cActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="imTipoSangre_c">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="tipo de sangre"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="imTipoSangre_cActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="imContactoReferencia_c">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="contacto de referencia"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="imContactoReferencia_cActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="imEnfermedadPreexistente_c">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="enfermedad preexistente"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="imEnfermedadPreexistente_cActionPerformed"/>
-              </Events>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="imHistoriaClinica_c">
               <Properties>
                 <Property name="text" type="java.lang.String" value="historia cl&#xed;nica"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="imHistoriaClinica_cActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="imPaciente">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="paciente"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="imPacienteActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

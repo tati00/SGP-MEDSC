@@ -44,8 +44,9 @@ public class SGP_MEDSC extends javax.swing.JFrame {
         jDesktopPane2 = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setExtendedState(this.MAXIMIZED_BOTH);
         setMinimumSize(new java.awt.Dimension(800, 770));
-        setResizable(false);
+        setSize(new java.awt.Dimension(0, 0));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jSplitPane1.setDividerLocation(250);
