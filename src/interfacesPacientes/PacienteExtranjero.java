@@ -9,7 +9,6 @@ import interfacesPrincipales.SGP_MEDSC;
 import pacientes.extranjeros.HistoriaClinicaExtranjero;
 import pacientes.extranjeros.EnfermedadPreexistenteExtranjero;
 import pacientes.extranjeros.AnamnesisExtranjero;
-import pacientes.extranjeros.ConsultarCorreoEdadTelefonoSangreExtranjero;
 import pacientes.extranjeros.ActualizarMovilExtranjero;
 import pacientes.extranjeros.ActualizarEstadoCivilExtranjero;
 import pacientes.extranjeros.InformacionPersonalExtranjero;
@@ -17,10 +16,8 @@ import pacientes.extranjeros.ActualizarDireccionExtranjero;
 import pacientes.extranjeros.ActualizarApellidosExtranjero;
 import pacientes.extranjeros.ActualizarNombresExtranjero;
 import pacientes.extranjeros.ContactoReferenciaExtranjero;
-import pacientes.extranjeros.ConsultarContactoExtranjero;
 import pacientes.extranjeros.ConsultarHistoriaClinicaExtranjero;
 import pacientes.extranjeros.ActualizarNumeroPasaporte;
-import pacientes.extranjeros.ConsultarPacienteExtranjero;
 
 /**
  *

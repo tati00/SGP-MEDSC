@@ -8,7 +8,6 @@ import interfacesPrincipales.Menu;
 import pacientes.nacionales.HistoriaClinicaNacional;
 import pacientes.nacionales.EnfermedadPreexistenteNacional;
 import pacientes.nacionales.AnamnesisNacional;
-import pacientes.nacionales.ConsultarCorreoEdadTelefonoSangreNacional;
 import pacientes.nacionales.ActualizarMovilNacional;
 import pacientes.nacionales.ActualizarEstadoCivilNacional;
 import pacientes.nacionales.InformacionPersonalNacional;
@@ -18,9 +17,8 @@ import interfacesPrincipales.SGP_MEDSC;
 import javax.swing.JTextField;
 import pacientes.nacionales.ActualizarApellidosNacionales;
 import pacientes.nacionales.ActualizarNombresNacionales;
-import pacientes.nacionales.ConsultarContactoNacional;
 import pacientes.nacionales.ConsultarHistoriaClinicaNacional;
-import pacientes.nacionales.ConsultarPacienteNacional;
+
 
 /**
  *
