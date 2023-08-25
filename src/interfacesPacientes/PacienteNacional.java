@@ -7,7 +7,6 @@ package interfacesPacientes;
 import interfacesPrincipales.Menu;
 import pacientes.nacionales.HistoriaClinicaNacional;
 import pacientes.nacionales.EnfermedadPreexistenteNacional;
-import pacientes.nacionales.AnamnesisNacional;
 import pacientes.nacionales.ActualizarMovilNacional;
 import pacientes.nacionales.ActualizarEstadoCivilNacional;
 import pacientes.nacionales.InformacionPersonalNacional;

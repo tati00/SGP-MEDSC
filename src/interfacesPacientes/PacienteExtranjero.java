@@ -8,7 +8,6 @@ import interfacesPrincipales.Menu;
 import interfacesPrincipales.SGP_MEDSC;
 import pacientes.extranjeros.HistoriaClinicaExtranjero;
 import pacientes.extranjeros.EnfermedadPreexistenteExtranjero;
-import pacientes.extranjeros.AnamnesisExtranjero;
 import pacientes.extranjeros.ActualizarMovilExtranjero;
 import pacientes.extranjeros.ActualizarEstadoCivilExtranjero;
 import pacientes.extranjeros.InformacionPersonalExtranjero;
