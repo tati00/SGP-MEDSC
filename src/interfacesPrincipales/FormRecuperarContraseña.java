@@ -3,7 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package interfacesPrincipales;
-
+import Logica.LogicaPrincipal.AtributosUser;
+import Logica.LogicaPrincipal.ConexiónUsuarios;
+import Logica.LogicaPrincipal.Encriptador;
+import Logica.LogicaPrincipal.RecuperadorContraseña;
+import static java.awt.image.ImageObserver.HEIGHT;
+import java.security.SecureRandom;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Usuario
@@ -13,8 +22,26 @@ public class FormRecuperarContraseña extends javax.swing.JFrame {
     /**
      * Creates new form FormRecuperarContraseña
      */
+    private String email;
+    private String emailEmisor;
+    RecuperadorContraseña newpas;
+    String randomPassword;
+    private Encriptador crp;
+    int passwordLength = 4; // Cambia la longitud de la contraseña según tus necesidades
+    
+    private static final String CHAR_LOWER = "abcdefghijklmnopqrstuvwxyz";
+    private static final String CHAR_UPPER = CHAR_LOWER.toUpperCase();
+    private static final String DIGIT = "0123456789";
+    private static final String OTHER_SPECIAL = "!@#$%^&*()_-+=<>?/[]{},.:;";
+    private static final String ALL_ALLOWED = CHAR_LOWER + CHAR_UPPER + DIGIT + OTHER_SPECIAL;
+
+    private static SecureRandom random = new SecureRandom();
+    
     public FormRecuperarContraseña() {
         initComponents();
+        crp = new Encriptador();
+        newpas = new RecuperadorContraseña();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -26,21 +53,72 @@ public class FormRecuperarContraseña extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtId = new javax.swing.JTextField();
+        btnRecuperar = new javax.swing.JButton();
+        fondo = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setText("Recuperar Contraseña");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, -1, -1));
+
+        jLabel2.setText("Número de Cedula");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
+        jPanel1.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 120, -1));
+
+        btnRecuperar.setText("Recuperar");
+        btnRecuperar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRecuperarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnRecuperar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, -1));
+        jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRecuperarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecuperarActionPerformed
+        // TODO add your handling code here:
+        ConexiónUsuarios conec = new ConexiónUsuarios();
+        try {
+            if (!conec.verificarParametro(AtributosUser.Id_User.getValue(), txtId.getText())){
+                JOptionPane.showMessageDialog(rootPane, "El numero ingresado no está registrado", "Error", HEIGHT);
+                return;
+            }
+            email = conec.consultarParametroPorId(AtributosUser.Correo_Electrónico.getValue(), txtId.getText());
+            emailEmisor = conec.consultarEmail();
+            randomPassword = generateRandomPassword(passwordLength);
+            conec.actualizarAtributo(AtributosUser.Contraseña.getValue(),txtId.getText(), crp.encriptar(randomPassword));
+            newpas.recuperarContraseña(emailEmisor,email, randomPassword);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Error Recuperacion", HEIGHT);
+        }      
+    }//GEN-LAST:event_btnRecuperarActionPerformed
+
+    
+    
+    public static String generateRandomPassword(int length) {
+        if (length <= 0) {
+            throw new IllegalArgumentException("La longitud debe ser mayor que cero.");
+        }
+
+        StringBuilder password = new StringBuilder();
+        for (int i = 0; i < length; i++) {
+            int randomIndex = random.nextInt(ALL_ALLOWED.length());
+            password.append(ALL_ALLOWED.charAt(randomIndex));
+        }
+
+        return password.toString();
+    }
 
     /**
      * @param args the command line arguments
@@ -78,5 +156,11 @@ public class FormRecuperarContraseña extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRecuperar;
+    private javax.swing.JLabel fondo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField txtId;
     // End of variables declaration//GEN-END:variables
 }

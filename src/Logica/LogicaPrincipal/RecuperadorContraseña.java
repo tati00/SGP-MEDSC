@@ -4,49 +4,59 @@
  */
 package Logica.LogicaPrincipal;
 
-import com.sun.jdi.connect.Transport;
-import java.net.Authenticator;
-import java.net.PasswordAuthentication;
+
 import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.MessagingException;
+import javax.mail.internet.InternetAddress;
+import javax.activation.*;
+import javax.mail.Authenticator;
+import javax.mail.NoSuchProviderException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.MimeMessage;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Usuario
  */
 public class RecuperadorContraseña {
-    public void recuperarContraseña(String correo,String newPassword){
-        // Credenciales de la cuenta de correo electrónico que enviará el mensaje
-        final String username = "tu_correo@gmail.com"; // Cambiar
-        final String password = "tu_contraseña"; // Cambiar
-
-        // Propiedades de configuración para el servidor SMTP de Gmail
+    final String password = "hknkededbopfukhg"; // CAMBIAR: TOKEN generado en Gmail->contraseñas de apliaciones
+    public void recuperarContraseña(String emisor,String receptor,String newPassword){
+        //final String username = "esteban.45.bd@gmail.com"; // Cambia esto
+     
         Properties props = new Properties();
-        props.put("mail.smtp.auth", "true"); // Habilitar autenticación
-        props.put("mail.smtp.starttls.enable", "true"); // Habilitar TLS
-        props.put("mail.smtp.host", "smtp.gmail.com"); // Servidor SMTP de Gmail
-        props.put("mail.smtp.port", "587"); // Puerto seguro para TLS
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com"); // Cambia esto para tu proveedor de correo
+        props.put("mail.smtp.port", "587"); // Cambia esto para el puerto de tu proveedor de correo
+        props.put("mail.smtp.ssl.trust","*");
 
-        // Crear una sesión de correo electrónico con autenticación
+        // Iniciar una nueva sesión con autenticación
         Session session = Session.getInstance(props, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(correo, newPassword);
+                return new PasswordAuthentication(emisor, password);
             }
         });
 
         try {
-            // Crear un mensaje de correo
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(username)); // Remitente
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("correo_destino@example.com")); // Destinatario
-            message.setSubject("Recuperación de contraseña"); // Asunto
-            message.setText("Para restablecer tu contraseña, haz clic en este enlace: http://tuapp.com/reset?token=token_generado"); // Cuerpo del mensaje
+            message.setFrom(new InternetAddress(emisor));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(receptor)); // Cambia esto
+            message.setSubject("Recuperación de Contraseña");
+            message.setText("Tu nueva contraseña es : "+newPassword);
 
             // Enviar el mensaje
             Transport.send(message);
 
-            System.out.println("Correo electrónico enviado exitosamente.");
+            System.out.println("Correo electrónico enviado con éxito.");
         } catch (MessagingException e) {
-            e.printStackTrace();
+            System.out.print(e.getMessage());
         }
+  
     }
+
 }

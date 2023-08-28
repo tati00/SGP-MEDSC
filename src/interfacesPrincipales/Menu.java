@@ -99,6 +99,11 @@ public class Menu extends javax.swing.JFrame {
 
         btnReseatPass.setBackground(new java.awt.Color(153, 255, 255));
         btnReseatPass.setText("Resetear Contraseña");
+        btnReseatPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReseatPassActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnReseatPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, 150, 30));
 
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/luxa.org-opacity-changed-pexels-mart-production-7088498.jpg"))); // NOI18N
@@ -189,6 +194,12 @@ public class Menu extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
+
+    private void btnReseatPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReseatPassActionPerformed
+        // TODO add your handling code here:
+        FormRecuperarContraseña reset = new FormRecuperarContraseña();
+        reset.setVisible(true);
+    }//GEN-LAST:event_btnReseatPassActionPerformed
 
     private String descifrarContraseña() {
         String passcode = "";

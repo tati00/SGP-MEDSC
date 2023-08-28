@@ -129,5 +129,19 @@ public class ConexiónUsuarios extends Conexion {
         cerrarConexión();
         return valor;
     }
+    public String consultarEmail() throws SQLException{
+        conectar();
+        String valor = null;
+        String consulta = "SELECT Email_usuario FROM dbo.Usuarios WHERE Tipo_usuario = 'Medico General'";
+        PreparedStatement preparedStatement = conex.prepareStatement(consulta);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) {
+            valor = resultSet.getString("Email_usuario"); // Obtén el valor del resultado y asígnalo a la variable
+        }
+        resultSet.close();
+        preparedStatement.close();
+        cerrarConexión();
+        return valor;
+    }
     
 }

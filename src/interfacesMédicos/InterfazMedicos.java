@@ -21,7 +21,6 @@ public class InterfazMedicos extends javax.swing.JInternalFrame {
 
     public InterfazMedicos(LogUser user) {
         initComponents();
-        System.out.print("holsf");
         if (user.getUserType().equals("Medico Normal")){
             CONTAINER.remove(updatePanel);
         }

@@ -10,7 +10,7 @@ package Logica.LogicaPrincipal;
  */
 public enum AtributosUser {
     // Todo: Actualizar de Acuerdo al Nombre de la Database
-    
+    Id_User("Id_usuario"),
     Username("User_nameU"),
     Correo_Electrónico("Email_usuario"),
     Contraseña("Passwd_user");

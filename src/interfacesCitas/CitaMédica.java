@@ -31,163 +31,26 @@ public class CitaMédica extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        txt = new javax.swing.JLabel();
-        lblNuevo = new javax.swing.JLabel();
-        txtNuevo = new javax.swing.JTextField();
-        txtCedula = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        cbmEspecialidades = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
-        txtApellido1 = new javax.swing.JTextField();
-        cmbMédicos = new javax.swing.JComboBox<>();
-        jCalendar1 = new com.toedter.calendar.JCalendar();
-        btnAgendar = new javax.swing.JButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        background = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txt.setText("Nombres");
-
-        lblNuevo.setText("Apellido");
-        lblNuevo.setToolTipText("");
-
-        jLabel1.setText("Número de Cédula Paciente");
-
-        jLabel2.setText("Médico");
-
-        cbmEspecialidades.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabel3.setText("Especialidad");
-
-        cmbMédicos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 310, Short.MAX_VALUE)
-            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel4Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txt)
-                                    .addComponent(jLabel1))
-                                .addComponent(lblNuevo, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addComponent(jLabel2))
-                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtNuevo)
-                        .addComponent(txtCedula)
-                        .addComponent(cbmEspecialidades, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtApellido1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cmbMédicos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 490, Short.MAX_VALUE)
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 190, Short.MAX_VALUE)
-            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel4Layout.createSequentialGroup()
-                    .addGap(16, 16, 16)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txt)
-                        .addComponent(txtNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblNuevo)
-                        .addComponent(txtApellido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cbmEspecialidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(cmbMédicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 440, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 310, 190));
-        jPanel1.add(jCalendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, -1, -1));
-
-        btnAgendar.setText("AgendarCita");
-        btnAgendar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgendarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnAgendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 110, 30));
-        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 250, 160, 30));
-
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/fondov3.jpg"))); // NOI18N
-        jPanel1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 420));
-
-        jTabbedPane1.addTab("tab1", jPanel1);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 556, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 412, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("tab2", jPanel2);
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 556, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 412, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("tab3", jPanel3);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 556, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 440));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgendarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -225,24 +88,227 @@ public class CitaMédica extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel background;
-    private javax.swing.JButton btnAgendar;
     private javax.swing.JComboBox<String> cbmEspecialidades;
+    private javax.swing.JComboBox<String> cbmEspecialidades1;
+    private javax.swing.JComboBox<String> cbmEspecialidades10;
+    private javax.swing.JComboBox<String> cbmEspecialidades11;
+    private javax.swing.JComboBox<String> cbmEspecialidades12;
+    private javax.swing.JComboBox<String> cbmEspecialidades13;
+    private javax.swing.JComboBox<String> cbmEspecialidades14;
+    private javax.swing.JComboBox<String> cbmEspecialidades15;
+    private javax.swing.JComboBox<String> cbmEspecialidades16;
+    private javax.swing.JComboBox<String> cbmEspecialidades17;
+    private javax.swing.JComboBox<String> cbmEspecialidades2;
+    private javax.swing.JComboBox<String> cbmEspecialidades4;
+    private javax.swing.JComboBox<String> cbmEspecialidades5;
+    private javax.swing.JComboBox<String> cbmEspecialidades6;
+    private javax.swing.JComboBox<String> cbmEspecialidades7;
+    private javax.swing.JComboBox<String> cbmEspecialidades8;
+    private javax.swing.JComboBox<String> cbmEspecialidades9;
     private javax.swing.JComboBox<String> cmbMédicos;
-    private com.toedter.calendar.JCalendar jCalendar1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JComboBox<String> cmbMédicos1;
+    private javax.swing.JComboBox<String> cmbMédicos10;
+    private javax.swing.JComboBox<String> cmbMédicos11;
+    private javax.swing.JComboBox<String> cmbMédicos12;
+    private javax.swing.JComboBox<String> cmbMédicos13;
+    private javax.swing.JComboBox<String> cmbMédicos14;
+    private javax.swing.JComboBox<String> cmbMédicos15;
+    private javax.swing.JComboBox<String> cmbMédicos16;
+    private javax.swing.JComboBox<String> cmbMédicos17;
+    private javax.swing.JComboBox<String> cmbMédicos2;
+    private javax.swing.JComboBox<String> cmbMédicos4;
+    private javax.swing.JComboBox<String> cmbMédicos5;
+    private javax.swing.JComboBox<String> cmbMédicos6;
+    private javax.swing.JComboBox<String> cmbMédicos7;
+    private javax.swing.JComboBox<String> cmbMédicos8;
+    private javax.swing.JComboBox<String> cmbMédicos9;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel jPanel19;
+    private javax.swing.JPanel jPanel20;
+    private javax.swing.JPanel jPanel21;
+    private javax.swing.JPanel jPanel22;
+    private javax.swing.JPanel jPanel23;
+    private javax.swing.JPanel jPanel24;
+    private javax.swing.JPanel jPanel25;
+    private javax.swing.JPanel jPanel26;
+    private javax.swing.JPanel jPanel27;
+    private javax.swing.JPanel jPanel28;
+    private javax.swing.JPanel jPanel29;
+    private javax.swing.JPanel jPanel30;
+    private javax.swing.JPanel jPanel31;
+    private javax.swing.JPanel jPanel32;
+    private javax.swing.JPanel jPanel33;
+    private javax.swing.JPanel jPanel34;
+    private javax.swing.JPanel jPanel35;
+    private javax.swing.JPanel jPanel36;
+    private javax.swing.JPanel jPanel37;
+    private javax.swing.JPanel jPanel38;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane10;
+    private javax.swing.JTabbedPane jTabbedPane11;
+    private javax.swing.JTabbedPane jTabbedPane12;
+    private javax.swing.JTabbedPane jTabbedPane13;
+    private javax.swing.JTabbedPane jTabbedPane14;
+    private javax.swing.JTabbedPane jTabbedPane15;
+    private javax.swing.JTabbedPane jTabbedPane16;
+    private javax.swing.JTabbedPane jTabbedPane17;
+    private javax.swing.JTabbedPane jTabbedPane18;
+    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTabbedPane jTabbedPane3;
+    private javax.swing.JTabbedPane jTabbedPane5;
+    private javax.swing.JTabbedPane jTabbedPane6;
+    private javax.swing.JTabbedPane jTabbedPane7;
+    private javax.swing.JTabbedPane jTabbedPane8;
+    private javax.swing.JTabbedPane jTabbedPane9;
     private javax.swing.JLabel lblNuevo;
+    private javax.swing.JLabel lblNuevo1;
+    private javax.swing.JLabel lblNuevo10;
+    private javax.swing.JLabel lblNuevo11;
+    private javax.swing.JLabel lblNuevo12;
+    private javax.swing.JLabel lblNuevo13;
+    private javax.swing.JLabel lblNuevo14;
+    private javax.swing.JLabel lblNuevo15;
+    private javax.swing.JLabel lblNuevo16;
+    private javax.swing.JLabel lblNuevo17;
+    private javax.swing.JLabel lblNuevo2;
+    private javax.swing.JLabel lblNuevo4;
+    private javax.swing.JLabel lblNuevo5;
+    private javax.swing.JLabel lblNuevo6;
+    private javax.swing.JLabel lblNuevo7;
+    private javax.swing.JLabel lblNuevo8;
+    private javax.swing.JLabel lblNuevo9;
     private javax.swing.JLabel txt;
+    private javax.swing.JLabel txt1;
+    private javax.swing.JLabel txt10;
+    private javax.swing.JLabel txt11;
+    private javax.swing.JLabel txt12;
+    private javax.swing.JLabel txt13;
+    private javax.swing.JLabel txt14;
+    private javax.swing.JLabel txt15;
+    private javax.swing.JLabel txt16;
+    private javax.swing.JLabel txt17;
+    private javax.swing.JLabel txt2;
+    private javax.swing.JLabel txt4;
+    private javax.swing.JLabel txt5;
+    private javax.swing.JLabel txt6;
+    private javax.swing.JLabel txt7;
+    private javax.swing.JLabel txt8;
+    private javax.swing.JLabel txt9;
     private javax.swing.JTextField txtApellido1;
+    private javax.swing.JTextField txtApellido10;
+    private javax.swing.JTextField txtApellido11;
+    private javax.swing.JTextField txtApellido12;
+    private javax.swing.JTextField txtApellido13;
+    private javax.swing.JTextField txtApellido14;
+    private javax.swing.JTextField txtApellido15;
+    private javax.swing.JTextField txtApellido16;
+    private javax.swing.JTextField txtApellido17;
+    private javax.swing.JTextField txtApellido18;
+    private javax.swing.JTextField txtApellido2;
+    private javax.swing.JTextField txtApellido3;
+    private javax.swing.JTextField txtApellido5;
+    private javax.swing.JTextField txtApellido6;
+    private javax.swing.JTextField txtApellido7;
+    private javax.swing.JTextField txtApellido8;
+    private javax.swing.JTextField txtApellido9;
     private javax.swing.JTextField txtCedula;
+    private javax.swing.JTextField txtCedula1;
+    private javax.swing.JTextField txtCedula10;
+    private javax.swing.JTextField txtCedula11;
+    private javax.swing.JTextField txtCedula12;
+    private javax.swing.JTextField txtCedula13;
+    private javax.swing.JTextField txtCedula14;
+    private javax.swing.JTextField txtCedula15;
+    private javax.swing.JTextField txtCedula16;
+    private javax.swing.JTextField txtCedula17;
+    private javax.swing.JTextField txtCedula2;
+    private javax.swing.JTextField txtCedula4;
+    private javax.swing.JTextField txtCedula5;
+    private javax.swing.JTextField txtCedula6;
+    private javax.swing.JTextField txtCedula7;
+    private javax.swing.JTextField txtCedula8;
+    private javax.swing.JTextField txtCedula9;
     private javax.swing.JTextField txtNuevo;
+    private javax.swing.JTextField txtNuevo1;
+    private javax.swing.JTextField txtNuevo10;
+    private javax.swing.JTextField txtNuevo11;
+    private javax.swing.JTextField txtNuevo12;
+    private javax.swing.JTextField txtNuevo13;
+    private javax.swing.JTextField txtNuevo14;
+    private javax.swing.JTextField txtNuevo15;
+    private javax.swing.JTextField txtNuevo16;
+    private javax.swing.JTextField txtNuevo17;
+    private javax.swing.JTextField txtNuevo2;
+    private javax.swing.JTextField txtNuevo4;
+    private javax.swing.JTextField txtNuevo5;
+    private javax.swing.JTextField txtNuevo6;
+    private javax.swing.JTextField txtNuevo7;
+    private javax.swing.JTextField txtNuevo8;
+    private javax.swing.JTextField txtNuevo9;
     // End of variables declaration//GEN-END:variables
 }
