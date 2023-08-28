@@ -23,10 +23,7 @@ public class Médico extends javax.swing.JFrame {
     public Médico() {
         initComponents();
         this.setLocationRelativeTo(null);
-        weight = 600;
-        height = 600;
-        pantalla.setSize(weight,height);
-        dato = "";
+        
     }
 
     /**
@@ -38,354 +35,415 @@ public class Médico extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pantalla = new javax.swing.JDesktopPane();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        Registro = new javax.swing.JMenu();
-        consultar = new javax.swing.JMenu();
-        nombre = new javax.swing.JMenuItem();
-        apellidos = new javax.swing.JMenuItem();
-        fecha = new javax.swing.JMenuItem();
-        celular = new javax.swing.JMenuItem();
-        email = new javax.swing.JMenuItem();
-        especialidad = new javax.swing.JMenuItem();
-        address = new javax.swing.JMenuItem();
-        actualizar = new javax.swing.JMenu();
-        updatenombres = new javax.swing.JMenuItem();
-        updateApellidos = new javax.swing.JMenuItem();
-        updateCelular = new javax.swing.JMenuItem();
-        updateEmail = new javax.swing.JMenuItem();
-        updateEspecialidad = new javax.swing.JMenuItem();
-        updateDirección = new javax.swing.JMenuItem();
-        javax.swing.JMenu regresarMenu = new javax.swing.JMenu();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        btnCedula = new javax.swing.JTextField();
+        btnCelular = new javax.swing.JTextField();
+        btnEmail = new javax.swing.JTextField();
+        btnApellidos = new javax.swing.JTextField();
+        btnNombres = new javax.swing.JTextField();
+        btnEspecialidad = new javax.swing.JTextField();
+        Dirección = new javax.swing.JTextField();
+        btnRegistrar = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        Fondo = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        txtCedula = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        btnRegistrar1 = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
+        txtUsername = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        txtEmail1 = new javax.swing.JTextField();
+        txtEmail2 = new javax.swing.JTextField();
+        txtEmail3 = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        txtEmail4 = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        txtCedula1 = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        cmbParametro = new javax.swing.JComboBox<>();
+        btnRegistrar3 = new javax.swing.JButton();
+        jPanel8 = new javax.swing.JPanel();
+        lblActual = new javax.swing.JLabel();
+        lblNuevo = new javax.swing.JLabel();
+        txtNuevo = new javax.swing.JTextField();
+        txtActual = new javax.swing.JTextField();
+        btnActualizar = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+
+        jCheckBox1.setText("jCheckBox1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pantalla.setBackground(new java.awt.Color(255, 255, 255));
-        pantalla.setDragMode(javax.swing.JDesktopPane.OUTLINE_DRAG_MODE);
+        jTabbedPane1.setVerifyInputWhenFocusTarget(false);
 
-        javax.swing.GroupLayout pantallaLayout = new javax.swing.GroupLayout(pantalla);
-        pantalla.setLayout(pantallaLayout);
-        pantallaLayout.setHorizontalGroup(
-            pantallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 506, Short.MAX_VALUE)
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setText("Número de Cédula");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+
+        jLabel3.setText("Correo Electrónico");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, -1, -1));
+
+        jLabel4.setText("Nombres");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
+
+        jLabel5.setText("Apellidos");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, -1, -1));
+
+        jLabel1.setText("Número Celular");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 50, -1, -1));
+
+        jLabel6.setText("Sexo");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, -1, -1));
+
+        jLabel7.setText("Especialidad");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+
+        jLabel8.setText("Dirección Domiciliaria");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
+        jPanel1.add(btnCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 120, -1));
+        jPanel1.add(btnCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, 120, -1));
+        jPanel1.add(btnEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 120, -1));
+        jPanel1.add(btnApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 120, -1));
+        jPanel1.add(btnNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 120, -1));
+
+        btnEspecialidad.setToolTipText("");
+        jPanel1.add(btnEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 120, -1));
+        jPanel1.add(Dirección, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 120, -1));
+
+        btnRegistrar.setBackground(new java.awt.Color(51, 153, 255));
+        btnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistrar.setText("Registrar");
+        jPanel1.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 80, 30));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/doctor-registro.png"))); // NOI18N
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 60, 70));
+
+        buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setText("Masculino");
+        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, -1, -1));
+
+        buttonGroup1.add(jRadioButton2);
+        jRadioButton2.setText("Femenino");
+        jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 250, -1, -1));
+
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/fondov3.jpg"))); // NOI18N
+        jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 380));
+
+        jTabbedPane1.addTab("tab1", jPanel1);
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        jLabel11.setText("Número de cédula");
+
+        btnRegistrar1.setBackground(new java.awt.Color(51, 153, 255));
+        btnRegistrar1.setFont(new java.awt.Font("Sitka Subheading", 1, 12)); // NOI18N
+        btnRegistrar1.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistrar1.setText("Consultar");
+        btnRegistrar1.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        btnRegistrar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrar1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel11)
+                        .addGap(27, 27, 27)
+                        .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(98, 98, 98)
+                        .addComponent(btnRegistrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        pantallaLayout.setVerticalGroup(
-            pantallaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 456, Short.MAX_VALUE)
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnRegistrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
-        Registro.setText("Registrar");
-        Registro.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                RegistroMouseClicked(evt);
-            }
-        });
-        jMenuBar1.add(Registro);
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Médico", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(0, 153, 255))); // NOI18N
+        jPanel5.setForeground(new java.awt.Color(51, 153, 255));
 
-        consultar.setText("Consultar");
+        jLabel12.setText("Correo electrónico");
 
-        nombre.setText("nombres");
-        nombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreActionPerformed(evt);
-            }
-        });
-        consultar.add(nombre);
+        jLabel13.setText("Nombre");
 
-        apellidos.setText("apellidos");
-        apellidos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                apellidosActionPerformed(evt);
-            }
-        });
-        consultar.add(apellidos);
+        txtEmail.setEditable(false);
 
-        fecha.setText("fecha Nacimiento");
-        fecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fechaActionPerformed(evt);
-            }
-        });
-        consultar.add(fecha);
+        txtUsername.setEditable(false);
 
-        celular.setText("Número de celular");
-        celular.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                celularActionPerformed(evt);
-            }
-        });
-        consultar.add(celular);
+        jLabel14.setText("Número Celular");
 
-        email.setText("correo electrónico");
-        email.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailActionPerformed(evt);
-            }
-        });
-        consultar.add(email);
+        jLabel15.setText("Sexo");
 
-        especialidad.setText("especialidad");
-        especialidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                especialidadActionPerformed(evt);
-            }
-        });
-        consultar.add(especialidad);
+        jLabel16.setText("Especialidad");
 
-        address.setText("Dirección Domiciliaria");
-        address.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addressActionPerformed(evt);
-            }
-        });
-        consultar.add(address);
+        txtEmail1.setEditable(false);
 
-        jMenuBar1.add(consultar);
+        txtEmail2.setEditable(false);
 
-        actualizar.setText("Actualizar");
+        txtEmail3.setEditable(false);
 
-        updatenombres.setText("Nombres");
-        updatenombres.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updatenombresActionPerformed(evt);
-            }
-        });
-        actualizar.add(updatenombres);
+        jLabel20.setText("Dirección Domiciliaria");
 
-        updateApellidos.setText("Apellidos");
-        updateApellidos.setToolTipText("");
-        updateApellidos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateApellidosActionPerformed(evt);
-            }
-        });
-        actualizar.add(updateApellidos);
+        txtEmail4.setEditable(false);
 
-        updateCelular.setText("Número de celular");
-        updateCelular.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateCelularActionPerformed(evt);
-            }
-        });
-        actualizar.add(updateCelular);
-
-        updateEmail.setText("Correo Electrónico");
-        updateEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateEmailActionPerformed(evt);
-            }
-        });
-        actualizar.add(updateEmail);
-
-        updateEspecialidad.setText("Especialidad");
-        updateEspecialidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateEspecialidadActionPerformed(evt);
-            }
-        });
-        actualizar.add(updateEspecialidad);
-
-        updateDirección.setText("Dirección Domiciliaria");
-        updateDirección.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateDirecciónActionPerformed(evt);
-            }
-        });
-        actualizar.add(updateDirección);
-
-        jMenuBar1.add(actualizar);
-
-        regresarMenu.setText("Regresar");
-        regresarMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                regresarMenuMouseClicked(evt);
-            }
-        });
-        jMenuBar1.add(regresarMenu);
-
-        setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pantalla)
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addComponent(txtEmail4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtEmail2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtEmail3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel14))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEmail1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(34, 34, 34))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(pantalla)
-                .addGap(0, 0, 0))
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
+                            .addComponent(txtEmail1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel20)
+                            .addComponent(txtEmail4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(txtEmail2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtEmail3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40))))
         );
+
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 360, 220));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/fondov3.jpg"))); // NOI18N
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 380));
+
+        jTabbedPane1.addTab("tab2", jPanel2);
+
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        jLabel18.setText("Número de cédula");
+
+        jLabel19.setText("Parametro");
+
+        cmbParametro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Correo Electrónico", "Número de celular", "Especialidad", "Dirección Domiciliaria" }));
+        cmbParametro.setSelectedIndex(-1);
+        cmbParametro.setToolTipText("");
+
+        btnRegistrar3.setBackground(new java.awt.Color(51, 153, 255));
+        btnRegistrar3.setFont(new java.awt.Font("Sitka Subheading", 1, 12)); // NOI18N
+        btnRegistrar3.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistrar3.setText("Buscar");
+        btnRegistrar3.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        btnRegistrar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrar3ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtCedula1)
+                    .addComponent(cmbParametro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRegistrar3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(97, 97, 97))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(txtCedula1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(cmbParametro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnRegistrar3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
+        );
+
+        jPanel3.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, 120));
+
+        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP));
+
+        lblActual.setText("Actual");
+
+        lblNuevo.setText("Nuevo");
+
+        txtActual.setEditable(false);
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(lblNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                        .addComponent(txtNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(lblActual)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtActual, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblActual)
+                    .addComponent(txtActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNuevo)
+                    .addComponent(txtNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        jPanel3.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 310, 110));
+
+        btnActualizar.setBackground(new java.awt.Color(51, 153, 255));
+        btnActualizar.setFont(new java.awt.Font("Sitka Subheading", 1, 12)); // NOI18N
+        btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizar.setText("Actualizar");
+        btnActualizar.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 310, 105, 30));
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/fondov3.jpg"))); // NOI18N
+        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 380));
+
+        jTabbedPane1.addTab("tab3", jPanel3);
+
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 420));
+        jTabbedPane1.getAccessibleContext().setAccessibleName("Registrar");
+        jTabbedPane1.getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void RegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistroMouseClicked
+    private void btnRegistrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar1ActionPerformed
         // TODO add your handling code here:
-        FormularioRegistros formulario = new  FormularioRegistros();
-        formulario.setSize(weight-50, height);
-        pantalla.removeAll();
-        pantalla.add(formulario);
-        pantalla.revalidate();
-        formulario.setVisible(true);
+    }//GEN-LAST:event_btnRegistrar1ActionPerformed
 
-    }//GEN-LAST:event_RegistroMouseClicked
-
-    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         // TODO add your handling code here:
-        dato = "Nombres";
-        Consultar consultaNombres = new  Consultar();
-        consultaNombres.setSize(weight-98, height-90);
-        pantalla.removeAll();
-        pantalla.add(consultaNombres);
-        pantalla.revalidate();
-        consultaNombres.setVisible(true);
-        
-    }//GEN-LAST:event_nombreActionPerformed
+    }//GEN-LAST:event_btnActualizarActionPerformed
 
-    private void apellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidosActionPerformed
+    private void btnRegistrar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar3ActionPerformed
         // TODO add your handling code here:
-        dato = "Apellidos";
-        Consultar consultaNombres = new  Consultar();
-        consultaNombres.setSize(weight-98, height-90);
-        pantalla.removeAll();
-        pantalla.add(consultaNombres);
-        pantalla.revalidate();
-        consultaNombres.setVisible(true);
-    }//GEN-LAST:event_apellidosActionPerformed
-
-    private void fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaActionPerformed
-        // TODO add your handling code here:
-        dato = "Fecha de Nacimiento";
-        Consultar consultaNombres = new  Consultar();
-        consultaNombres.setSize(weight-98, height-90);
-        pantalla.removeAll();
-        pantalla.add(consultaNombres);
-        pantalla.revalidate();
-        consultaNombres.setVisible(true);
-    }//GEN-LAST:event_fechaActionPerformed
-
-    private void celularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_celularActionPerformed
-        // TODO add your handling code here:
-        dato = "Número de celular";
-        Consultar consultaNombres = new  Consultar();
-        consultaNombres.setSize(weight-98, height-90);
-        pantalla.removeAll();
-        pantalla.add(consultaNombres);
-        pantalla.revalidate();
-        consultaNombres.setVisible(true);
-    }//GEN-LAST:event_celularActionPerformed
-
-    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
-        // TODO add your handling code here:
-        dato = "Correo electrónico";
-        Consultar consultaNombres = new  Consultar();
-        consultaNombres.setSize(weight-98, height-90);
-        pantalla.removeAll();
-        pantalla.add(consultaNombres);
-        pantalla.revalidate();
-        consultaNombres.setVisible(true);
-    }//GEN-LAST:event_emailActionPerformed
-
-    private void especialidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_especialidadActionPerformed
-        // TODO add your handling code here:
-        dato = "Especialidad";
-        Consultar consultaNombres = new  Consultar();
-        consultaNombres.setSize(weight-98, height-90);
-        pantalla.removeAll();
-        pantalla.add(consultaNombres);
-        pantalla.revalidate();
-        consultaNombres.setVisible(true);
-    }//GEN-LAST:event_especialidadActionPerformed
-
-    private void addressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressActionPerformed
-        // TODO add your handling code here:
-        dato = "Dirección";
-        Consultar consultaNombres = new  Consultar();
-        consultaNombres.setSize(weight-98, height-90);
-        pantalla.removeAll();
-        pantalla.add(consultaNombres);
-        pantalla.revalidate();
-        consultaNombres.setVisible(true);
-    }//GEN-LAST:event_addressActionPerformed
-
-    private void updatenombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatenombresActionPerformed
-        // TODO add your handling code here:
-        dato = "Nombre ";
-        ActualizarDatos consultaNombres = new  ActualizarDatos();
-        consultaNombres.setSize(weight-98, height-160);
-        pantalla.removeAll();
-        pantalla.add(consultaNombres);
-        pantalla.revalidate();
-        consultaNombres.setVisible(true);
-    }//GEN-LAST:event_updatenombresActionPerformed
-
-    private void updateApellidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateApellidosActionPerformed
-        // TODO add your handling code here:
-        dato = "Apellidos ";
-        ActualizarDatos consultaNombres = new  ActualizarDatos();
-        consultaNombres.setSize(weight-98, height-160);
-        pantalla.removeAll();
-        pantalla.add(consultaNombres);
-        pantalla.revalidate();
-        consultaNombres.setVisible(true);
-    }//GEN-LAST:event_updateApellidosActionPerformed
-
-    private void updateCelularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateCelularActionPerformed
-        // TODO add your handling code here:
-        dato = "Número Celular ";
-        ActualizarDatos consultaNombres = new  ActualizarDatos();
-        consultaNombres.setSize(weight-98, height-160);
-        pantalla.removeAll();
-        pantalla.add(consultaNombres);
-        pantalla.revalidate();
-        consultaNombres.setVisible(true);
-    }//GEN-LAST:event_updateCelularActionPerformed
-
-    private void updateEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateEmailActionPerformed
-        // TODO add your handling code here:
-        dato = "Correo Electrónico ";
-        ActualizarDatos consultaNombres = new  ActualizarDatos();
-        consultaNombres.setSize(weight-98, height-160);
-        pantalla.removeAll();
-        pantalla.add(consultaNombres);
-        pantalla.revalidate();
-        consultaNombres.setVisible(true);
-    }//GEN-LAST:event_updateEmailActionPerformed
-
-    private void updateEspecialidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateEspecialidadActionPerformed
-        // TODO add your handling code here:
-        dato = "Especialidad ";
-        ActualizarDatos consultaNombres = new  ActualizarDatos();
-        consultaNombres.setSize(weight-98, height-160);
-        pantalla.removeAll();
-        pantalla.add(consultaNombres);
-        pantalla.revalidate();
-        consultaNombres.setVisible(true);
-    }//GEN-LAST:event_updateEspecialidadActionPerformed
-
-    private void updateDirecciónActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateDirecciónActionPerformed
-        // TODO add your handling code here:
-        dato = "Dirección ";
-        ActualizarDatos consultaNombres = new  ActualizarDatos();
-        consultaNombres.setSize(weight-98, height-160);
-        pantalla.removeAll();
-        pantalla.add(consultaNombres);
-        pantalla.revalidate();
-        consultaNombres.setVisible(true);
-    }//GEN-LAST:event_updateDirecciónActionPerformed
-
-    private void regresarMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresarMenuMouseClicked
-        // TODO add your handling code here:
-        SGP_MEDSC_admin sgci = new SGP_MEDSC_admin();
-        sgci.setVisible(true);
-        this.dispose();
-            
-
-    }//GEN-LAST:event_regresarMenuMouseClicked
+    }//GEN-LAST:event_btnRegistrar3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -423,23 +481,62 @@ public class Médico extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu Registro;
-    private javax.swing.JMenu actualizar;
-    private javax.swing.JMenuItem address;
-    private javax.swing.JMenuItem apellidos;
-    private javax.swing.JMenuItem celular;
-    private javax.swing.JMenu consultar;
-    private javax.swing.JMenuItem email;
-    private javax.swing.JMenuItem especialidad;
-    private javax.swing.JMenuItem fecha;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem nombre;
-    private javax.swing.JDesktopPane pantalla;
-    private javax.swing.JMenuItem updateApellidos;
-    private javax.swing.JMenuItem updateCelular;
-    private javax.swing.JMenuItem updateDirección;
-    private javax.swing.JMenuItem updateEmail;
-    private javax.swing.JMenuItem updateEspecialidad;
-    private javax.swing.JMenuItem updatenombres;
+    private javax.swing.JTextField Dirección;
+    private javax.swing.JLabel Fondo;
+    private javax.swing.JButton btnActualizar;
+    private javax.swing.JTextField btnApellidos;
+    private javax.swing.JTextField btnCedula;
+    private javax.swing.JTextField btnCelular;
+    private javax.swing.JTextField btnEmail;
+    private javax.swing.JTextField btnEspecialidad;
+    private javax.swing.JTextField btnNombres;
+    private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnRegistrar1;
+    private javax.swing.JButton btnRegistrar3;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cmbParametro;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel lblActual;
+    private javax.swing.JLabel lblNuevo;
+    private javax.swing.JTextField txtActual;
+    private javax.swing.JTextField txtCedula;
+    private javax.swing.JTextField txtCedula1;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtEmail1;
+    private javax.swing.JTextField txtEmail2;
+    private javax.swing.JTextField txtEmail3;
+    private javax.swing.JTextField txtEmail4;
+    private javax.swing.JTextField txtNuevo;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }

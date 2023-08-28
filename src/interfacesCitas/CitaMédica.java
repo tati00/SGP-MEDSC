@@ -31,235 +31,163 @@ public class CitaMédica extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pantalla2 = new javax.swing.JDesktopPane();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        menuREGIS = new javax.swing.JMenu();
-        Consultar = new javax.swing.JMenu();
-        telefonoPaciente = new javax.swing.JMenuItem();
-        nombresCitas = new javax.swing.JMenuItem();
-        fechaCitas = new javax.swing.JMenuItem();
-        doctor = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        updateMenu = new javax.swing.JMenu();
-        upfecha = new javax.swing.JMenuItem();
-        upNúmero = new javax.swing.JMenuItem();
-        UpNombres = new javax.swing.JMenuItem();
-        regresarMenu = new javax.swing.JMenu();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        txt = new javax.swing.JLabel();
+        lblNuevo = new javax.swing.JLabel();
+        txtNuevo = new javax.swing.JTextField();
+        txtCedula = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        cbmEspecialidades = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        txtApellido1 = new javax.swing.JTextField();
+        cmbMédicos = new javax.swing.JComboBox<>();
+        jCalendar1 = new com.toedter.calendar.JCalendar();
+        btnAgendar = new javax.swing.JButton();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        background = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout pantalla2Layout = new javax.swing.GroupLayout(pantalla2);
-        pantalla2.setLayout(pantalla2Layout);
-        pantalla2Layout.setHorizontalGroup(
-            pantalla2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 734, Short.MAX_VALUE)
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txt.setText("Nombres");
+
+        lblNuevo.setText("Apellido");
+        lblNuevo.setToolTipText("");
+
+        jLabel1.setText("Número de Cédula Paciente");
+
+        jLabel2.setText("Médico");
+
+        cbmEspecialidades.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel3.setText("Especialidad");
+
+        cmbMédicos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 310, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txt)
+                                    .addComponent(jLabel1))
+                                .addComponent(lblNuevo, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(jLabel2))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtNuevo)
+                        .addComponent(txtCedula)
+                        .addComponent(cbmEspecialidades, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtApellido1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbMédicos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
-        pantalla2Layout.setVerticalGroup(
-            pantalla2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 414, Short.MAX_VALUE)
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 190, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(16, 16, 16)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt)
+                        .addComponent(txtNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblNuevo)
+                        .addComponent(txtApellido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cbmEspecialidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(cmbMédicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        menuREGIS.setText("Registrar");
-        menuREGIS.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuREGISMouseClicked(evt);
-            }
-        });
-        jMenuBar1.add(menuREGIS);
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 310, 190));
+        jPanel1.add(jCalendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, -1, -1));
 
-        Consultar.setText("Consultar");
-
-        telefonoPaciente.setText("Número de teléfono paciente");
-        telefonoPaciente.addActionListener(new java.awt.event.ActionListener() {
+        btnAgendar.setText("AgendarCita");
+        btnAgendar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                telefonoPacienteActionPerformed(evt);
+                btnAgendarActionPerformed(evt);
             }
         });
-        Consultar.add(telefonoPaciente);
+        jPanel1.add(btnAgendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 110, 30));
+        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 250, 160, 30));
 
-        nombresCitas.setText("Nombres Paciente");
-        nombresCitas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombresCitasActionPerformed(evt);
-            }
-        });
-        Consultar.add(nombresCitas);
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/fondov3.jpg"))); // NOI18N
+        jPanel1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 420));
 
-        fechaCitas.setText("Fecha Asignada");
-        fechaCitas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fechaCitasActionPerformed(evt);
-            }
-        });
-        Consultar.add(fechaCitas);
+        jTabbedPane1.addTab("tab1", jPanel1);
 
-        doctor.setText("Médico Asignado");
-        doctor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                doctorActionPerformed(evt);
-            }
-        });
-        Consultar.add(doctor);
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 556, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 412, Short.MAX_VALUE)
+        );
 
-        jMenuItem1.setText("Listado Citas");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        Consultar.add(jMenuItem1);
+        jTabbedPane1.addTab("tab2", jPanel2);
 
-        jMenuBar1.add(Consultar);
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 556, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 412, Short.MAX_VALUE)
+        );
 
-        updateMenu.setText("Actualizar");
-
-        upfecha.setText("Fecha Asignada");
-        upfecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                upfechaActionPerformed(evt);
-            }
-        });
-        updateMenu.add(upfecha);
-
-        upNúmero.setText("Número celular Paciente");
-        upNúmero.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                upNúmeroActionPerformed(evt);
-            }
-        });
-        updateMenu.add(upNúmero);
-
-        UpNombres.setText("Nombres Paciente");
-        UpNombres.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UpNombresActionPerformed(evt);
-            }
-        });
-        updateMenu.add(UpNombres);
-
-        jMenuBar1.add(updateMenu);
-
-        regresarMenu.setText("Regresar");
-        regresarMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                regresarMenuMouseClicked(evt);
-            }
-        });
-        jMenuBar1.add(regresarMenu);
-
-        setJMenuBar(jMenuBar1);
+        jTabbedPane1.addTab("tab3", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(pantalla2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 556, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(pantalla2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuREGISMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuREGISMouseClicked
+    private void btnAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendarActionPerformed
         // TODO add your handling code here:
-        FormAgendarCita formulario = new FormAgendarCita();
-        pantalla2.removeAll();
-        pantalla2.add(formulario);
-        pantalla2.revalidate();
-        formulario.setVisible(true);
-    }//GEN-LAST:event_menuREGISMouseClicked
-
-    private void regresarMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresarMenuMouseClicked
-        // TODO add your handling code here:
-        SGP_MEDSC_admin sgci = new SGP_MEDSC_admin();
-        sgci.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_regresarMenuMouseClicked
-
-    private void fechaCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaCitasActionPerformed
-        // TODO add your handling code here:
-        parametro = "Fecha";
-        FormConsultasCitas formulario = new  FormConsultasCitas();
-        pantalla2.removeAll();
-        pantalla2.add(formulario);
-        pantalla2.revalidate();
-        formulario.setVisible(true);
-    }//GEN-LAST:event_fechaCitasActionPerformed
-
-    private void telefonoPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telefonoPacienteActionPerformed
-        // TODO add your handling code here:
-        parametro = "Teléfono Celular";
-        FormConsultasCitas formulario = new  FormConsultasCitas();
-        pantalla2.removeAll();
-        pantalla2.add(formulario);
-        pantalla2.revalidate();
-        formulario.setVisible(true);
-    }//GEN-LAST:event_telefonoPacienteActionPerformed
-
-    private void nombresCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombresCitasActionPerformed
-        // TODO add your handling code here:
-        parametro = "Nombres Paciente";
-        FormConsultasCitas formulario = new  FormConsultasCitas();
-        pantalla2.removeAll();
-        pantalla2.add(formulario);
-        pantalla2.revalidate();
-        formulario.setVisible(true);
-    }//GEN-LAST:event_nombresCitasActionPerformed
-
-    private void doctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctorActionPerformed
-        // TODO add your handling code here:
-        parametro = "Cédula Médico";
-        FormConsultasCitas formulario = new  FormConsultasCitas();
-        pantalla2.removeAll();
-        pantalla2.add(formulario);
-        pantalla2.revalidate();
-        formulario.setVisible(true);
-    }//GEN-LAST:event_doctorActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        FormConsultarLista formulario = new FormConsultarLista();
-        pantalla2.removeAll();
-        pantalla2.add(formulario);
-        pantalla2.revalidate();
-        formulario.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void upfechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upfechaActionPerformed
-        // TODO add your handling code here:
-        FormCambioFecha formulario = new FormCambioFecha();
-        pantalla2.removeAll();
-        pantalla2.add(formulario);
-        pantalla2.revalidate();
-        formulario.setVisible(true);
-    }//GEN-LAST:event_upfechaActionPerformed
-
-    private void upNúmeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upNúmeroActionPerformed
-        // TODO add your handling code here:
-        parametro = "Número Celular";
-        FormConsultasCitas formulario = new  FormConsultasCitas();
-        pantalla2.removeAll();
-        pantalla2.add(formulario);
-        pantalla2.revalidate();
-        formulario.setVisible(true);
-    }//GEN-LAST:event_upNúmeroActionPerformed
-
-    private void UpNombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpNombresActionPerformed
-        // TODO add your handling code here:
-        parametro = "Nombres";
-        FormConsultasCitas formulario = new  FormConsultasCitas();
-        pantalla2.removeAll();
-        pantalla2.add(formulario);
-        pantalla2.revalidate();
-        formulario.setVisible(true);
-    }//GEN-LAST:event_UpNombresActionPerformed
+    }//GEN-LAST:event_btnAgendarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -297,19 +225,24 @@ public class CitaMédica extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu Consultar;
-    private javax.swing.JMenuItem UpNombres;
-    private javax.swing.JMenuItem doctor;
-    private javax.swing.JMenuItem fechaCitas;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenu menuREGIS;
-    private javax.swing.JMenuItem nombresCitas;
-    private javax.swing.JDesktopPane pantalla2;
-    private javax.swing.JMenu regresarMenu;
-    private javax.swing.JMenuItem telefonoPaciente;
-    private javax.swing.JMenuItem upNúmero;
-    private javax.swing.JMenu updateMenu;
-    private javax.swing.JMenuItem upfecha;
+    private javax.swing.JLabel background;
+    private javax.swing.JButton btnAgendar;
+    private javax.swing.JComboBox<String> cbmEspecialidades;
+    private javax.swing.JComboBox<String> cmbMédicos;
+    private com.toedter.calendar.JCalendar jCalendar1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel lblNuevo;
+    private javax.swing.JLabel txt;
+    private javax.swing.JTextField txtApellido1;
+    private javax.swing.JTextField txtCedula;
+    private javax.swing.JTextField txtNuevo;
     // End of variables declaration//GEN-END:variables
 }

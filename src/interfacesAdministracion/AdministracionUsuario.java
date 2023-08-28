@@ -3,7 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package interfacesAdministracion;
-
+import Logica.LogicaPrincipal.ConexiónUsuarios;
+import Logica.LogicaPrincipal.Encriptador;
+import Logica.LogicaPrincipal.AtributosUser;
+import Logica.LogicaPrincipal.Usuario;
+import Logica.LogicaPrincipal.UsuarioParametrosInvalidos;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.swing.JOptionPane;
 /**
  *
  * @author PC
@@ -13,9 +26,35 @@ public class AdministracionUsuario extends javax.swing.JFrame {
     /**
      * Creates new form AdministracionUsuarios
      */
+    private ConexiónUsuarios conexión;
+    private String parametro;
+    Encriptador crpyt;
+    int confirmacion; 
+    Map<String, String> dictionary;
+    
     public AdministracionUsuario() {
+        conexión = new ConexiónUsuarios();
         initComponents();
+        establecerCondicionesIniciales();
+    }
+    private void establecerCondicionesIniciales(){
+        crpyt = new Encriptador();
+        panelUpdate.setVisible(false);
+        // Identificar la opción del comboBoxNecesaria
+        dictionary = new HashMap<>();
+        dictionary.put(AtributosUser.Username.toString(), AtributosUser.Username.getValue());
+        dictionary.put(AtributosUser.Correo_Electrónico.toString(), AtributosUser.Correo_Electrónico.getValue());
+        cmbParametro.addItem("");
+        cmbParametro.addItem(AtributosUser.Username.toString());
+        cmbParametro.addItem(AtributosUser.Correo_Electrónico.toString());
+        limpiarUpdate();
         this.setLocationRelativeTo(null);
+    }
+    
+    // Limpia el los texbox del PANEL 'DATOS' DE update
+    private void limpiarUpdate(){
+        lblActual.setText("Actual");
+        lblNuevo.setText("Nuevo");
     }
 
     /**
@@ -27,21 +66,551 @@ public class AdministracionUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        Container = new javax.swing.JTabbedPane();
+        insert = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtLastName = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        btnRegistrar = new javax.swing.JButton();
+        txtPassw = new javax.swing.JTextField();
+        txtNames = new javax.swing.JTextField();
+        txtId = new javax.swing.JTextField();
+        txtUserName = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        btnSalir = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
+        lblPassMes = new javax.swing.JLabel();
+        background = new javax.swing.JLabel();
+        search = new javax.swing.JPanel();
+        btnSalir1 = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        txtNombres = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        txtApellidos = new javax.swing.JTextField();
+        txtUsername = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        txtemail = new javax.swing.JTextField();
+        txtUsertype = new javax.swing.JTextField();
+        jPanel6 = new javax.swing.JPanel();
+        txtCedulaConsulta = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        btnConsultar = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        update = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        txtCedulaUpdate = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        cmbParametro = new javax.swing.JComboBox<>();
+        btnsearch = new javax.swing.JButton();
+        panelUpdate = new javax.swing.JPanel();
+        lblActual = new javax.swing.JLabel();
+        lblNuevo = new javax.swing.JLabel();
+        txtNuevo = new javax.swing.JTextField();
+        txtActual = new javax.swing.JTextField();
+        btnSalir2 = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Container.setBackground(new java.awt.Color(255, 255, 255));
+        Container.setName(""); // NOI18N
+        Container.setOpaque(true);
+
+        insert.setBackground(new java.awt.Color(255, 255, 255));
+        insert.setOpaque(false);
+        insert.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/usuario.png"))); // NOI18N
+        jLabel1.setAlignmentX(0.5F);
+        insert.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 70, 70));
+
+        jLabel2.setText("Nombre de Usuario");
+        jLabel2.setToolTipText("");
+        insert.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, -1));
+
+        jLabel3.setText("Correo Electrónico");
+        insert.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, 10));
+
+        jLabel4.setText("Contraseña");
+        insert.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, -1, -1));
+        insert.add(txtLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 120, -1));
+
+        jLabel6.setText("Nombres");
+        insert.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
+
+        jLabel7.setText("Número de Cédula");
+        insert.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, -1, -1));
+
+        btnRegistrar.setBackground(new java.awt.Color(50, 139, 232));
+        btnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistrar.setText("Crear Usuario");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
+        insert.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 110, 30));
+
+        txtPassw.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPasswKeyReleased(evt);
+            }
+        });
+        insert.add(txtPassw, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 120, -1));
+        insert.add(txtNames, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 120, -1));
+        insert.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 120, -1));
+        insert.add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 120, -1));
+
+        jLabel8.setText("Regístrate");
+        insert.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, -1));
+
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        insert.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 100, 30));
+
+        jLabel9.setText("Apellidos");
+        insert.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, -1, -1));
+        insert.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 120, -1));
+
+        lblPassMes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/x.png"))); // NOI18N
+        insert.add(lblPassMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 30, 30));
+
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/fondov3.jpg"))); // NOI18N
+        insert.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 450, 380));
+
+        Container.addTab("Nuevo Usuario", insert);
+
+        search.setBackground(new java.awt.Color(255, 255, 255));
+        search.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnSalir1.setText("Salir");
+        btnSalir1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalir1ActionPerformed(evt);
+            }
+        });
+        search.add(btnSalir1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 100, 30));
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Usuario", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(0, 153, 255))); // NOI18N
+        jPanel5.setForeground(new java.awt.Color(51, 153, 255));
+
+        txtNombres.setEditable(false);
+        txtNombres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombresActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Nombre");
+
+        jLabel10.setText("Correo electrónico");
+
+        jLabel11.setText("Username");
+
+        txtApellidos.setEditable(false);
+
+        txtUsername.setEditable(false);
+
+        jLabel12.setText("Apellidos");
+
+        jLabel13.setText("Tipo De Usuario");
+
+        txtemail.setEditable(false);
+
+        txtUsertype.setEditable(false);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel5Layout.createSequentialGroup()
+                            .addComponent(jLabel5)
+                            .addGap(101, 101, 101)
+                            .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel5Layout.createSequentialGroup()
+                            .addComponent(jLabel12)
+                            .addGap(96, 96, 96)
+                            .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel5Layout.createSequentialGroup()
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel11)
+                                .addComponent(jLabel10))
+                            .addGap(47, 47, 47)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtUsertype, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(34, 45, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtUsertype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
+
+        search.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 370, 220));
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        jLabel14.setText("Número de cédula");
+
+        btnConsultar.setBackground(new java.awt.Color(51, 153, 255));
+        btnConsultar.setFont(new java.awt.Font("Sitka Subheading", 1, 12)); // NOI18N
+        btnConsultar.setForeground(new java.awt.Color(255, 255, 255));
+        btnConsultar.setText("Consultar");
+        btnConsultar.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel14)
+                        .addGap(27, 27, 27)
+                        .addComponent(txtCedulaConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(98, 98, 98)
+                        .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(txtCedulaConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        search.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/fondov3.jpg"))); // NOI18N
+        search.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 380));
+
+        Container.addTab("Consultar Usuario", search);
+
+        update.setBackground(new java.awt.Color(255, 255, 255));
+        update.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel7.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        jLabel18.setText("Número de cédula");
+
+        jLabel19.setText("Parametro");
+
+        cmbParametro.setSelectedIndex(-1);
+        cmbParametro.setToolTipText("");
+
+        btnsearch.setBackground(new java.awt.Color(51, 153, 255));
+        btnsearch.setFont(new java.awt.Font("Sitka Subheading", 1, 12)); // NOI18N
+        btnsearch.setForeground(new java.awt.Color(255, 255, 255));
+        btnsearch.setText("Buscar");
+        btnsearch.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        btnsearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsearchActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cmbParametro, 0, 127, Short.MAX_VALUE)
+                    .addComponent(txtCedulaUpdate))
+                .addContainerGap(46, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(97, 97, 97))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(txtCedulaUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(cmbParametro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
+        );
+
+        update.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 320, 130));
+
+        panelUpdate.setBackground(new java.awt.Color(255, 255, 255));
+        panelUpdate.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(51, 153, 255))); // NOI18N
+
+        txtActual.setEditable(false);
+
+        javax.swing.GroupLayout panelUpdateLayout = new javax.swing.GroupLayout(panelUpdate);
+        panelUpdate.setLayout(panelUpdateLayout);
+        panelUpdateLayout.setHorizontalGroup(
+            panelUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelUpdateLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(panelUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblActual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtActual, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47))
+        );
+        panelUpdateLayout.setVerticalGroup(
+            panelUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelUpdateLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(panelUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblActual)
+                    .addComponent(txtActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNuevo)
+                    .addComponent(txtNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+
+        update.add(panelUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 360, 120));
+
+        btnSalir2.setText("Salir");
+        btnSalir2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalir2ActionPerformed(evt);
+            }
+        });
+        update.add(btnSalir2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 100, 30));
+
+        btnActualizar.setBackground(new java.awt.Color(51, 153, 255));
+        btnActualizar.setFont(new java.awt.Font("Sitka Subheading", 1, 12)); // NOI18N
+        btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizar.setText("Actualizar");
+        btnActualizar.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+        update.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 105, 30));
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/fondov3.jpg"))); // NOI18N
+        update.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 380));
+
+        Container.addTab("Actualizar Usuario", update);
+
+        jPanel1.add(Container, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 410));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-8, -6, 440, 410));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        try {
+            // TODO add your handling code here:
+            //conexión.conectar();
+            Usuario nuevo = new Usuario(txtNames.getText(),txtLastName.getText(),txtEmail.getText(),txtId.getText(), txtUserName.getText(),txtPassw.getText());
+            confirmacion = JOptionPane.showConfirmDialog(rootPane, "¿Estas seguro de crear al usuario con los datos actuales?","Confirmación",JOptionPane.YES_NO_OPTION);
+            if (confirmacion == JOptionPane.YES_NO_OPTION){
+                conexión.postUsuario(nuevo);
+                System.out.println("Registro completo"); 
+                limpiarRegistro();
+            }
+            //conexión.cerrarConexión();
+        } catch (UsuarioParametrosInvalidos ex) {
+            
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Error Registro", HEIGHT);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Error Conexion", HEIGHT);
+      }  
+    }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    // Limpia los texbox de formRegistro
+    private void limpiarRegistro(){
+        txtNames.setText("");
+        txtLastName.setText("");
+        txtEmail.setText("");
+        txtId.setText("");
+        txtUserName.setText("");
+        txtPassw.setText("");
+    }
+    private void txtPasswKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswKeyReleased
+        // TODO add your handling code here:
+        lblPassMes.setVisible(true);
+        if (Usuario.validarPassword(txtPassw.getText())){
+            lblPassMes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/visto.png")));
+        }else{
+            lblPassMes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/x.png")));
+        }
+    }//GEN-LAST:event_txtPasswKeyReleased
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void txtNombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombresActionPerformed
+
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        // TODO add your handling code here:
+        if (txtCedulaConsulta.getText().isBlank()){
+            JOptionPane.showMessageDialog(rootPane, "Ingrese el número de Cedula", "Error Consulta", HEIGHT);
+            return;
+        }
+        try {
+            Usuario consultado = conexión.consultarInfoUsuario(txtCedulaConsulta.getText());
+            if (consultado == null){
+                JOptionPane.showMessageDialog(rootPane, "La cedula ingresa es no Valida", "Error Número de Cedula", HEIGHT);
+                return;
+            }
+            txtNombres.setText(consultado.getNombres());
+            txtApellidos.setText(consultado.getApellidos());
+            txtUsername.setText(consultado.getUsernames());
+            txtemail.setText(consultado.getEmail());
+            txtUsertype.setText(consultado.getUsetype());
+        } catch (SQLException | InvalidKeyException | IllegalBlockSizeException | 
+                BadPaddingException | NoSuchAlgorithmException | NoSuchPaddingException  ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Error Consulta", HEIGHT);
+            //Logger.getLogger(AdministracionUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnConsultarActionPerformed
+
+    private void limpiarConsulta(){
+        txtCedulaConsulta.setText("");
+    }
+    private void btnsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsearchActionPerformed
+        // TODO add your handling code here:
+        if (txtCedulaUpdate.getText().isBlank() || cmbParametro.getSelectedItem().toString().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Ingrese todos los parametros", "Error Consulta", HEIGHT);
+        }else{
+            try {
+                if (!conexión.verificarParametro(AtributosUser.Contraseña.getValue(), txtCedulaUpdate.getText())){
+                    JOptionPane.showMessageDialog(rootPane, "El usuario No existe", "Error Cedula", HEIGHT);
+                    return;
+                }
+                panelUpdate.setVisible(true);
+                limpiarUpdate();
+                parametro = conexión.consultarParametroPorId(dictionary.get(cmbParametro.getSelectedItem().toString()), txtCedulaUpdate.getText());
+                if (cmbParametro.getSelectedItem().toString().equals(AtributosUser.Username.toString())){
+                    parametro = crpyt.desencriptar(parametro);
+                }
+                lblActual.setText(cmbParametro.getSelectedItem().toString()+" "+lblActual.getText());
+                lblNuevo.setText(cmbParametro.getSelectedItem().toString()+" "+lblNuevo.getText());
+                txtActual.setText(parametro);
+                //conexión.actualizarAtributo("User_nameU", parametro, txtNuevo.getText());
+            } catch (SQLException | InvalidKeyException | IllegalBlockSizeException | 
+                BadPaddingException | NoSuchAlgorithmException | NoSuchPaddingException  ex){
+                JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Error Consulta", HEIGHT);
+            }
+        }
+    }//GEN-LAST:event_btnsearchActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        // TODO add your handling code here:
+        if (txtNuevo.getText().isBlank()){
+            JOptionPane.showMessageDialog(rootPane, "Ingresa el nuevo Valor", "Error Actualizar", HEIGHT);
+        }else{
+            try {
+                confirmacion = JOptionPane.showConfirmDialog(rootPane, "¿Estas seguro de actualizar el "+cmbParametro.getSelectedItem().toString()+" ?","Confirmación",JOptionPane.YES_NO_OPTION);
+                if (confirmacion == JOptionPane.YES_NO_OPTION){
+                    conexión.actualizarAtributo(cmbParametro.getSelectedItem().toString(), txtCedulaUpdate.getText(), crpyt.encriptar(txtNuevo.getText()));
+                    limpiarActualización();
+                    System.out.print("Actualización exitosa");
+                } 
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Error Consulta", HEIGHT);
+            }
+        }
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    // Limpia los textbox de la form Update
+    private void limpiarActualización(){
+        txtCedulaUpdate.setText("");
+        cmbParametro.setSelectedIndex(-1);
+        txtNuevo.setText("");
+        txtActual.setText("");
+    }
+    private void btnSalir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir1ActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_btnSalir1ActionPerformed
+
+    private void btnSalir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSalir2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -80,5 +649,59 @@ public class AdministracionUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTabbedPane Container;
+    private javax.swing.JLabel background;
+    private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnConsultar;
+    private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnSalir;
+    private javax.swing.JButton btnSalir1;
+    private javax.swing.JButton btnSalir2;
+    private javax.swing.JButton btnsearch;
+    private javax.swing.JComboBox<String> cmbParametro;
+    private javax.swing.JPanel insert;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JLabel lblActual;
+    private javax.swing.JLabel lblNuevo;
+    private javax.swing.JLabel lblPassMes;
+    private javax.swing.JPanel panelUpdate;
+    private javax.swing.JPanel search;
+    private javax.swing.JTextField txtActual;
+    private javax.swing.JTextField txtApellidos;
+    private javax.swing.JTextField txtCedulaConsulta;
+    private javax.swing.JTextField txtCedulaUpdate;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtLastName;
+    private javax.swing.JTextField txtNames;
+    private javax.swing.JTextField txtNombres;
+    private javax.swing.JTextField txtNuevo;
+    private javax.swing.JTextField txtPassw;
+    private javax.swing.JTextField txtUserName;
+    private javax.swing.JTextField txtUsername;
+    private javax.swing.JTextField txtUsertype;
+    private javax.swing.JTextField txtemail;
+    private javax.swing.JPanel update;
     // End of variables declaration//GEN-END:variables
 }

@@ -7,7 +7,8 @@ package interfacesPrincipales;
 import interfacesAdministracion.AdministracionSistema_;
 import interfacesAtencion.AtencionMedica;
 import interfacesCitas.CitaMédica;
-import interfacesMédicos.Médico;
+import interfacesMédicos.InterfazMedicos;
+import Logica.LogicaPrincipal.LogUser;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,10 +20,20 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
     /**
      * Creates new form SGP_MEDSC_admin
      */
+    LogUser user;
     public SGP_MEDSC_admin() {
         initComponents();
+    }
+
+    SGP_MEDSC_admin(LogUser login) {
+        initComponents();
+        user = login;
         this.setTitle("SISTEMA DE GESTIÓN DE PACIENTES PARA LA CLÍNICA MEDSC");
         this.setLocationRelativeTo(null);
+        if (login.getUserType().equals("Medico Normal")){
+            btnAdministracion.setEnabled(false);
+        }
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -35,48 +46,48 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
     private void initComponents() {
 
         jSplitPane1 = new javax.swing.JSplitPane();
-        jPanel2 = new javax.swing.JPanel();
+        Menu = new javax.swing.JPanel();
         lblTitulo = new javax.swing.JLabel();
         lblClinica = new javax.swing.JLabel();
-        btnAdminsitracion = new javax.swing.JButton();
+        btnAdministracion = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         btnPacientes = new javax.swing.JButton();
         btnCitas = new javax.swing.JButton();
         btnMedicos = new javax.swing.JButton();
         btnAtencion = new javax.swing.JButton();
         lblFondoModulos = new javax.swing.JLabel();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        Pantalla = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(820, 780));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setMinimumSize(new java.awt.Dimension(820, 600));
+        setSize(new java.awt.Dimension(0, 600));
 
         jSplitPane1.setDividerLocation(250);
 
-        jPanel2.setMaximumSize(new java.awt.Dimension(250, 780));
-        jPanel2.setMinimumSize(new java.awt.Dimension(250, 780));
-        jPanel2.setPreferredSize(new java.awt.Dimension(250, 780));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Menu.setMaximumSize(new java.awt.Dimension(250, 780));
+        Menu.setMinimumSize(new java.awt.Dimension(250, 780));
+        Menu.setPreferredSize(new java.awt.Dimension(250, 780));
+        Menu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTitulo.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         lblTitulo.setText("SGP-MEDSC");
-        jPanel2.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
+        Menu.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
 
         lblClinica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/clínica.png"))); // NOI18N
-        jPanel2.add(lblClinica, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
+        Menu.add(lblClinica, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
 
-        btnAdminsitracion.setBackground(new java.awt.Color(192, 192, 190));
-        btnAdminsitracion.setFont(new java.awt.Font("Sitka Subheading", 1, 18)); // NOI18N
-        btnAdminsitracion.setText("Administración del Sistema");
-        btnAdminsitracion.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnAdminsitracion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnAdminsitracion.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnAdminsitracion.addActionListener(new java.awt.event.ActionListener() {
+        btnAdministracion.setBackground(new java.awt.Color(192, 192, 190));
+        btnAdministracion.setFont(new java.awt.Font("Sitka Subheading", 1, 18)); // NOI18N
+        btnAdministracion.setText("Administración del Sistema");
+        btnAdministracion.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnAdministracion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAdministracion.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnAdministracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdminsitracionActionPerformed(evt);
+                btnAdministracionActionPerformed(evt);
             }
         });
-        jPanel2.add(btnAdminsitracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 240, 60));
+        Menu.add(btnAdministracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 240, 60));
 
         btnSalir.setText("Cerrar sesión");
         btnSalir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 10));
@@ -85,7 +96,7 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
                 btnSalirActionPerformed(evt);
             }
         });
-        jPanel2.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 730, -1, -1));
+        Menu.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 550, -1, -1));
 
         btnPacientes.setBackground(new java.awt.Color(192, 192, 190));
         btnPacientes.setFont(new java.awt.Font("Sitka Subheading", 1, 18)); // NOI18N
@@ -100,7 +111,7 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
                 btnPacientesActionPerformed(evt);
             }
         });
-        jPanel2.add(btnPacientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 230, 60));
+        Menu.add(btnPacientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 230, 60));
 
         btnCitas.setBackground(new java.awt.Color(192, 192, 190));
         btnCitas.setFont(new java.awt.Font("Sitka Subheading", 1, 18)); // NOI18N
@@ -114,7 +125,7 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
                 btnCitasActionPerformed(evt);
             }
         });
-        jPanel2.add(btnCitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 230, 60));
+        Menu.add(btnCitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 230, 60));
 
         btnMedicos.setBackground(new java.awt.Color(192, 192, 190));
         btnMedicos.setFont(new java.awt.Font("Sitka Subheading", 1, 18)); // NOI18N
@@ -128,7 +139,7 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
                 btnMedicosActionPerformed(evt);
             }
         });
-        jPanel2.add(btnMedicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 230, 60));
+        Menu.add(btnMedicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 230, 60));
 
         btnAtencion.setBackground(new java.awt.Color(192, 192, 190));
         btnAtencion.setFont(new java.awt.Font("Sitka Subheading", 1, 18)); // NOI18N
@@ -142,19 +153,58 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
                 btnAtencionActionPerformed(evt);
             }
         });
-        jPanel2.add(btnAtencion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 230, 60));
+        Menu.add(btnAtencion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 230, 60));
 
         lblFondoModulos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.jpg"))); // NOI18N
         lblFondoModulos.setText("jLabel1");
-        jPanel2.add(lblFondoModulos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 780));
+        Menu.add(lblFondoModulos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 600));
 
-        jSplitPane1.setLeftComponent(jPanel2);
-        jSplitPane1.setRightComponent(jDesktopPane1);
+        jSplitPane1.setLeftComponent(Menu);
+        jSplitPane1.setRightComponent(Pantalla);
 
-        getContentPane().add(jSplitPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 780));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 838, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAtencionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtencionActionPerformed
+        AtencionMedica am = new AtencionMedica();
+        am.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnAtencionActionPerformed
+
+    private void btnMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicosActionPerformed
+        // TODO add your handling code here:
+        Pantalla.removeAll();
+        Pantalla.repaint();
+        InterfazMedicos médicos = new InterfazMedicos(user);
+        Pantalla.add(médicos);
+        médicos.setVisible(true);
+    }//GEN-LAST:event_btnMedicosActionPerformed
+
+    private void btnCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCitasActionPerformed
+        // TODO add your handling code here:
+        Pantalla.removeAll();
+        Pantalla.repaint();
+        CitaMédica citas = new CitaMédica();
+        citas.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnCitasActionPerformed
+
+    private void btnPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPacientesActionPerformed
+        Paciente pa = new Paciente();
+        Pantalla.add(pa);
+        pa.setVisible(true);
+    }//GEN-LAST:event_btnPacientesActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         int response = JOptionPane.showConfirmDialog(this, "¿Quiere salir del sistema?", "CERRAR SESIÓN", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -165,37 +215,13 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void btnPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPacientesActionPerformed
-        Paciente pa = new Paciente();
-        jDesktopPane1.add(pa);
-        pa.setVisible(true);
-    }//GEN-LAST:event_btnPacientesActionPerformed
-
-    private void btnAtencionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtencionActionPerformed
-        AtencionMedica am = new AtencionMedica();
-        am.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnAtencionActionPerformed
-
-    private void btnCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCitasActionPerformed
-        // TODO add your handling code here:
-        CitaMédica citas = new CitaMédica();
-        citas.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnCitasActionPerformed
-
-    private void btnMedicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMedicosActionPerformed
-        // TODO add your handling code here:
-        Médico médicos = new Médico();
-        médicos.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnMedicosActionPerformed
-
-    private void btnAdminsitracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminsitracionActionPerformed
+    private void btnAdministracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministracionActionPerformed
+        Pantalla.removeAll();
+        Pantalla.repaint();
         AdministracionSistema_ as = new AdministracionSistema_();
-        jDesktopPane1.add(as);
+        Pantalla.add(as);
         as.setVisible(true);
-    }//GEN-LAST:event_btnAdminsitracionActionPerformed
+    }//GEN-LAST:event_btnAdministracionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -233,14 +259,14 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdminsitracion;
+    private javax.swing.JPanel Menu;
+    private javax.swing.JDesktopPane Pantalla;
+    private javax.swing.JButton btnAdministracion;
     private javax.swing.JButton btnAtencion;
     private javax.swing.JButton btnCitas;
     private javax.swing.JButton btnMedicos;
     private javax.swing.JButton btnPacientes;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JLabel lblClinica;
     private javax.swing.JLabel lblFondoModulos;

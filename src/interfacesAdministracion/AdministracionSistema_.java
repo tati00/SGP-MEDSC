@@ -4,6 +4,8 @@
  */
 package interfacesAdministracion;
 
+import interfacesPrincipales.SGP_MEDSC_admin;
+
 /**
  *
  * @author PC
@@ -17,6 +19,8 @@ public class AdministracionSistema_ extends javax.swing.JInternalFrame {
         initComponents();
     }
 
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,54 +30,53 @@ public class AdministracionSistema_ extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSplitPane1 = new javax.swing.JSplitPane();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        adUsers = new javax.swing.JButton();
+        adParams = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(560, 780));
         setMinimumSize(new java.awt.Dimension(560, 780));
         setPreferredSize(new java.awt.Dimension(560, 780));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jSplitPane1.setDividerLocation(290);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Administración de Usuarios");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        adUsers.setText("Administración Usuarios");
+        adUsers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                adUsersActionPerformed(evt);
             }
         });
-        jSplitPane1.setLeftComponent(jButton1);
+        jPanel1.add(adUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 220, 440));
 
-        jButton2.setText("Administración de Parámetros");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        adParams.setText("Administración Parametros");
+        adParams.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                adParamsActionPerformed(evt);
             }
         });
-        jSplitPane1.setRightComponent(jButton2);
+        jPanel1.add(adParams, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, 210, 440));
 
-        getContentPane().add(jSplitPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-7, -34, 560, 780));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        AdministracionUsuario au = new AdministracionUsuario();
-        au.setVisible(true);
+    private void adUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adUsersActionPerformed
+        // TODO add your handling code here:
+        AdministracionUsuario users = new AdministracionUsuario();
+        users.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_adUsersActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        AdministracionParametro au = new AdministracionParametro();
-        au.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void adParamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adParamsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_adParamsActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JButton adParams;
+    private javax.swing.JButton adUsers;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

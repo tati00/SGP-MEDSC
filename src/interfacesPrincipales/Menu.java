@@ -4,18 +4,26 @@
  */
 package interfacesPrincipales;
 
+import Logica.LogicaPrincipal.LogUser;
+import Logica.LogicaPrincipal.ConexiónUsuarios;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import Logica.LogicaPrincipal.LogUser;
+import Logica.LogicaPrincipal.AtributosUser;
 
 public class Menu extends javax.swing.JFrame {
 
     private int intentos;
     public static String jtf;
     private Timer timer;
+    private ConexiónUsuarios conexión;
 
     public Menu() {
         initComponents();
@@ -25,6 +33,7 @@ public class Menu extends javax.swing.JFrame {
                 enableLoginForm();
             }
         });
+        conexión = new ConexiónUsuarios();
         timer.setRepeats(false);
         this.setTitle("SISTEMA DE GESTIÓN DE PACIENTES PARA LA CLÍNICA MEDSC");
         this.setLocationRelativeTo(null);
@@ -49,7 +58,6 @@ public class Menu extends javax.swing.JFrame {
         jPasswordField = new javax.swing.JPasswordField();
         lblContraseñaIcon = new javax.swing.JLabel();
         lblClinica = new javax.swing.JLabel();
-        btnRegistrar = new javax.swing.JButton();
         btnReseatPass = new javax.swing.JButton();
         lblFondo = new javax.swing.JLabel();
 
@@ -75,11 +83,11 @@ public class Menu extends javax.swing.JFrame {
         });
         getContentPane().add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 250, -1));
 
-        txtFldUsuario.setText("Usuario");
+        txtFldUsuario.setText("grupo1admin");
         txtFldUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         getContentPane().add(txtFldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 250, -1));
 
-        jPasswordField.setText("Contraseña");
+        jPasswordField.setText("Abcd3.0");
         getContentPane().add(jPasswordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 250, -1));
 
         lblContraseñaIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/password25px-m.png"))); // NOI18N
@@ -88,10 +96,6 @@ public class Menu extends javax.swing.JFrame {
         lblClinica.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         lblClinica.setText("Clínica MEDSC");
         getContentPane().add(lblClinica, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, -1, 40));
-
-        btnRegistrar.setBackground(new java.awt.Color(153, 255, 255));
-        btnRegistrar.setText("Registrarse");
-        getContentPane().add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, 100, 30));
 
         btnReseatPass.setBackground(new java.awt.Color(153, 255, 255));
         btnReseatPass.setText("Resetear Contraseña");
@@ -107,25 +111,42 @@ public class Menu extends javax.swing.JFrame {
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
         String passcode = descifrarContraseña();
-
+        LogUser login = new LogUser(txtFldUsuario.getText(),passcode);
+        //conexión.conectar();
+        /*
         switch (cbTipoDeUsuarios.getSelectedIndex()) {
             case 0:
-                if (!(txtFldUsuario.getText().equals("grupo1admin") && passcode.equals("Abcd3.0"))) {
-                    intentos++;
-                    if (intentos > 0 && intentos < 3) {
-                        JOptionPane.showMessageDialog(null, "Revise sus datos proporcionados. Intentos restantes: " + (3 - intentos), "INGRESO FALLIDO", JOptionPane.WARNING_MESSAGE);
+            {
+                try {
+                    login.encriptar(passcode);
+                    login.encriptar(txtFldUsuario.getText());
+                    if (!conexión.consultarParametro("User_nameU",login.getUsername()) || !conexión.consultarParametro("Passwd_user", login.getPasswd())) {
+                        intentos++;
+                        
+                        if (intentos > 0 && intentos < 3) {
+                            JOptionPane.showMessageDialog(null, "Revise sus datos proporcionados. Intentos restantes: " + (3 - intentos), "INGRESO FALLIDO", JOptionPane.WARNING_MESSAGE);
+                        } else {
+                            disableEnter();
+                            JOptionPane.showMessageDialog(null, "Ha excedido el número máximo de intentos. Se bloqueará el acceso por 30 segundos.", "INGRESO FALLIDO", JOptionPane.ERROR_MESSAGE);
+                            
+                        }
                     } else {
-                        disableEnter();
-                        JOptionPane.showMessageDialog(null, "Ha excedido el número máximo de intentos. Se bloqueará el acceso por 30 segundos.", "INGRESO FALLIDO", JOptionPane.ERROR_MESSAGE);
-
+                        login.setUserType(conexión.consultarTipoUsuario(login.getUsername()));
+                        SGP_MEDSC_admin sgp = new SGP_MEDSC_admin(login);
+                        sgp.setVisible(true);
+                        //jtf = txtFldUsuario.getText();
+                        //System.out.println(jtf + "    ");
+                        //conexión.cerrarConexión();
+                        this.dispose();
                     }
-                } else {
-                    SGP_MEDSC_admin sgp = new SGP_MEDSC_admin();
-                    sgp.setVisible(true);
-                    jtf = txtFldUsuario.getText();
-                    System.out.println(jtf + "    ");
-                    this.dispose();
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Error Registro", HEIGHT);
+                    
                 }
+            }
+
+                
+                
                 break;
             case 1:
                 if (!(txtFldUsuario.getText().equals("grupo1") && passcode.equals("Abcd3"))) {
@@ -144,7 +165,29 @@ public class Menu extends javax.swing.JFrame {
                     this.dispose();
                 }
                 break;
+            
+        }*/
+        try {
+            if (!conexión.verificarParametro(AtributosUser.Username.getValue(),login.getUsername()) || !conexión.verificarParametro(AtributosUser.Contraseña.getValue(), login.getPasswd())) {
+                    intentos++;
+                        
+                    if (intentos > 0 && intentos < 3) {
+                        JOptionPane.showMessageDialog(null, "Revise sus datos proporcionados. Intentos restantes: " + (3 - intentos), "INGRESO FALLIDO", JOptionPane.WARNING_MESSAGE);
+                    } else {
+                        disableEnter();
+                        JOptionPane.showMessageDialog(null, "Ha excedido el número máximo de intentos. Se bloqueará el acceso por 30 segundos.", "INGRESO FALLIDO", JOptionPane.ERROR_MESSAGE);
+                            
+                    }
+            } else {
+                login.setUserType(conexión.consultarTipoUsuario(login.getUsername()));
+                SGP_MEDSC_admin sgp = new SGP_MEDSC_admin(login);
+                sgp.setVisible(true);
+                this.dispose();
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Error Registro", HEIGHT);                  
         }
+        
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
     private String descifrarContraseña() {
@@ -197,7 +240,6 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIniciarSesion;
-    private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnReseatPass;
     private javax.swing.JComboBox<String> cbTipoDeUsuarios;
     private javax.swing.JPasswordField jPasswordField;
