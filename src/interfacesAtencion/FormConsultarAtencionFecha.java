@@ -36,6 +36,7 @@ public class FormConsultarAtencionFecha extends javax.swing.JInternalFrame {
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
+        setClosable(true);
         setPreferredSize(new java.awt.Dimension(734, 414));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

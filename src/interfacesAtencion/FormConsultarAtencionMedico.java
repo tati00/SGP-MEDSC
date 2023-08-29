@@ -39,6 +39,7 @@ public class FormConsultarAtencionMedico extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
 
+        setClosable(true);
         setPreferredSize(new java.awt.Dimension(734, 414));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

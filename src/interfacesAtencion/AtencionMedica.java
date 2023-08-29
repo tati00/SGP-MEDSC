@@ -35,6 +35,10 @@ public class AtencionMedica extends javax.swing.JFrame {
         pantalla2 = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuREGIS = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         Consultar = new javax.swing.JMenu();
         telefonoPaciente = new javax.swing.JMenuItem();
         nombresCitas = new javax.swing.JMenuItem();
@@ -47,11 +51,11 @@ public class AtencionMedica extends javax.swing.JFrame {
         pantalla2.setLayout(pantalla2Layout);
         pantalla2Layout.setHorizontalGroup(
             pantalla2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 734, Short.MAX_VALUE)
+            .addGap(0, 817, Short.MAX_VALUE)
         );
         pantalla2Layout.setVerticalGroup(
             pantalla2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 414, Short.MAX_VALUE)
+            .addGap(0, 479, Short.MAX_VALUE)
         );
 
         menuREGIS.setText("Registrar");
@@ -60,6 +64,39 @@ public class AtencionMedica extends javax.swing.JFrame {
                 menuREGISMouseClicked(evt);
             }
         });
+
+        jMenuItem1.setText("Atencion");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        menuREGIS.add(jMenuItem1);
+
+        jMenuItem2.setText("Orden Medica");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        menuREGIS.add(jMenuItem2);
+
+        jMenuItem3.setText("Interconsulta");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        menuREGIS.add(jMenuItem3);
+
+        jMenuItem4.setText("Evolucion");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        menuREGIS.add(jMenuItem4);
+
         jMenuBar1.add(menuREGIS);
 
         Consultar.setText("Consultar");
@@ -105,14 +142,14 @@ public class AtencionMedica extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(pantalla2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(pantalla2)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(pantalla2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(pantalla2)
+                .addContainerGap())
         );
 
         pack();
@@ -156,12 +193,40 @@ public class AtencionMedica extends javax.swing.JFrame {
 
     private void menuREGISMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuREGISMouseClicked
         // TODO add your handling code here:
+        
+    }//GEN-LAST:event_menuREGISMouseClicked
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        FormularioRegistrosOrden formulario = new FormularioRegistrosOrden();
+        pantalla2.removeAll();
+        pantalla2.add(formulario);
+        pantalla2.revalidate();
+        formulario.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         FormularioRegistrosAtencionPrev formulario = new FormularioRegistrosAtencionPrev(pantalla2);
         pantalla2.removeAll();
         pantalla2.add(formulario);
         pantalla2.revalidate();
         formulario.setVisible(true);
-    }//GEN-LAST:event_menuREGISMouseClicked
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        FormularioRegistrosInter formulario = new FormularioRegistrosInter();
+        pantalla2.removeAll();
+        pantalla2.add(formulario);
+        pantalla2.revalidate();
+        formulario.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        FormularioRegistrosEvo formulario = new FormularioRegistrosEvo();
+        pantalla2.removeAll();
+        pantalla2.add(formulario);
+        pantalla2.revalidate();
+        formulario.setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,6 +268,10 @@ public class AtencionMedica extends javax.swing.JFrame {
     private javax.swing.JMenu Consultar;
     private javax.swing.JMenuItem fechaCitas;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenu menuREGIS;
     private javax.swing.JMenuItem nombresCitas;
     private javax.swing.JDesktopPane pantalla2;
