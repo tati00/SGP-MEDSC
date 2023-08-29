@@ -5,17 +5,19 @@
 package interfacesAtencion;
 
 import interfacesMédicos.*;
+import javax.swing.JDesktopPane;
 
 /**
  *
  * @author Usuario
  */
 public class FormularioRegistrosAtencionTrat extends javax.swing.JInternalFrame {
+        private JDesktopPane desktopPane;
 
     /**
      * Creates new form FormularioRegistros
      */
-    public FormularioRegistrosAtencionTrat() {
+    public FormularioRegistrosAtencionTrat(JDesktopPane desktopPane) {
         initComponents();
     }
 
@@ -99,7 +101,7 @@ public class FormularioRegistrosAtencionTrat extends javax.swing.JInternalFrame 
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

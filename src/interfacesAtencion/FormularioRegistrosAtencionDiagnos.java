@@ -5,6 +5,7 @@
 package interfacesAtencion;
 
 import interfacesMédicos.*;
+import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,12 +13,13 @@ import javax.swing.JOptionPane;
  * @author Usuario
  */
 public class FormularioRegistrosAtencionDiagnos extends javax.swing.JInternalFrame {
-    JOptionPane jp = new JOptionPane();
+    private JDesktopPane desktopPane;
     /**
      * Creates new form FormularioRegistros
      */
-    public FormularioRegistrosAtencionDiagnos() {
+    public FormularioRegistrosAtencionDiagnos(JDesktopPane desktopPane) {
         initComponents();
+        this.desktopPane = desktopPane;
     }
 
     /**
@@ -32,7 +34,6 @@ public class FormularioRegistrosAtencionDiagnos extends javax.swing.JInternalFra
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jTextField1 = new javax.swing.JTextField();
@@ -45,6 +46,7 @@ public class FormularioRegistrosAtencionDiagnos extends javax.swing.JInternalFra
         jLabel6 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jDesktopPane1 = new javax.swing.JDesktopPane();
+        jButton2 = new javax.swing.JButton();
 
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -59,9 +61,6 @@ public class FormularioRegistrosAtencionDiagnos extends javax.swing.JInternalFra
 
         jLabel2.setText("Observaciones");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
-
-        jButton1.setText("Siguiente");
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, -1, -1));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -99,27 +98,39 @@ public class FormularioRegistrosAtencionDiagnos extends javax.swing.JInternalFra
         jPanel2.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, 80, -1));
         jPanel2.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -20, -1, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 560, 380));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 560, 360));
         jPanel2.getAccessibleContext().setAccessibleDescription("");
+
+        jButton2.setText("Siguiente");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        FormularioRegistrosAtencionTrat formulario = new FormularioRegistrosAtencionTrat();
-        jDesktopPane1.removeAll();
-        jDesktopPane1.add(formulario);
-        jDesktopPane1.revalidate();
-        formulario.setVisible(true);
+        
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        System.out.println("¡Hola, mundo!");
+        FormularioRegistrosAtencionTrat formulario = new FormularioRegistrosAtencionTrat(desktopPane);
+        desktopPane.add(formulario);
+        formulario.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

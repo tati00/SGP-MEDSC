@@ -4,6 +4,7 @@
  */
 package interfacesAtencion;
 
+import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,12 +13,14 @@ import javax.swing.JOptionPane;
  */
 public class FormularioRegistrosAtencionPrev extends javax.swing.JInternalFrame {
 
-    JOptionPane jp = new JOptionPane();
+    private JDesktopPane desktopPane;
+
     /**
      * Creates new form FormularioRegistros
      */
-    public FormularioRegistrosAtencionPrev() {
+    public FormularioRegistrosAtencionPrev(JDesktopPane desktopPane) {
         initComponents();
+        this.desktopPane = desktopPane;
     }
 
     /**
@@ -47,7 +50,7 @@ public class FormularioRegistrosAtencionPrev extends javax.swing.JInternalFrame 
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel6.setText("Fecha Nacimiento");
+        jLabel6.setText("Fecha de atencion");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 40, -1, -1));
         jPanel2.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 62, 180, -1));
 
@@ -95,11 +98,10 @@ public class FormularioRegistrosAtencionPrev extends javax.swing.JInternalFrame 
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        FormularioRegistrosAtencionDiag formulario = new FormularioRegistrosAtencionDiag();
-        jp.removeAll();
-        jp.add(formulario);
-        jp.revalidate();
+        FormularioRegistrosAtencionDiag formulario = new FormularioRegistrosAtencionDiag(desktopPane);
+        desktopPane.add(formulario);
         formulario.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

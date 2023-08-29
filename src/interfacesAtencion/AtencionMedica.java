@@ -118,15 +118,6 @@ public class AtencionMedica extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuREGISMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuREGISMouseClicked
-        // TODO add your handling code here:
-        FormularioRegistrosAtencionPrev formulario = new FormularioRegistrosAtencionPrev();
-        pantalla2.removeAll();
-        pantalla2.add(formulario);
-        pantalla2.revalidate();
-        formulario.setVisible(true);
-    }//GEN-LAST:event_menuREGISMouseClicked
-
     private void regresarMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regresarMenuMouseClicked
         // TODO add your handling code here:
         SGP_MEDSC_admin sgci = new SGP_MEDSC_admin();
@@ -162,6 +153,15 @@ public class AtencionMedica extends javax.swing.JFrame {
         pantalla2.revalidate();
         formulario.setVisible(true);
     }//GEN-LAST:event_nombresCitasActionPerformed
+
+    private void menuREGISMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuREGISMouseClicked
+        // TODO add your handling code here:
+        FormularioRegistrosAtencionPrev formulario = new FormularioRegistrosAtencionPrev(pantalla2);
+        pantalla2.removeAll();
+        pantalla2.add(formulario);
+        pantalla2.revalidate();
+        formulario.setVisible(true);
+    }//GEN-LAST:event_menuREGISMouseClicked
 
     /**
      * @param args the command line arguments

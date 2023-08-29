@@ -5,6 +5,7 @@
 package interfacesAtencion;
 
 import interfacesMédicos.*;
+import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,12 +13,13 @@ import javax.swing.JOptionPane;
  * @author Usuario
  */
 public class FormularioRegistrosAtencionEx extends javax.swing.JInternalFrame {
-    JOptionPane jp = new JOptionPane();
+    private JDesktopPane desktopPane;
     /**
      * Creates new form FormularioRegistros
      */
-    public FormularioRegistrosAtencionEx() {
+    public FormularioRegistrosAtencionEx(JDesktopPane desktopPane) {
         initComponents();
+        this.desktopPane = desktopPane;
     }
 
     /**
@@ -81,12 +83,10 @@ public class FormularioRegistrosAtencionEx extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        FormularioRegistrosAtencionDiagnos formulario = new FormularioRegistrosAtencionDiagnos();
-
-        jDesktopPane1.removeAll();
-        jDesktopPane1.add(formulario);
-        jDesktopPane1.revalidate();
+        FormularioRegistrosAtencionDiagnos formulario = new FormularioRegistrosAtencionDiagnos(desktopPane);
+        desktopPane.add(formulario);
         formulario.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
