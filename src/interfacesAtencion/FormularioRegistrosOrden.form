@@ -34,7 +34,7 @@
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder justification="2" title="Orden Medica">
+            <TitledBorder justification="2" title="Orden M&#xe9;dica">
               <Font PropertyName="font" name="Sitka Subheading" size="14" style="1"/>
             </TitledBorder>
           </Border>
@@ -58,11 +58,11 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Cedula Paciente"/>
+            <Property name="text" type="java.lang.String" value="C&#xe9;dula del Paciente"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="20" y="30" width="-1" height="-1"/>
+              <AbsoluteConstraints x="10" y="30" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -114,7 +114,7 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
-                <StringItem index="0" value="Seleccion..."/>
+                <StringItem index="0" value="Selecci&#xf3;n..."/>
                 <StringItem index="1" value="Control"/>
                 <StringItem index="2" value="Rutina"/>
                 <StringItem index="3" value="Urgente"/>
@@ -144,10 +144,10 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
-                <StringItem index="0" value="Seleccion..."/>
+                <StringItem index="0" value="Selecci&#xf3;n..."/>
                 <StringItem index="1" value="Laboratorio"/>
-                <StringItem index="2" value="Imagenologia"/>
-                <StringItem index="3" value="Histopatologia"/>
+                <StringItem index="2" value="Imagenolog&#xed;a"/>
+                <StringItem index="3" value="Histopatolog&#xed;a"/>
               </StringArray>
             </Property>
           </Properties>

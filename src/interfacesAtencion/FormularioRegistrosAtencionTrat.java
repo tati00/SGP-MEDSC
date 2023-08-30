@@ -97,7 +97,7 @@ public class FormularioRegistrosAtencionTrat extends javax.swing.JInternalFrame 
         });
         jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, -1, -1));
 
-        jLabel4.setText("Via de administracion");
+        jLabel4.setText("Vía de administración");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, -1, -1));
         jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, 80, -1));
 
@@ -123,7 +123,7 @@ public class FormularioRegistrosAtencionTrat extends javax.swing.JInternalFrame 
         jLabel7.setText("Indicaciones");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, -1, -1));
 
-        jButton2.setText("jButton2");
+        jButton2.setText("Cancelar");
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 420, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 620, 450));

@@ -51,11 +51,11 @@ public class FormularioRegistrosAtencionPrev extends javax.swing.JInternalFrame 
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel6.setText("Fecha de atencion");
+        jLabel6.setText("Fecha de atención");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 40, -1, -1));
         jPanel2.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 62, 180, -1));
 
-        jLabel1.setText("Cedula Paciente");
+        jLabel1.setText("Cédula del Paciente");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -65,7 +65,7 @@ public class FormularioRegistrosAtencionPrev extends javax.swing.JInternalFrame 
         });
         jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 100, -1));
 
-        jLabel2.setText("Cedula Medico");
+        jLabel2.setText("Cédula del Médico");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, -1, -1));
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
@@ -73,7 +73,7 @@ public class FormularioRegistrosAtencionPrev extends javax.swing.JInternalFrame 
                 jTextField2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 100, -1));
+        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 100, -1));
 
         jButton1.setText("Siguiente");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

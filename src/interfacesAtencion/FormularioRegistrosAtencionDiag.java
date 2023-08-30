@@ -5,6 +5,8 @@
 package interfacesAtencion;
 
 import interfacesMédicos.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 
@@ -72,6 +74,11 @@ public class FormularioRegistrosAtencionDiag extends javax.swing.JInternalFrame 
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
+        jTextArea2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextArea2KeyTyped(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTextArea2);
 
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 360, 120));
@@ -93,6 +100,21 @@ public class FormularioRegistrosAtencionDiag extends javax.swing.JInternalFrame 
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jTextArea2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea2KeyTyped
+        String texto = jTextArea1.getText();
+        
+        if (validarCadena(texto) == false) {
+            JOptionPane.showMessageDialog(null, "La cadena no es válida.");
+        }
+    }//GEN-LAST:event_jTextArea2KeyTyped
+
+    public static boolean validarCadena(String cadena) {
+        // Utilizamos una expresión regular para verificar si la cadena cumple con los requisitos.
+        String regex = "^[a-zA-Z0-9._-]{1,200}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(cadena);
+        return matcher.matches();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

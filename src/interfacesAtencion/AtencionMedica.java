@@ -65,7 +65,7 @@ public class AtencionMedica extends javax.swing.JFrame {
             }
         });
 
-        jMenuItem1.setText("Atencion");
+        jMenuItem1.setText("Atención");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -73,7 +73,7 @@ public class AtencionMedica extends javax.swing.JFrame {
         });
         menuREGIS.add(jMenuItem1);
 
-        jMenuItem2.setText("Orden Medica");
+        jMenuItem2.setText("Orden Médica");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -89,7 +89,7 @@ public class AtencionMedica extends javax.swing.JFrame {
         });
         menuREGIS.add(jMenuItem3);
 
-        jMenuItem4.setText("Evolucion");
+        jMenuItem4.setText("Evolución");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem4ActionPerformed(evt);
@@ -101,7 +101,7 @@ public class AtencionMedica extends javax.swing.JFrame {
 
         Consultar.setText("Consultar");
 
-        telefonoPaciente.setText("Cedula Paciente");
+        telefonoPaciente.setText("Cédula Paciente");
         telefonoPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 telefonoPacienteActionPerformed(evt);
@@ -109,7 +109,7 @@ public class AtencionMedica extends javax.swing.JFrame {
         });
         Consultar.add(telefonoPaciente);
 
-        nombresCitas.setText("Fecha de atencion");
+        nombresCitas.setText("Fecha de Atención");
         nombresCitas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombresCitasActionPerformed(evt);
@@ -117,7 +117,7 @@ public class AtencionMedica extends javax.swing.JFrame {
         });
         Consultar.add(nombresCitas);
 
-        fechaCitas.setText("Medico Asignado");
+        fechaCitas.setText("Médico Asignado");
         fechaCitas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fechaCitasActionPerformed(evt);

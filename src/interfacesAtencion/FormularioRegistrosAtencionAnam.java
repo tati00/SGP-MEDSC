@@ -60,10 +60,10 @@ public class FormularioRegistrosAtencionAnam extends javax.swing.JInternalFrame 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel2.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -20, -1, -1));
 
-        jLabel2.setText("Antropometria");
+        jLabel2.setText("Antropometría");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        jLabel3.setText("Tension arterial");
+        jLabel3.setText("Tensión arterial");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, -1, -1));
 
         jLabel4.setText("Talla");
@@ -85,7 +85,7 @@ public class FormularioRegistrosAtencionAnam extends javax.swing.JInternalFrame 
         jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 80, -1));
         jPanel2.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, 80, -1));
 
-        jLabel8.setText("Saturacion O2");
+        jLabel8.setText("Saturación O2");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, -1, -1));
         jPanel2.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 80, -1));
 
@@ -93,7 +93,7 @@ public class FormularioRegistrosAtencionAnam extends javax.swing.JInternalFrame 
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, -1, -1));
         jPanel2.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, 80, -1));
 
-        jLabel10.setText("Frecuencia cardiaca");
+        jLabel10.setText("Frecuencia cardíaca");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 110, 20));
 
         jLabel11.setText("Temperatura");

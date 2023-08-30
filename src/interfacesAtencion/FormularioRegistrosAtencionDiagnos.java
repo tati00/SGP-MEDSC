@@ -76,28 +76,28 @@ public class FormularioRegistrosAtencionDiagnos extends javax.swing.JInternalFra
         jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 100, -1));
         jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, 110, -1));
 
-        jLabel3.setText("Codigo CIE10");
+        jLabel3.setText("Código CIE10");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
 
         jLabel4.setText("Enfermedad");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, -1, -1));
 
-        jLabel6.setText("Condicion");
+        jLabel6.setText("Condición");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, -1, -1));
 
-        jLabel7.setText("Cronologia");
+        jLabel7.setText("Cronología");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, -1, -1));
 
         jButton2.setText("Validar");
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 50, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccion", "Presuntivo", "Definitivo inicial", "Definitivo inicial conformado por Laboratorio", "Definitivo control" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selección...", "Presuntivo", "Definitivo inicial", "Definitivo inicial conformado por Laboratorio", "Definitivo control" }));
         jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, -1, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccion", "Primera", "Subsecuente" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selección...", "Primera", "Subsecuente" }));
         jPanel2.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, -1, -1));
 
-        jButton3.setText("jButton3");
+        jButton3.setText("Cancelar");
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 570, 380));
