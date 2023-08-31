@@ -74,8 +74,9 @@ public class Menu extends javax.swing.JFrame {
         cbTipoDeUsuarios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Principal", "General" }));
         getContentPane().add(cbTipoDeUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 250, -1));
 
-        btnIniciarSesion.setBackground(new java.awt.Color(102, 163, 229));
+        btnIniciarSesion.setBackground(new java.awt.Color(216, 180, 152));
         btnIniciarSesion.setText("Iniciar sesión");
+        btnIniciarSesion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 58, 35)));
         btnIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIniciarSesionActionPerformed(evt);
@@ -83,7 +84,7 @@ public class Menu extends javax.swing.JFrame {
         });
         getContentPane().add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 250, -1));
 
-        txtFldUsuario.setText("grupo1admin");
+        txtFldUsuario.setText("Usuario");
         txtFldUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         getContentPane().add(txtFldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 250, -1));
 
@@ -95,16 +96,18 @@ public class Menu extends javax.swing.JFrame {
 
         lblClinica.setFont(new java.awt.Font("Courier New", 1, 24)); // NOI18N
         lblClinica.setText("Clínica MEDSC");
-        getContentPane().add(lblClinica, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, -1, 40));
+        getContentPane().add(lblClinica, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, -1, 40));
 
-        btnReseatPass.setBackground(new java.awt.Color(153, 255, 255));
+        btnReseatPass.setBackground(new java.awt.Color(234, 215, 201));
         btnReseatPass.setText("Resetear Contraseña");
+        btnReseatPass.setActionCommand("Resetear contraseña");
+        btnReseatPass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 58, 35)));
         btnReseatPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReseatPassActionPerformed(evt);
             }
         });
-        getContentPane().add(btnReseatPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, 150, 30));
+        getContentPane().add(btnReseatPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 250, 30));
 
         lblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/luxa.org-opacity-changed-pexels-mart-production-7088498.jpg"))); // NOI18N
         lblFondo.setToolTipText("");
