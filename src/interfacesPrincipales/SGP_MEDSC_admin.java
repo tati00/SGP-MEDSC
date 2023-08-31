@@ -36,6 +36,7 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
         this.setTitle("SISTEMA DE GESTIÓN DE PACIENTES PARA LA CLÍNICA MEDSC");
         this.setLocationRelativeTo(null);
         if (login.getUserType().equals("Medico Normal")) {
+            pnAdministracion.setVisible(false);
             lblbtnAdministracion.setEnabled(false);
         }
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -59,7 +60,7 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
         lblbtnCitas = new javax.swing.JLabel();
         pnAtencion = new javax.swing.JPanel();
         lblbtnAtencion = new javax.swing.JLabel();
-        pnAdministración = new javax.swing.JPanel();
+        pnAdministracion = new javax.swing.JPanel();
         lblbtnAdministracion = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
         lblClinica = new javax.swing.JLabel();
@@ -187,8 +188,8 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
 
         Menu.add(pnAtencion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 230, 60));
 
-        pnAdministración.setBackground(new java.awt.Color(192, 192, 190));
-        pnAdministración.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnAdministracion.setBackground(new java.awt.Color(192, 192, 190));
+        pnAdministracion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         lblbtnAdministracion.setFont(new java.awt.Font("Sitka Subheading", 1, 18)); // NOI18N
         lblbtnAdministracion.setText("  Administración del Sistema");
@@ -198,24 +199,24 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout pnAdministraciónLayout = new javax.swing.GroupLayout(pnAdministración);
-        pnAdministración.setLayout(pnAdministraciónLayout);
-        pnAdministraciónLayout.setHorizontalGroup(
-            pnAdministraciónLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout pnAdministracionLayout = new javax.swing.GroupLayout(pnAdministracion);
+        pnAdministracion.setLayout(pnAdministracionLayout);
+        pnAdministracionLayout.setHorizontalGroup(
+            pnAdministracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 250, Short.MAX_VALUE)
-            .addGroup(pnAdministraciónLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnAdministraciónLayout.createSequentialGroup()
+            .addGroup(pnAdministracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnAdministracionLayout.createSequentialGroup()
                     .addComponent(lblbtnAdministracion, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
-        pnAdministraciónLayout.setVerticalGroup(
-            pnAdministraciónLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pnAdministracionLayout.setVerticalGroup(
+            pnAdministracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 60, Short.MAX_VALUE)
-            .addGroup(pnAdministraciónLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnAdministracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(lblbtnAdministracion, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE))
         );
 
-        Menu.add(pnAdministración, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 250, 60));
+        Menu.add(pnAdministracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 250, 60));
 
         lblTitulo.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         lblTitulo.setText("SGP-MEDSC");
@@ -380,7 +381,7 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
     private javax.swing.JLabel lblbtnCitas;
     private javax.swing.JLabel lblbtnMedicos;
     private javax.swing.JLabel lblbtnPacientes;
-    private javax.swing.JPanel pnAdministración;
+    private javax.swing.JPanel pnAdministracion;
     private javax.swing.JPanel pnAtencion;
     private javax.swing.JPanel pnCitas;
     private javax.swing.JPanel pnContenido;

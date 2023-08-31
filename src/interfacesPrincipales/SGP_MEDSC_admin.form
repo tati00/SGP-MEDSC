@@ -258,7 +258,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="pnAdministraci&#xf3;n">
+        <Container class="javax.swing.JPanel" name="pnAdministracion">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="be" green="c0" red="c0" type="rgb"/>
