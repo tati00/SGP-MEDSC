@@ -10,10 +10,10 @@ package Logica.LogicaPrincipal;
  */
 public enum AtributosUser {
     // Todo: Actualizar de Acuerdo al Nombre de la Database
-    Id_User("IDENTIFICADOR"),
-    Username("usuario"),
+    Id_User("Id_usuario"),
+    Username("User_nameU"),
     Correo_Electrónico("Email_usuario"),
-    Contraseña("contrasena");
+    Contraseña("Passwd_user");
     private String parametro;
     
     AtributosUser(String parametro) {

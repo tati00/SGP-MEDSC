@@ -19,8 +19,8 @@ public abstract class Conexion {
     protected Connection conex;
     String url = "jdbc:sqlserver://localhost:1433;databaseName=MEDSC;integratedSecurity=false;encrypt=false;trustServerCertificate=true;"
             +"loginTimeout = 10;";// define el limite de tiempo de conexión
-    String passwd ="grupo1ABC";
-    String username ="grupo1";
+    String passwd ="P@ssw0rd."; //contraseña que maneja el motor de SQL
+    String username ="sa"; //usuario que maneja el motor de SQL
 
     
     protected void conectar(){

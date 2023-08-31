@@ -273,7 +273,7 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
         pnContenido.setLayout(pnContenidoLayout);
         pnContenidoLayout.setHorizontalGroup(
             pnContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 802, Short.MAX_VALUE)
         );
         pnContenidoLayout.setVerticalGroup(
             pnContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -285,9 +285,12 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(754, 801, Short.MAX_VALUE))
-            .addComponent(pnContenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(249, 249, 249)
+                        .addComponent(pnContenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -363,43 +366,43 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
     }//GEN-LAST:event_lblbtnAdministracionMouseClicked
 
     private void lblbtnPacientesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblbtnPacientesMouseEntered
-        pnPaciente.setBackground(new Color(196, 196, 196));
+        pnPaciente.setBackground(new Color(242, 242, 242));
     }//GEN-LAST:event_lblbtnPacientesMouseEntered
 
     private void lblbtnPacientesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblbtnPacientesMouseExited
-        pnPaciente.setBackground(new Color(242, 242, 242));
+        pnPaciente.setBackground(new Color(196, 196, 196));
     }//GEN-LAST:event_lblbtnPacientesMouseExited
 
     private void lblbtnAtencionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblbtnAtencionMouseEntered
-        pnAtencion.setBackground(new Color(196, 196, 196));
+        pnAtencion.setBackground(new Color(242, 242, 242));
     }//GEN-LAST:event_lblbtnAtencionMouseEntered
 
     private void lblbtnAtencionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblbtnAtencionMouseExited
-        pnAtencion.setBackground(new Color(242, 242, 242));
+        pnAtencion.setBackground(new Color(196, 196, 196));
     }//GEN-LAST:event_lblbtnAtencionMouseExited
 
     private void lblbtnCitasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblbtnCitasMouseEntered
-        pnCitas.setBackground(new Color(196, 196, 196));
+        pnCitas.setBackground(new Color(242, 242, 242));
     }//GEN-LAST:event_lblbtnCitasMouseEntered
 
     private void lblbtnCitasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblbtnCitasMouseExited
-        pnCitas.setBackground(new Color(242, 242, 242));
+        pnCitas.setBackground(new Color(196, 196, 196));
     }//GEN-LAST:event_lblbtnCitasMouseExited
 
     private void lblbtnMedicosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblbtnMedicosMouseEntered
-        pnMedico.setBackground(new Color(196, 196, 196));
+        pnMedico.setBackground(new Color(242, 242, 242));
     }//GEN-LAST:event_lblbtnMedicosMouseEntered
 
     private void lblbtnMedicosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblbtnMedicosMouseExited
-        pnMedico.setBackground(new Color(242, 242, 242));
+        pnMedico.setBackground(new Color(196, 196, 196));
     }//GEN-LAST:event_lblbtnMedicosMouseExited
 
     private void lblbtnAdministracionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblbtnAdministracionMouseEntered
-        pnAdministracion.setBackground(new Color(196, 196, 196));
+        pnAdministracion.setBackground(new Color(242, 242, 242));
     }//GEN-LAST:event_lblbtnAdministracionMouseEntered
 
     private void lblbtnAdministracionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblbtnAdministracionMouseExited
-        pnAdministracion.setBackground(new Color(242, 242, 242));
+        pnAdministracion.setBackground(new Color(196, 196, 196));
     }//GEN-LAST:event_lblbtnAdministracionMouseExited
 
     /**
