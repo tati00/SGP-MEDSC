@@ -4,9 +4,9 @@
  */
 package interfacesPrincipales;
 
-import interfacesAdministracion.AdministracionSistema_;
-import interfacesAtencion.AtencionMedica;
-import interfacesCitas.CitaMédica;
+import interfacesAdministracion.AdministracionSistema;
+import interfacesAtencion.JAtencionMedicaP;
+import interfacesCitas.CitaMedica;
 import interfacesMédicos.Medico;
 import interfacesPacientes.Paciente;
 import Logica.LogicaPrincipal.LogUser;
@@ -36,7 +36,7 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
         this.setTitle("SISTEMA DE GESTIÓN DE PACIENTES PARA LA CLÍNICA MEDSC");
         this.setLocationRelativeTo(null);
         if (login.getUserType().equals("Medico Normal")) {
-            btnAdministracion.setEnabled(false);
+            lblbtnAdministracion.setEnabled(false);
         }
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
@@ -55,12 +55,15 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
         lblbtnPacientes = new javax.swing.JLabel();
         pnMedico = new javax.swing.JPanel();
         lblbtnMedicos = new javax.swing.JLabel();
+        pnCitas = new javax.swing.JPanel();
+        lblbtnCitas = new javax.swing.JLabel();
+        pnAtencion = new javax.swing.JPanel();
+        lblbtnAtencion = new javax.swing.JLabel();
+        pnAdministración = new javax.swing.JPanel();
+        lblbtnAdministracion = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
         lblClinica = new javax.swing.JLabel();
-        btnAdministracion = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
-        btnCitas = new javax.swing.JButton();
-        btnAtencion = new javax.swing.JButton();
         lblFondoModulos = new javax.swing.JLabel();
         pnContenido = new javax.swing.JPanel();
 
@@ -125,25 +128,101 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
 
         Menu.add(pnMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 230, 60));
 
+        pnCitas.setBackground(new java.awt.Color(192, 192, 190));
+        pnCitas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        lblbtnCitas.setFont(new java.awt.Font("Sitka Subheading", 1, 18)); // NOI18N
+        lblbtnCitas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/citaMedica-.png"))); // NOI18N
+        lblbtnCitas.setText("   Citas Médicas");
+        lblbtnCitas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblbtnCitas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblbtnCitasMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnCitasLayout = new javax.swing.GroupLayout(pnCitas);
+        pnCitas.setLayout(pnCitasLayout);
+        pnCitasLayout.setHorizontalGroup(
+            pnCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 230, Short.MAX_VALUE)
+            .addGroup(pnCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(lblbtnCitas, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))
+        );
+        pnCitasLayout.setVerticalGroup(
+            pnCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+            .addGroup(pnCitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(lblbtnCitas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE))
+        );
+
+        Menu.add(pnCitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 230, 60));
+
+        pnAtencion.setBackground(new java.awt.Color(192, 192, 190));
+        pnAtencion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        lblbtnAtencion.setFont(new java.awt.Font("Sitka Subheading", 1, 18)); // NOI18N
+        lblbtnAtencion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/atencion-.png"))); // NOI18N
+        lblbtnAtencion.setText("   Atención Médica");
+        lblbtnAtencion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblbtnAtencionMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnAtencionLayout = new javax.swing.GroupLayout(pnAtencion);
+        pnAtencion.setLayout(pnAtencionLayout);
+        pnAtencionLayout.setHorizontalGroup(
+            pnAtencionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 230, Short.MAX_VALUE)
+            .addGroup(pnAtencionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(lblbtnAtencion, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))
+        );
+        pnAtencionLayout.setVerticalGroup(
+            pnAtencionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+            .addGroup(pnAtencionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(lblbtnAtencion, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE))
+        );
+
+        Menu.add(pnAtencion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 230, 60));
+
+        pnAdministración.setBackground(new java.awt.Color(192, 192, 190));
+        pnAdministración.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        lblbtnAdministracion.setFont(new java.awt.Font("Sitka Subheading", 1, 18)); // NOI18N
+        lblbtnAdministracion.setText("  Administración del Sistema");
+        lblbtnAdministracion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblbtnAdministracionMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnAdministraciónLayout = new javax.swing.GroupLayout(pnAdministración);
+        pnAdministración.setLayout(pnAdministraciónLayout);
+        pnAdministraciónLayout.setHorizontalGroup(
+            pnAdministraciónLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 250, Short.MAX_VALUE)
+            .addGroup(pnAdministraciónLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnAdministraciónLayout.createSequentialGroup()
+                    .addComponent(lblbtnAdministracion, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        pnAdministraciónLayout.setVerticalGroup(
+            pnAdministraciónLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+            .addGroup(pnAdministraciónLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(lblbtnAdministracion, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE))
+        );
+
+        Menu.add(pnAdministración, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 250, 60));
+
         lblTitulo.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         lblTitulo.setText("SGP-MEDSC");
         Menu.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
 
         lblClinica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/clínica.png"))); // NOI18N
         Menu.add(lblClinica, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
-
-        btnAdministracion.setBackground(new java.awt.Color(192, 192, 190));
-        btnAdministracion.setFont(new java.awt.Font("Sitka Subheading", 1, 18)); // NOI18N
-        btnAdministracion.setText("Administración del Sistema");
-        btnAdministracion.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnAdministracion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnAdministracion.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnAdministracion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdministracionActionPerformed(evt);
-            }
-        });
-        Menu.add(btnAdministracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 240, 60));
 
         btnSalir.setText("Cerrar sesión");
         btnSalir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 10));
@@ -153,34 +232,6 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
             }
         });
         Menu.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        btnCitas.setBackground(new java.awt.Color(192, 192, 190));
-        btnCitas.setFont(new java.awt.Font("Sitka Subheading", 1, 18)); // NOI18N
-        btnCitas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/citaMedica-.png"))); // NOI18N
-        btnCitas.setText("   Citas Médicas");
-        btnCitas.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnCitas.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        btnCitas.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnCitas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCitasActionPerformed(evt);
-            }
-        });
-        Menu.add(btnCitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 230, 60));
-
-        btnAtencion.setBackground(new java.awt.Color(192, 192, 190));
-        btnAtencion.setFont(new java.awt.Font("Sitka Subheading", 1, 18)); // NOI18N
-        btnAtencion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/atencion-.png"))); // NOI18N
-        btnAtencion.setText("   Atención Médica");
-        btnAtencion.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnAtencion.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        btnAtencion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnAtencion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAtencionActionPerformed(evt);
-            }
-        });
-        Menu.add(btnAtencion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 230, 60));
 
         lblFondoModulos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.jpg"))); // NOI18N
         lblFondoModulos.setText("jLabel1");
@@ -203,34 +254,17 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(754, 812, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(244, 244, 244)
-                .addComponent(pnContenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(754, 801, Short.MAX_VALUE))
+            .addComponent(pnContenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnContenido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(Menu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnContenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAtencionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtencionActionPerformed
-        AtencionMedica am = new AtencionMedica();
-        am.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnAtencionActionPerformed
-
-    private void btnCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCitasActionPerformed
-        // TODO add your handling code here:
-        Pantalla.removeAll();
-        Pantalla.repaint();
-        CitaMédica citas = new CitaMédica();
-        citas.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnCitasActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         int response = JOptionPane.showConfirmDialog(this, "¿Quiere salir del sistema?", "CERRAR SESIÓN", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -240,14 +274,6 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_btnSalirActionPerformed
-
-    private void btnAdministracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdministracionActionPerformed
-        Pantalla.removeAll();
-        Pantalla.repaint();
-        AdministracionSistema_ as = new AdministracionSistema_();
-        Pantalla.add(as);
-        as.setVisible(true);
-    }//GEN-LAST:event_btnAdministracionActionPerformed
 
     private void lblbtnPacientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblbtnPacientesMouseClicked
         Paciente p = new Paciente(this); //ES UN JPANEL
@@ -270,6 +296,39 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
         pnContenido.revalidate();
         pnContenido.repaint();
     }//GEN-LAST:event_lblbtnMedicosMouseClicked
+
+    private void lblbtnCitasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblbtnCitasMouseClicked
+        CitaMedica p = new CitaMedica(this); //ES UN JPANEL
+        p.setSize(1015, 647);
+        p.setLocation(0, 0);
+
+        pnContenido.removeAll();
+        pnContenido.add(p,BorderLayout.CENTER);
+        pnContenido.revalidate();
+        pnContenido.repaint();
+    }//GEN-LAST:event_lblbtnCitasMouseClicked
+
+    private void lblbtnAtencionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblbtnAtencionMouseClicked
+        JAtencionMedicaP p = new JAtencionMedicaP(this); //ES UN JPANEL
+        p.setSize(1015, 647);
+        p.setLocation(0, 0);
+
+        pnContenido.removeAll();
+        pnContenido.add(p,BorderLayout.CENTER);
+        pnContenido.revalidate();
+        pnContenido.repaint();
+    }//GEN-LAST:event_lblbtnAtencionMouseClicked
+
+    private void lblbtnAdministracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblbtnAdministracionMouseClicked
+        AdministracionSistema p = new AdministracionSistema(this); //ES UN JPANEL
+        p.setSize(1015, 647);
+        p.setLocation(0, 0);
+
+        pnContenido.removeAll();
+        pnContenido.add(p,BorderLayout.CENTER);
+        pnContenido.revalidate();
+        pnContenido.repaint();
+    }//GEN-LAST:event_lblbtnAdministracionMouseClicked
 
     /**
      * @param args the command line arguments
@@ -312,15 +371,18 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Menu;
-    private javax.swing.JButton btnAdministracion;
-    private javax.swing.JButton btnAtencion;
-    private javax.swing.JButton btnCitas;
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel lblClinica;
     private javax.swing.JLabel lblFondoModulos;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblbtnAdministracion;
+    private javax.swing.JLabel lblbtnAtencion;
+    private javax.swing.JLabel lblbtnCitas;
     private javax.swing.JLabel lblbtnMedicos;
     private javax.swing.JLabel lblbtnPacientes;
+    private javax.swing.JPanel pnAdministración;
+    private javax.swing.JPanel pnAtencion;
+    private javax.swing.JPanel pnCitas;
     private javax.swing.JPanel pnContenido;
     private javax.swing.JPanel pnMedico;
     private javax.swing.JPanel pnPaciente;

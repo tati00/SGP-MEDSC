@@ -139,9 +139,7 @@ public class SGP_MEDSC extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtencionActionPerformed
 
     private void btnPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPacientesActionPerformed
-        Paciente pa = new Paciente();
-        jDesktopPane2.add(pa);
-        pa.setVisible(true);
+
     }//GEN-LAST:event_btnPacientesActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {                                         
