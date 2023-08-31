@@ -19,7 +19,6 @@ public class Paciente extends javax.swing.JPanel {
     public Paciente(SGP_MEDSC_admin sgpMedscAdmin) {
         this.sgpMedscAdmin = sgpMedscAdmin;
         initComponents();
-        jTabbedPane1.setSize(new SGP_MEDSC_admin().x, new SGP_MEDSC_admin().y);
         cbNacionalidad.setEnabled(false);
         pnActualizarDisponibles1.setVisible(false);
     }
