@@ -187,7 +187,8 @@ public class Menu extends javax.swing.JFrame {
                             
                     }
             } else {
-                login.setUserType(conexión.consultarTipoUsuario(login.getUsername()));
+                // todo actualizar esto en la tabla :conexión.consultarTipoUsuario(login.getUsername())
+                login.setUserType("Medico General");
                 SGP_MEDSC_admin sgp = new SGP_MEDSC_admin(login);
                 sgp.setVisible(true);
                 this.dispose();

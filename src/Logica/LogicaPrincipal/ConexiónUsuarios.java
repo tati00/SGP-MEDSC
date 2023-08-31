@@ -50,7 +50,7 @@ public class ConexiónUsuarios extends Conexion {
     public boolean verificarParametro(String parametro, String value) throws SQLException{
         boolean correcto;
         conectar();
-        String consulta = "SELECT CASE WHEN EXISTS (SELECT * FROM dbo.Usuarios WHERE " + parametro + " = ?) THEN 1 ELSE 0 END";
+        String consulta = "SELECT CASE WHEN EXISTS (SELECT * FROM dbo.usuarios WHERE " + parametro + " = ?) THEN 1 ELSE 0 END";
             
         // Crear una sentencia preparada
         PreparedStatement preparedStatement = conex.prepareStatement(consulta);
@@ -67,7 +67,7 @@ public class ConexiónUsuarios extends Conexion {
     public String consultarTipoUsuario(String value) throws SQLException{
         conectar();
         String valor = null;
-        String consulta = "SELECT Tipo_usuario FROM dbo.Usuarios WHERE User_nameU = ?";
+        String consulta = "SELECT Tipo_usuario FROM dbo.usuarios WHERE usuario = ?";
         PreparedStatement preparedStatement = conex.prepareStatement(consulta);
         preparedStatement.setString(1, value); // user_parametro_value
         ResultSet resultSet = preparedStatement.executeQuery();  

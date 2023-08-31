@@ -20,6 +20,7 @@ public class LogUser {
         this.username = cryp.encriptar(username);
         this.passwd = cryp.encriptar(passwd);
         System.out.println(this.passwd);
+        System.out.println(this.username);
     }
     
 
