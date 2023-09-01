@@ -4,6 +4,8 @@
  */
 package interfacesPacientes;
 
+import Logica.Database.Conexion;
+import com.sun.jdi.connect.spi.Connection;
 import com.toedter.calendar.JDateChooser;
 import interfacesPrincipales.Menu;
 import interfacesPrincipales.SGP_MEDSC_admin;
@@ -138,7 +140,7 @@ public class Paciente extends javax.swing.JPanel {
 
         cbNacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nacional", "Extranjero" }));
 
-        jDateChooser.setDateFormatString("dd-MM-yyyy");
+        jDateChooser.setDateFormatString("yyyy-mm-dd");
 
         pnAbrirHC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -314,7 +316,7 @@ public class Paciente extends javax.swing.JPanel {
             .addGroup(pnRegistrarLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(pnSubRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(307, Short.MAX_VALUE))
         );
         pnRegistrarLayout.setVerticalGroup(
             pnRegistrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -553,7 +555,7 @@ public class Paciente extends javax.swing.JPanel {
                 .addComponent(lblIdentificador2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtNumHCAct1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addContainerGap(431, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnActualizarDisponibles2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(pnBTNConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -610,16 +612,16 @@ public class Paciente extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1090, Short.MAX_VALUE)
+                .addGap(41, 41, 41))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(47, Short.MAX_VALUE)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 561, Short.MAX_VALUE)
+                .addGap(80, 80, 80))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -642,7 +644,8 @@ public class Paciente extends javax.swing.JPanel {
         String numeroID = txtFieldNumeroID.getText();
         String telefono = txtFieldTelefono.getText();
         String trabajo = txtFieldTrabajo.getText();
-        //String date = jDateChooser.getDate().toString();
+        String date = jDateChooser.getDate().toString();
+
 
         if (!validarNombres(nombres)) {
             JOptionPane.showMessageDialog(null, "Ingrese nombres válidos.");
