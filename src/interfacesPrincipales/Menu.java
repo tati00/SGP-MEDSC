@@ -84,7 +84,7 @@ public class Menu extends javax.swing.JFrame {
         });
         getContentPane().add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 250, -1));
 
-        txtFldUsuario.setText("Usuario");
+        txtFldUsuario.setText("grupo1admin");
         txtFldUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         getContentPane().add(txtFldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 250, -1));
 

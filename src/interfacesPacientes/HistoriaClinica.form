@@ -659,12 +659,14 @@
                               <Component id="txtAlergias" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblNombreEnfHereditaria" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtNombreEnfHereditaria" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                   <Component id="lblTiempo" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtTiempo" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblNombreEnfHereditaria" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtNombreEnfHereditaria" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>

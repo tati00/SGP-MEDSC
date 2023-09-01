@@ -642,34 +642,26 @@ public class Paciente extends javax.swing.JPanel {
         String numeroID = txtFieldNumeroID.getText();
         String telefono = txtFieldTelefono.getText();
         String trabajo = txtFieldTrabajo.getText();
-        String date = jDateChooser.getDate().toString();
-
-        
-        if (nombres.isEmpty() || apellidos.isEmpty() || correo.isEmpty() || direccion.isEmpty()
-                || numeroID.isEmpty() || telefono.isEmpty() || trabajo.isEmpty() || date.isEmpty()) {
-            // Mostrar un mensaje al usuario indicando que debe llenar los campos de texto
-            JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "CAMPOS VACÍOS", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
+        //String date = jDateChooser.getDate().toString();
 
         if (!validarNombres(nombres)) {
             JOptionPane.showMessageDialog(null, "Ingrese nombres válidos.");
-        } else if (cbTipoID.getSelectedItem().equals("Pasaporte") && !verificarPasaporte(numeroID)) {
-            JOptionPane.showMessageDialog(null, "El Número de pasaporte es Inválido");
+        } else if (cbTipoID.getSelectedItem().equals("Pasaporte") && !validarPasaporte(numeroID)) {
+            JOptionPane.showMessageDialog(null, "El número de pasaporte no es válido");
         } else if (cbTipoID.getSelectedItem().equals("Cédula de identidad") && !verificarCedula(numeroID)) {
-            JOptionPane.showMessageDialog(null, "El Número de cédula es Inválido");
+            JOptionPane.showMessageDialog(null, "El número de cédula no existe");
         } else if (!validarApellidos(apellidos)) {
             JOptionPane.showMessageDialog(null, "Ingrese apellidos válidos.");
         } else if (!validarDireccion(direccion)) {
-            JOptionPane.showMessageDialog(null, "Ingrese dirección válida.");
+            JOptionPane.showMessageDialog(null, "Ingrese una dirección domiciliaria válida.");
         } else if (!validarTelefono(telefono)) {
-            JOptionPane.showMessageDialog(null, "Ingrese teléfono válido.");
+            JOptionPane.showMessageDialog(null, "Ingrese un número de teléfono celular válido.");
         } else if (!validarTrabajo(trabajo)) {
-            JOptionPane.showMessageDialog(null, "Ingrese ocupación válida.");
+            JOptionPane.showMessageDialog(null, "Ingrese una ocupación o tipo de trabajo válida.");
         } else if (!validarCorreo(correo)) {
-            JOptionPane.showMessageDialog(null, "Ingrese correo electrónico válido.");
+            JOptionPane.showMessageDialog(null, "Ingrese un correo electrónico válido.");
         } else {
-            int response = JOptionPane.showConfirmDialog(this, "¿Está seguro de abrir el historial clínico del paciente: " + nombres + " " + apellidos + " ?", "ABRIR HISTORIA CLÍNICA", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            int response = JOptionPane.showConfirmDialog(this, "¿Está seguro que desea abrir la historia clínica del paciente: " + nombres + " " + apellidos + " ?", "ABRIR HISTORIA CLÍNICA", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (response == JOptionPane.YES_OPTION) {
                 HistoriaClinica hc = new HistoriaClinica(this); // ES UN JPANEL
                 hc.setSize(sgpMedscAdmin.getPnContenido().getWidth(), sgpMedscAdmin.getPnContenido().getHeight());
@@ -683,7 +675,7 @@ public class Paciente extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_lblAbrirHCMouseClicked
 
-    private boolean verificarPasaporte(String numeroID) {
+    private boolean validarPasaporte(String numeroID) {
         String regex = "^[a-zA-Z0-9]{6,10}$";
         return numeroID.matches(regex);
     }

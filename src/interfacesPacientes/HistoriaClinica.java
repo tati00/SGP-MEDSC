@@ -446,12 +446,13 @@ public class HistoriaClinica extends javax.swing.JPanel {
                     .addComponent(lblAlergias)
                     .addComponent(txtAlergias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnAlergiasAntecedentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNombreEnfHereditaria)
-                    .addComponent(txtNombreEnfHereditaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnAlergiasAntecedentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnAlergiasAntecedentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblTiempo)
-                        .addComponent(txtTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnAlergiasAntecedentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblNombreEnfHereditaria)
+                        .addComponent(txtNombreEnfHereditaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnAlergiasAntecedentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblGradoParentesco)
@@ -593,13 +594,13 @@ public class HistoriaClinica extends javax.swing.JPanel {
             } else if (!validarApellidos(apellidosContacto)) {
                 JOptionPane.showMessageDialog(null, "Ingrese apellidos de contacto válidos.");
             } else if (!validarTelefono(telefonoContacto)) {
-                JOptionPane.showMessageDialog(null, "Ingrese teléfono de contacto válido.");
+                JOptionPane.showMessageDialog(null, "Ingrese un número de contacto válido.");
             } else if (!validarAlergias(alergias)) {
-                JOptionPane.showMessageDialog(null, "Ingrese alergias válidas.");
+                JOptionPane.showMessageDialog(null, "Ingrese el nombre de la(s) alergia(s) adecuadamente.");
             } else if (!validarNombreEnfermedad(nbEnfH)) {
-                JOptionPane.showMessageDialog(null, "Ingrese nombre de enfermedad hereditaria válido.");
+                JOptionPane.showMessageDialog(null, "Ingrese nombre de la enfermedad hereditaria adecuadamente.");
             } else if (!validarTiempo(tiempo)) {
-                JOptionPane.showMessageDialog(null, "Ingrese tiempo válido.");
+                JOptionPane.showMessageDialog(null, "Ingrese el tiempo en años válido.");
             } else {
                 int response = JOptionPane.showConfirmDialog(this, "¿Desea guardar la historia clínica del paciente: " + txtFieldNombres.getText() + " " + txtFieldApellidos.getText() + " ?", "GUARDAR HISTORIA CLÍNICA", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if (response == JOptionPane.YES_OPTION) {
