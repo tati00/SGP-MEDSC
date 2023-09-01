@@ -7,6 +7,10 @@ package interfacesPacientes;
 import static interfacesPrincipales.Menu.jtf;
 import interfacesPrincipales.SGP_MEDSC_admin;
 import java.awt.BorderLayout;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.ResultSet;
 import javax.swing.*;
 
 /**
@@ -16,13 +20,10 @@ import javax.swing.*;
 public class HistoriaClinica extends javax.swing.JPanel {
 
     private Paciente p;
-    private int numeroHistoriaClinica;
 
     public HistoriaClinica(Paciente p) {
         initComponents();
         this.p = p;
-        //numeroHistoriaClinica = 1;
-        //txtNumHC.setText(Integer.toString(numeroHistoriaClinica));
         llenarInformacionPersonal();
     }
 
@@ -44,7 +45,7 @@ public class HistoriaClinica extends javax.swing.JPanel {
     }
 
     private void bloquearEdicion() {
-        txtNumHC.setEnabled(false);
+        //txtNumHC.setEnabled(false);
         cbTipoID.setEnabled(false);
         cbNacionalidad.setEnabled(false);
         txtFieldNumeroID.setEnabled(false);
@@ -104,7 +105,7 @@ public class HistoriaClinica extends javax.swing.JPanel {
         lblTelefonoCelularContacto = new javax.swing.JLabel();
         txtFieldTelefonoContacto = new javax.swing.JTextField();
         lblParentesco = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbParentesco = new javax.swing.JComboBox<>();
         pnAlergiasAntecedentes = new javax.swing.JPanel();
         lblAlergias = new javax.swing.JLabel();
         lblNombreEnfHereditaria = new javax.swing.JLabel();
@@ -124,6 +125,8 @@ public class HistoriaClinica extends javax.swing.JPanel {
 
         lblIdentificador.setText("N° de la historia clínica: ");
 
+        txtNumHC.setMaximumSize(new java.awt.Dimension(100, 22));
+
         javax.swing.GroupLayout pnNumeroHCLayout = new javax.swing.GroupLayout(pnNumeroHC);
         pnNumeroHC.setLayout(pnNumeroHCLayout);
         pnNumeroHCLayout.setHorizontalGroup(
@@ -132,8 +135,8 @@ public class HistoriaClinica extends javax.swing.JPanel {
                 .addContainerGap(154, Short.MAX_VALUE)
                 .addComponent(lblIdentificador)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNumHC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(147, 147, 147))
+                .addComponent(txtNumHC, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(113, 113, 113))
         );
         pnNumeroHCLayout.setVerticalGroup(
             pnNumeroHCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -348,7 +351,7 @@ public class HistoriaClinica extends javax.swing.JPanel {
 
         lblParentesco.setText("Parentesco por: ");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Consanguinidad", "Afinidad", "Adopción" }));
+        cbParentesco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Consanguinidad", "Afinidad", "Adopción" }));
 
         javax.swing.GroupLayout pnContactoReferenciaLayout = new javax.swing.GroupLayout(pnContactoReferencia);
         pnContactoReferencia.setLayout(pnContactoReferenciaLayout);
@@ -372,7 +375,7 @@ public class HistoriaClinica extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnContactoReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtFieldTelefonoContacto)
-                    .addComponent(jComboBox1, 0, 139, Short.MAX_VALUE))
+                    .addComponent(cbParentesco, 0, 139, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnContactoReferenciaLayout.setVerticalGroup(
@@ -392,7 +395,7 @@ public class HistoriaClinica extends javax.swing.JPanel {
                 .addGroup(pnContactoReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtFieldApellidosContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnContactoReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbParentesco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblParentesco))
                     .addGroup(pnContactoReferenciaLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
@@ -576,42 +579,81 @@ public class HistoriaClinica extends javax.swing.JPanel {
     }//GEN-LAST:event_cbTipoIDActionPerformed
 
     private void btnGuardarHCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarHCMouseClicked
-        String apellidosContacto = txtFieldApellidosContacto.getText();
-        String nombresContacto = txtFieldNombresContacto.getText();
-        String telefonoContacto = txtFieldTelefonoContacto.getText();
-        // Obtener los valores de los campos
-        String alergias = txtAlergias.getText();
-        String nbEnfH = txtNombreEnfHereditaria.getText();
-        String tiempo = txtTiempo.getText();
+        int id_historia = Integer.parseInt(txtNumHC.getText());
+        String num_DocumentoID = txtFieldNumeroID.getText();
+        String contacto_emergencia_apellido = txtFieldApellidosContacto.getText();
+        String contacto_emergencia_nombre = txtFieldNombresContacto.getText();
+        String contacto_emergencia_celular = txtFieldTelefonoContacto.getText();
+        String alergia = txtAlergias.getText();
+        String enfermedad_hereditaria = txtNombreEnfHereditaria.getText();
+        String tiempoVacío = txtTiempo.getText();
+        int tiempo = 0;
+        if (tiempoVacío.isEmpty()) {
+            tiempo = 0;
+        } else {
+            tiempo = Integer.parseInt(txtTiempo.getText());
+        }
+        String contacto_emergencia_parentesco = cbParentesco.getSelectedItem().toString();
+        String grado = cbGradoParentesco.getSelectedItem().toString();
+        if (enfermedad_hereditaria == "Ninguna" || enfermedad_hereditaria == "ninguna") {
+            grado = "0";
+        }
 
-        if (nombresContacto.isEmpty() || apellidosContacto.isEmpty() || telefonoContacto.isEmpty()) {
+        if (contacto_emergencia_nombre.isEmpty() || contacto_emergencia_apellido.isEmpty() || contacto_emergencia_celular.isEmpty()) {
             // Mostrar un mensaje al usuario indicando que debe llenar los campos de texto
             JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "CAMPOS VACÍOS", JOptionPane.WARNING_MESSAGE);
         } else {
             // Validar campos uno por uno
-            if (!validarNombres(nombresContacto)) {
+            if (!validarNumeroHC(txtNumHC.getText())) {
+                JOptionPane.showMessageDialog(null, "Ingrese un número de historia clínica válido.");
+            } else if (!validarNombres(contacto_emergencia_nombre)) {
                 JOptionPane.showMessageDialog(null, "Ingrese nombres de contacto válidos.");
-            } else if (!validarApellidos(apellidosContacto)) {
+            } else if (!validarApellidos(contacto_emergencia_apellido)) {
                 JOptionPane.showMessageDialog(null, "Ingrese apellidos de contacto válidos.");
-            } else if (!validarTelefono(telefonoContacto)) {
+            } else if (!validarTelefono(contacto_emergencia_celular)) {
                 JOptionPane.showMessageDialog(null, "Ingrese un número de contacto válido.");
-            } else if (!validarAlergias(alergias)) {
+            } else if (!validarAlergias(alergia)) {
                 JOptionPane.showMessageDialog(null, "Ingrese el nombre de la(s) alergia(s) adecuadamente.");
-            } else if (!validarNombreEnfermedad(nbEnfH)) {
+            } else if (!validarNombreEnfermedad(enfermedad_hereditaria)) {
                 JOptionPane.showMessageDialog(null, "Ingrese nombre de la enfermedad hereditaria adecuadamente.");
-            } else if (!validarTiempo(tiempo)) {
+            } else if (!validarTiempo(txtTiempo.getText())) {
                 JOptionPane.showMessageDialog(null, "Ingrese el tiempo en años válido.");
             } else {
                 int response = JOptionPane.showConfirmDialog(this, "¿Desea guardar la historia clínica del paciente: " + txtFieldNombres.getText() + " " + txtFieldApellidos.getText() + " ?", "GUARDAR HISTORIA CLÍNICA", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if (response == JOptionPane.YES_OPTION) {
-                    //numeroHistoriaClinica++;
-                    txtNumHC.setText(Integer.toString(numeroHistoriaClinica)); // Actualiza el campo de texto
+                    //CONEXION A LA BD
+                    try {
+                        Connection con = ConexionPacientes.getConexion();
+
+                        PreparedStatement ps = con.prepareStatement("INSERT INTO historia_clinica(id_historia, num_DocumentoID, contacto_emergencia_nombre, contacto_emergencia_apellido, contacto_emergencia_celular, contacto_emergencia_parentesco, alergia, enfermedad_hereditaria, tiempo, grado) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+                        ps.setInt(1, id_historia);
+                        ps.setString(2, num_DocumentoID);
+                        ps.setString(3, contacto_emergencia_nombre);
+                        ps.setString(4, contacto_emergencia_apellido);
+                        ps.setString(5, contacto_emergencia_celular);
+                        ps.setString(6, contacto_emergencia_parentesco);
+                        ps.setString(7, enfermedad_hereditaria);
+                        ps.setString(8, alergia);
+                        ps.setInt(9, tiempo);
+                        ps.setString(10, grado);
+
+                        ps.executeUpdate();
+                        JOptionPane.showMessageDialog(null, "Historia clínica guardada con éxito");
+                    } catch (SQLException e) {
+                        System.out.println(e.toString());
+                        JOptionPane.showMessageDialog(null, e.toString());
+                    }
                     SGP_MEDSC_admin sgp = new SGP_MEDSC_admin();
                     sgp.setVisible(true);
                 }
             }
         }
     }//GEN-LAST:event_btnGuardarHCMouseClicked
+
+    private boolean validarNumeroHC(String id_historia) {
+        String regex = "[0-9]{0,3}$";
+        return id_historia.matches(regex);
+    }
 
     public static boolean validarNombres(String nombres) {
         String regex = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ¨`~ ]{1,60}$";
@@ -648,10 +690,10 @@ public class HistoriaClinica extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cbEstadoCivil;
     private javax.swing.JComboBox<String> cbGradoParentesco;
     private javax.swing.JComboBox<String> cbNacionalidad;
+    private javax.swing.JComboBox<String> cbParentesco;
     private javax.swing.JComboBox<String> cbSexo;
     private javax.swing.JComboBox<String> cbTipoID;
     private javax.swing.JComboBox<String> cbxTipoSangre;
-    private javax.swing.JComboBox<String> jComboBox1;
     private com.toedter.calendar.JDateChooser jDateChooser;
     private javax.swing.JLabel lblAlergias;
     private javax.swing.JLabel lblApellidos;
@@ -700,4 +742,5 @@ public class HistoriaClinica extends javax.swing.JPanel {
     private javax.swing.JTextField txtNumHC;
     private javax.swing.JTextField txtTiempo;
     // End of variables declaration//GEN-END:variables
+
 }

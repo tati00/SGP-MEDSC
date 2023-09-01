@@ -5,7 +5,6 @@
 package interfacesPacientes;
 
 import Logica.Database.Conexion;
-import com.sun.jdi.connect.spi.Connection;
 import com.toedter.calendar.JDateChooser;
 import interfacesPrincipales.Menu;
 import interfacesPrincipales.SGP_MEDSC_admin;
@@ -13,6 +12,13 @@ import java.awt.BorderLayout;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.ResultSetMetaData;
+import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Paciente extends javax.swing.JPanel {
 
@@ -140,7 +146,7 @@ public class Paciente extends javax.swing.JPanel {
 
         cbNacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nacional", "Extranjero" }));
 
-        jDateChooser.setDateFormatString("yyyy-mm-dd");
+        jDateChooser.setDateFormatString("dd-MM-yyyy");
 
         pnAbrirHC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -641,31 +647,63 @@ public class Paciente extends javax.swing.JPanel {
         String correo = txtFieldCorreo.getText();
         String direccion = txtFieldDireccion.getText();
         String nombres = txtFieldNombres.getText();
-        String numeroID = txtFieldNumeroID.getText();
-        String telefono = txtFieldTelefono.getText();
-        String trabajo = txtFieldTrabajo.getText();
-        String date = jDateChooser.getDate().toString();
-
+        String num_DocumentoID = txtFieldNumeroID.getText();
+        String celular = txtFieldTelefono.getText();
+        String ocupacion = txtFieldTrabajo.getText();
+        Date fechaNacimientoDate = jDateChooser.getDate();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        String fecha_nacimiento = dateFormat.format(fechaNacimientoDate);
+        String tipoID = cbTipoID.getSelectedItem().toString();
+        String nacionalidad = cbNacionalidad.getSelectedItem().toString();
+        String estado_civil = cbEstadoCivil.getSelectedItem().toString();
+        String sexo = cbSexo.getSelectedItem().toString();
+        String tipo_sangre = cbxTipoSangre.getSelectedItem().toString();
 
         if (!validarNombres(nombres)) {
             JOptionPane.showMessageDialog(null, "Ingrese nombres válidos.");
-        } else if (cbTipoID.getSelectedItem().equals("Pasaporte") && !validarPasaporte(numeroID)) {
+        } else if (cbTipoID.getSelectedItem().equals("Pasaporte") && !validarPasaporte(num_DocumentoID)) {
             JOptionPane.showMessageDialog(null, "El número de pasaporte no es válido");
-        } else if (cbTipoID.getSelectedItem().equals("Cédula de identidad") && !verificarCedula(numeroID)) {
+        } else if (cbTipoID.getSelectedItem().equals("Cédula de identidad") && !verificarCedula(num_DocumentoID)) {
             JOptionPane.showMessageDialog(null, "El número de cédula no existe");
         } else if (!validarApellidos(apellidos)) {
             JOptionPane.showMessageDialog(null, "Ingrese apellidos válidos.");
         } else if (!validarDireccion(direccion)) {
             JOptionPane.showMessageDialog(null, "Ingrese una dirección domiciliaria válida.");
-        } else if (!validarTelefono(telefono)) {
+        } else if (!validarTelefono(celular)) {
             JOptionPane.showMessageDialog(null, "Ingrese un número de teléfono celular válido.");
-        } else if (!validarTrabajo(trabajo)) {
+        } else if (!validarTrabajo(ocupacion)) {
             JOptionPane.showMessageDialog(null, "Ingrese una ocupación o tipo de trabajo válida.");
         } else if (!validarCorreo(correo)) {
             JOptionPane.showMessageDialog(null, "Ingrese un correo electrónico válido.");
         } else {
             int response = JOptionPane.showConfirmDialog(this, "¿Está seguro que desea abrir la historia clínica del paciente: " + nombres + " " + apellidos + " ?", "ABRIR HISTORIA CLÍNICA", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (response == JOptionPane.YES_OPTION) {
+                //CONEXION A LA BD
+                try {
+                    Connection con = ConexionPacientes.getConexion();
+                    PreparedStatement ps = con.prepareStatement("INSERT INTO paciente (tipo_DocumentoID, num_DocumentoID, nacionalidad, nombres, apellidos, direccion, celular, fecha_nacimiento, sexo, estado_civil, ocupacion, tipo_sangre, correo) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+                    //ps.setInt(1, codEdificio);
+                    ps.setString(1, tipoID);
+                    ps.setString(2, num_DocumentoID);
+                    ps.setString(3, nacionalidad);
+                    ps.setString(4, nombres);
+                    ps.setString(5, apellidos);
+                    ps.setString(6, direccion);
+                    ps.setString(7, celular);
+                    ps.setString(8, fecha_nacimiento);
+                    ps.setString(9, sexo);
+                    ps.setString(10, estado_civil);
+                    ps.setString(11, ocupacion);
+                    ps.setString(12, tipo_sangre);
+                    ps.setString(13, correo);
+
+                    ps.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Registro de datos personales guardado con éxito");
+                } catch (SQLException e) {
+                    System.out.println(e.toString());
+                    JOptionPane.showMessageDialog(null, e.toString());
+                }
+
                 HistoriaClinica hc = new HistoriaClinica(this); // ES UN JPANEL
                 hc.setSize(sgpMedscAdmin.getPnContenido().getWidth(), sgpMedscAdmin.getPnContenido().getHeight());
                 hc.setLocation(0, 0);
