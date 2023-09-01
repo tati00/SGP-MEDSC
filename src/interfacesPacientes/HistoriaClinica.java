@@ -643,6 +643,7 @@ public class HistoriaClinica extends javax.swing.JPanel {
                         System.out.println(e.toString());
                         JOptionPane.showMessageDialog(null, e.toString());
                     }
+                    p.sgpMedscAdmin.dispose();
                     SGP_MEDSC_admin sgp = new SGP_MEDSC_admin();
                     sgp.setVisible(true);
                 }
@@ -650,6 +651,7 @@ public class HistoriaClinica extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnGuardarHCMouseClicked
 
+    
     private boolean validarNumeroHC(String id_historia) {
         String regex = "[0-9]{0,3}$";
         return id_historia.matches(regex);

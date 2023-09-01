@@ -28,6 +28,7 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
 
     public SGP_MEDSC_admin() {
         initComponents();
+        this.setExtendedState(this.MAXIMIZED_BOTH);
     }
 
     SGP_MEDSC_admin(LogUser login) {

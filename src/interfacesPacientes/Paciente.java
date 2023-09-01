@@ -22,7 +22,7 @@ import java.util.Date;
 
 public class Paciente extends javax.swing.JPanel {
 
-    private SGP_MEDSC_admin sgpMedscAdmin;
+    public SGP_MEDSC_admin sgpMedscAdmin;
 
     public Paciente(SGP_MEDSC_admin sgpMedscAdmin) {
         this.sgpMedscAdmin = sgpMedscAdmin;
@@ -73,13 +73,10 @@ public class Paciente extends javax.swing.JPanel {
         lblDisponibles = new javax.swing.JLabel();
         lblIdentificador = new javax.swing.JLabel();
         txtNumHCAct = new javax.swing.JTextField();
-        pnActCampo = new javax.swing.JPanel();
-        lblNuevo = new javax.swing.JLabel();
         txtActualizarCampo = new javax.swing.JTextField();
-        lblNuevoCB = new javax.swing.JLabel();
         cbEstadoCivil1 = new javax.swing.JComboBox<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        lblNuevo = new javax.swing.JLabel();
+        lblNuevoCB = new javax.swing.JLabel();
         pnActualizarDisponibles1 = new javax.swing.JPanel();
         lblDisponiblePass = new javax.swing.JLabel();
         lblIdentificador1 = new javax.swing.JLabel();
@@ -348,19 +345,36 @@ public class Paciente extends javax.swing.JPanel {
 
         lblIdentificador.setText("N° de la historia clínica: ");
 
+        cbEstadoCivil1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Soltero(a)", "Divorciado(a)", "Unión libre", "Viudo(a)" }));
+
+        lblNuevo.setText("Nuevo: ");
+
+        lblNuevoCB.setText("Nuevo: ");
+
         javax.swing.GroupLayout pnActualizarDisponiblesLayout = new javax.swing.GroupLayout(pnActualizarDisponibles);
         pnActualizarDisponibles.setLayout(pnActualizarDisponiblesLayout);
         pnActualizarDisponiblesLayout.setHorizontalGroup(
             pnActualizarDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnActualizarDisponiblesLayout.createSequentialGroup()
-                .addGap(228, 228, 228)
-                .addComponent(lblDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
-                .addComponent(lblIdentificador)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtNumHCAct, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnActualizarDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnActualizarDisponiblesLayout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addComponent(lblDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(57, 57, 57)
+                        .addComponent(lblIdentificador)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtNumHCAct, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnActualizarDisponiblesLayout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addGroup(pnActualizarDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblNuevoCB))
+                        .addGap(23, 23, 23)
+                        .addGroup(pnActualizarDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtActualizarCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbEstadoCivil1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnActualizarDisponiblesLayout.setVerticalGroup(
@@ -372,59 +386,16 @@ public class Paciente extends javax.swing.JPanel {
                     .addComponent(lblDisponibles)
                     .addComponent(lblIdentificador)
                     .addComponent(txtNumHCAct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-
-        pnActCampo.setBackground(new java.awt.Color(255, 255, 255));
-        pnActCampo.setBorder(javax.swing.BorderFactory.createTitledBorder("ACTUALIZAR CAMPO"));
-
-        lblNuevo.setText("Nuevo: ");
-
-        lblNuevoCB.setText("Nuevo: ");
-
-        cbEstadoCivil1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Soltero(a)", "Divorciado(a)", "Unión libre", "Viudo(a)" }));
-
-        javax.swing.GroupLayout pnActCampoLayout = new javax.swing.GroupLayout(pnActCampo);
-        pnActCampo.setLayout(pnActCampoLayout);
-        pnActCampoLayout.setHorizontalGroup(
-            pnActCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnActCampoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnActCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNuevoCB))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnActCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtActualizarCampo, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbEstadoCivil1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pnActCampoLayout.setVerticalGroup(
-            pnActCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnActCampoLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addGroup(pnActCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnActualizarDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtActualizarCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNuevo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnActCampoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNuevoCB)
-                    .addComponent(cbEstadoCivil1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnActualizarDisponiblesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbEstadoCivil1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNuevoCB))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
 
         pnActualizarDisponibles1.setBackground(new java.awt.Color(255, 255, 255));
         pnActualizarDisponibles1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)), "ACTUALIZAR PASAPORTE"));
@@ -438,15 +409,15 @@ public class Paciente extends javax.swing.JPanel {
         pnActualizarDisponibles1Layout.setHorizontalGroup(
             pnActualizarDisponibles1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnActualizarDisponibles1Layout.createSequentialGroup()
-                .addGap(141, 141, 141)
+                .addGap(69, 69, 69)
                 .addComponent(lblDisponiblePass, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtFieldNombresAct, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(95, 95, 95)
-                .addComponent(lblIdentificador1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtFieldNombresAct, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblIdentificador1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtFieldApellidosAct, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(txtFieldApellidosAct, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(380, Short.MAX_VALUE))
         );
         pnActualizarDisponibles1Layout.setVerticalGroup(
             pnActualizarDisponibles1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -459,6 +430,8 @@ public class Paciente extends javax.swing.JPanel {
                     .addComponent(txtFieldApellidosAct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
+
+        pnBTNActualizar.setBackground(new java.awt.Color(204, 204, 255));
 
         btnActualizar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnActualizar.setText("        Actualizar");
@@ -473,11 +446,17 @@ public class Paciente extends javax.swing.JPanel {
         pnBTNActualizar.setLayout(pnBTNActualizarLayout);
         pnBTNActualizarLayout.setHorizontalGroup(
             pnBTNActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+            .addGap(0, 112, Short.MAX_VALUE)
+            .addGroup(pnBTNActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(btnActualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))
         );
         pnBTNActualizarLayout.setVerticalGroup(
             pnBTNActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+            .addGap(0, 54, Short.MAX_VALUE)
+            .addGroup(pnBTNActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnBTNActualizarLayout.createSequentialGroup()
+                    .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
 
         javax.swing.GroupLayout pnSubActualizarLayout = new javax.swing.GroupLayout(pnSubActualizar);
@@ -485,33 +464,27 @@ public class Paciente extends javax.swing.JPanel {
         pnSubActualizarLayout.setHorizontalGroup(
             pnSubActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnSubActualizarLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
                 .addGroup(pnSubActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnSubActualizarLayout.createSequentialGroup()
-                        .addGap(984, 984, 984)
-                        .addComponent(pnBTNActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnSubActualizarLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
+                        .addComponent(pnBTNActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(pnSubActualizarLayout.createSequentialGroup()
                         .addGroup(pnSubActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(pnActualizarDisponibles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pnActCampo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pnActualizarDisponibles1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
+                            .addComponent(pnActualizarDisponibles1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         pnSubActualizarLayout.setVerticalGroup(
             pnSubActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnSubActualizarLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(pnActualizarDisponibles1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnActualizarDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pnActCampo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnActualizarDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnBTNActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(329, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnActualizarLayout = new javax.swing.GroupLayout(pnActualizar);
@@ -522,7 +495,9 @@ public class Paciente extends javax.swing.JPanel {
         );
         pnActualizarLayout.setVerticalGroup(
             pnActualizarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnSubActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnActualizarLayout.createSequentialGroup()
+                .addComponent(pnSubActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 6, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Actualizar", pnActualizar);
@@ -626,7 +601,7 @@ public class Paciente extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 561, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
                 .addGap(80, 80, 80))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -787,19 +762,80 @@ public class Paciente extends javax.swing.JPanel {
     }//GEN-LAST:event_txtDisponiblesActionPerformed
 
     private void btnActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMouseClicked
-        String apellidos = txtFieldApellidosAct.getText();
+        /*String apellidos = txtFieldApellidosAct.getText();
         int numHistoriaClinica = Integer.parseInt(txtFieldCorreo.getText());
         String nuevoCampo = txtActualizarCampo.getText();
-        String nombres = txtFieldNombresAct.getText();
+        String nombres = txtFieldNombresAct.getText();*/
 
-        if ((!nombres.isEmpty() && !apellidos.isEmpty()) || (!(numHistoriaClinica == 0 || numHistoriaClinica < 0) && !nuevoCampo.isEmpty())) {
-            int response = JOptionPane.showConfirmDialog(this, "¿Desea actualizar el nuevo campo?", "ACTUALIZAR", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-            if (response == JOptionPane.YES_OPTION) {
-                ///lógica de actualizar en la BD...
+        int id_historia = Integer.parseInt(txtNumHCAct.getText());
+        String num_DocumentoID = null;
+        try {
+
+            Connection con = ConexionPacientes.getConexion();
+            PreparedStatement ps = con.prepareStatement("SELECT  num_DocumentoID FROM historia_clinica WHERE id_historia=?");
+            ps.setInt(1, id_historia);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                num_DocumentoID = rs.getString("num_DocumentoID");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "NO EXISTE LA HISTORIA CLÍNICA CON ESE NÚMERO");
+        }
+
+        String eleccion = txtDisponibles.getSelectedItem().toString();
+        if (eleccion == "N° de teléfono celular") {
+            cbEstadoCivil1.setEnabled(false);
+            String nuevoNC = txtActualizarCampo.getText();
+            if (!nuevoNC.isEmpty()) {
+                try {
+
+                    Connection con = ConexionPacientes.getConexion();
+                    PreparedStatement ps = con.prepareStatement("UPDATE paciente SET celular=? WHERE num_DocumentoID=?");
+                    ps.setString(1, nuevoNC);
+                    ps.setString(2, num_DocumentoID);
+                    ps.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "NÚMERO DE TELÉFONO CELULAR ACTUALIZADO");
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, e.toString());
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Ingrese datos al campo.");
+            }
+
+        } else if (eleccion == "Dirección Domiciliaria") {
+            String nuevoDD = txtActualizarCampo.getText();
+            if (!nuevoDD.isEmpty()) {
+                try {
+
+                    Connection con = ConexionPacientes.getConexion();
+                    PreparedStatement ps = con.prepareStatement("UPDATE paciente SET direccion=? WHERE num_DocumentoID=?");
+
+                    ps.setString(1, nuevoDD);
+                    ps.setString(2, num_DocumentoID);
+                    ps.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "DIRECCIÓN DOMICILIARIA ACTUALIZADA");
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, e.toString());
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Ingrese datos al campo.");
             }
         } else {
-            // Mostrar un mensaje al usuario indicando que debe llenar los campos de texto
-            JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "CAMPOS VACÍOS", JOptionPane.WARNING_MESSAGE);
+            cbEstadoCivil1.setEnabled(true);
+            String nuevoEC = txtDisponibles.getSelectedItem().toString();
+            try {
+
+                Connection con = ConexionPacientes.getConexion();
+                PreparedStatement ps = con.prepareStatement("UPDATE paciente SET estado_civil=? WHERE num_DocumentoID=?");
+
+                ps.setString(1, nuevoEC);
+                ps.setString(2, num_DocumentoID);
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(null, "ESTADO CIVIL ACTUALIZADO");
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, e.toString());
+            }
         }
     }//GEN-LAST:event_btnActualizarMouseClicked
 
@@ -869,10 +905,8 @@ public class Paciente extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cbTipoID;
     private javax.swing.JComboBox<String> cbxTipoSangre;
     private com.toedter.calendar.JDateChooser jDateChooser;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblAbrirHC;
     private javax.swing.JLabel lblApellidos;
     private javax.swing.JLabel lblBTNConsultar;
@@ -896,7 +930,6 @@ public class Paciente extends javax.swing.JPanel {
     private javax.swing.JLabel lblTipoSangre;
     private javax.swing.JLabel lblTrabajo;
     private javax.swing.JPanel pnAbrirHC;
-    private javax.swing.JPanel pnActCampo;
     private javax.swing.JPanel pnActualizar;
     private javax.swing.JPanel pnActualizarDisponibles;
     private javax.swing.JPanel pnActualizarDisponibles1;
