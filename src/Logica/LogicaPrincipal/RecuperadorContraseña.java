@@ -24,7 +24,7 @@ import javax.swing.JOptionPane;
  * @author Usuario
  */
 public class RecuperadorContraseña {
-    final String password = "hknkededbopfukhg"; // CAMBIAR: TOKEN generado en Gmail->contraseñas de apliaciones
+    final String password = "qypqkqwnwhjkqovt"; // CAMBIAR: TOKEN generado en Gmail->contraseñas de apliaciones
     public void recuperarContraseña(String emisor,String receptor,String newPassword){
         //final String username = "esteban.45.bd@gmail.com"; // Cambia esto
      
@@ -47,7 +47,7 @@ public class RecuperadorContraseña {
             message.setFrom(new InternetAddress(emisor));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(receptor)); // Cambia esto
             message.setSubject("Recuperación de Contraseña");
-            message.setText("Tu nueva contraseña es : "+newPassword);
+            message.setText("Usuario de SGP-MEDSC tu contraseña es : "+newPassword+ "se recomienda que solicites el cambio de contraseña.");
 
             // Enviar el mensaje
             Transport.send(message);

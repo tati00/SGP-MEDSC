@@ -25,9 +25,14 @@ public class HistoriaClinica extends javax.swing.JPanel {
         initComponents();
         this.p = p;
         llenarInformacionPersonal();
+        txtNumHC = txtFieldNumeroID;
     }
 
+    HistoriaClinica() {
+ }
+
     private void llenarInformacionPersonal() {
+        txtNumHC.setText(p.getTxtFieldNumeroID().getText());
         cbTipoID.setSelectedItem(p.getCbTipoID().getSelectedItem());
         cbNacionalidad.setSelectedItem(p.getCbNacionalidad().getSelectedItem());
         txtFieldNumeroID.setText(p.getTxtFieldNumeroID().getText());
@@ -45,7 +50,7 @@ public class HistoriaClinica extends javax.swing.JPanel {
     }
 
     private void bloquearEdicion() {
-        //txtNumHC.setEnabled(false);
+        txtNumHC.setEnabled(false);
         cbTipoID.setEnabled(false);
         cbNacionalidad.setEnabled(false);
         txtFieldNumeroID.setEnabled(false);
@@ -108,13 +113,25 @@ public class HistoriaClinica extends javax.swing.JPanel {
         cbParentesco = new javax.swing.JComboBox<>();
         pnAlergiasAntecedentes = new javax.swing.JPanel();
         lblAlergias = new javax.swing.JLabel();
-        lblNombreEnfHereditaria = new javax.swing.JLabel();
+        lblAntecedenteFamiliar = new javax.swing.JLabel();
         lblTiempo = new javax.swing.JLabel();
         lblGradoParentesco = new javax.swing.JLabel();
         cbGradoParentesco = new javax.swing.JComboBox<>();
         txtTiempo = new javax.swing.JTextField();
         txtNombreEnfHereditaria = new javax.swing.JTextField();
         txtAlergias = new javax.swing.JTextField();
+        lblAntecedenteFamiliar1 = new javax.swing.JLabel();
+        txtNombreEnfHereditaria1 = new javax.swing.JTextField();
+        lblTiempo1 = new javax.swing.JLabel();
+        txtTiempo1 = new javax.swing.JTextField();
+        lblGradoParentesco1 = new javax.swing.JLabel();
+        cbGradoParentesco1 = new javax.swing.JComboBox<>();
+        lblAntecedenteFamiliar2 = new javax.swing.JLabel();
+        txtNombreEnfHereditaria2 = new javax.swing.JTextField();
+        lblTiempo2 = new javax.swing.JLabel();
+        txtTiempo2 = new javax.swing.JTextField();
+        lblGradoParentesco2 = new javax.swing.JLabel();
+        cbGradoParentesco2 = new javax.swing.JComboBox<>();
         pnAtenciones = new javax.swing.JPanel();
         pnAgregarAtención = new javax.swing.JPanel();
         lblAtencionMedica = new javax.swing.JLabel();
@@ -277,7 +294,7 @@ public class HistoriaClinica extends javax.swing.JPanel {
             .addGroup(pnInfoPersonalLayout.createSequentialGroup()
                 .addGap(106, 106, 106)
                 .addComponent(cbxTipoSangre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(163, Short.MAX_VALUE))
+                .addContainerGap(151, Short.MAX_VALUE))
             .addGroup(pnInfoPersonalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnInfoPersonalLayout.createSequentialGroup()
                     .addGap(37, 37, 37)
@@ -335,7 +352,7 @@ public class HistoriaClinica extends javax.swing.JPanel {
                         .addGroup(pnInfoPersonalLayout.createSequentialGroup()
                             .addGap(71, 71, 71)
                             .addComponent(lblTipoSangre)))
-                    .addContainerGap(28, Short.MAX_VALUE)))
+                    .addContainerGap(16, Short.MAX_VALUE)))
         );
 
         pnContactoReferencia.setBackground(new java.awt.Color(255, 255, 255));
@@ -351,14 +368,14 @@ public class HistoriaClinica extends javax.swing.JPanel {
 
         lblParentesco.setText("Parentesco por: ");
 
-        cbParentesco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Consanguinidad", "Afinidad", "Adopción" }));
+        cbParentesco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Consanguinidad", "Afinidad", "Adopción", "Sin parentesco" }));
 
         javax.swing.GroupLayout pnContactoReferenciaLayout = new javax.swing.GroupLayout(pnContactoReferencia);
         pnContactoReferencia.setLayout(pnContactoReferenciaLayout);
         pnContactoReferenciaLayout.setHorizontalGroup(
             pnContactoReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnContactoReferenciaLayout.createSequentialGroup()
-                .addGap(61, 61, 61)
+                .addGap(62, 62, 62)
                 .addGroup(pnContactoReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(pnContactoReferenciaLayout.createSequentialGroup()
                         .addComponent(lblNombresContacto)
@@ -367,7 +384,7 @@ public class HistoriaClinica extends javax.swing.JPanel {
                     .addGroup(pnContactoReferenciaLayout.createSequentialGroup()
                         .addComponent(lblApellidosContacto)
                         .addGap(18, 18, 18)
-                        .addComponent(txtFieldApellidosContacto)))
+                        .addComponent(txtFieldApellidosContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(33, 33, 33)
                 .addGroup(pnContactoReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTelefonoCelularContacto)
@@ -375,13 +392,13 @@ public class HistoriaClinica extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnContactoReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtFieldTelefonoContacto)
-                    .addComponent(cbParentesco, 0, 139, Short.MAX_VALUE))
+                    .addComponent(cbParentesco, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnContactoReferenciaLayout.setVerticalGroup(
             pnContactoReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnContactoReferenciaLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(18, 18, 18)
                 .addGroup(pnContactoReferenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtFieldNombresContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnContactoReferenciaLayout.createSequentialGroup()
@@ -400,7 +417,7 @@ public class HistoriaClinica extends javax.swing.JPanel {
                     .addGroup(pnContactoReferenciaLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(lblApellidosContacto)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnAlergiasAntecedentes.setBackground(new java.awt.Color(255, 255, 255));
@@ -408,7 +425,7 @@ public class HistoriaClinica extends javax.swing.JPanel {
 
         lblAlergias.setText("Alergias: ");
 
-        lblNombreEnfHereditaria.setText("Nombre de la enfermedad hereditaria: ");
+        lblAntecedenteFamiliar.setText("Antecedente Familiar (1)");
 
         lblTiempo.setText("Tiempo (años): ");
 
@@ -416,30 +433,72 @@ public class HistoriaClinica extends javax.swing.JPanel {
 
         cbGradoParentesco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
 
+        lblAntecedenteFamiliar1.setText("Antecedente Familiar (2)");
+
+        lblTiempo1.setText("Tiempo (años): ");
+
+        lblGradoParentesco1.setText("Grado de parentesco: ");
+
+        cbGradoParentesco1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
+
+        lblAntecedenteFamiliar2.setText("Antecedente Familiar (3)");
+
+        lblTiempo2.setText("Tiempo (años): ");
+
+        lblGradoParentesco2.setText("Grado de parentesco: ");
+
+        cbGradoParentesco2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
+
         javax.swing.GroupLayout pnAlergiasAntecedentesLayout = new javax.swing.GroupLayout(pnAlergiasAntecedentes);
         pnAlergiasAntecedentes.setLayout(pnAlergiasAntecedentesLayout);
         pnAlergiasAntecedentesLayout.setHorizontalGroup(
             pnAlergiasAntecedentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnAlergiasAntecedentesLayout.createSequentialGroup()
                 .addGap(59, 59, 59)
-                .addGroup(pnAlergiasAntecedentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblAlergias)
+                .addGroup(pnAlergiasAntecedentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(pnAlergiasAntecedentesLayout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addComponent(txtAlergias, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnAlergiasAntecedentesLayout.createSequentialGroup()
-                        .addGroup(pnAlergiasAntecedentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblNombreEnfHereditaria)
-                            .addComponent(lblGradoParentesco))
+                        .addComponent(lblAntecedenteFamiliar2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNombreEnfHereditaria2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblTiempo2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtTiempo2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblGradoParentesco2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbGradoParentesco2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnAlergiasAntecedentesLayout.createSequentialGroup()
+                        .addComponent(lblAntecedenteFamiliar1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNombreEnfHereditaria1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblTiempo1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtTiempo1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblGradoParentesco1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbGradoParentesco1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnAlergiasAntecedentesLayout.createSequentialGroup()
                         .addGroup(pnAlergiasAntecedentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNombreEnfHereditaria)
-                            .addComponent(cbGradoParentesco, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addComponent(lblTiempo)
-                .addGap(34, 34, 34)
-                .addComponent(txtTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65))
+                            .addComponent(lblAlergias)
+                            .addGroup(pnAlergiasAntecedentesLayout.createSequentialGroup()
+                                .addGap(74, 74, 74)
+                                .addComponent(txtAlergias, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnAlergiasAntecedentesLayout.createSequentialGroup()
+                                .addComponent(lblAntecedenteFamiliar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNombreEnfHereditaria, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblTiempo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblGradoParentesco)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbGradoParentesco, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         pnAlergiasAntecedentesLayout.setVerticalGroup(
             pnAlergiasAntecedentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -449,18 +508,30 @@ public class HistoriaClinica extends javax.swing.JPanel {
                     .addComponent(lblAlergias)
                     .addComponent(txtAlergias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(pnAlergiasAntecedentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnAlergiasAntecedentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblTiempo)
-                        .addComponent(txtTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnAlergiasAntecedentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblNombreEnfHereditaria)
-                        .addComponent(txtNombreEnfHereditaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnAlergiasAntecedentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAntecedenteFamiliar)
+                    .addComponent(txtNombreEnfHereditaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTiempo)
+                    .addComponent(txtTiempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblGradoParentesco)
                     .addComponent(cbGradoParentesco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnAlergiasAntecedentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAntecedenteFamiliar1)
+                    .addComponent(txtNombreEnfHereditaria1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTiempo1)
+                    .addComponent(txtTiempo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblGradoParentesco1)
+                    .addComponent(cbGradoParentesco1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnAlergiasAntecedentesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAntecedenteFamiliar2)
+                    .addComponent(txtNombreEnfHereditaria2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTiempo2)
+                    .addComponent(txtTiempo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblGradoParentesco2)
+                    .addComponent(cbGradoParentesco2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnAtenciones.setBackground(new java.awt.Color(255, 255, 255));
@@ -494,48 +565,19 @@ public class HistoriaClinica extends javax.swing.JPanel {
         pnAtencionesLayout.setHorizontalGroup(
             pnAtencionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnAtencionesLayout.createSequentialGroup()
-                .addGap(254, 254, 254)
+                .addGap(253, 253, 253)
                 .addComponent(pnAgregarAtención, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnAtencionesLayout.setVerticalGroup(
             pnAtencionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnAtencionesLayout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(pnAgregarAtención, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(90, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout pnMovLayout = new javax.swing.GroupLayout(pnMov);
-        pnMov.setLayout(pnMovLayout);
-        pnMovLayout.setHorizontalGroup(
-            pnMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnMovLayout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addGroup(pnMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnContactoReferencia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnInfoPersonal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnAlergiasAntecedentes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnAtenciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(58, Short.MAX_VALUE))
-        );
-        pnMovLayout.setVerticalGroup(
-            pnMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnMovLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnInfoPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnContactoReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnAlergiasAntecedentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pnAtenciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addComponent(pnAgregarAtención, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(93, Short.MAX_VALUE))
         );
 
-        movPnHC.setViewportView(pnMov);
-
-        add(movPnHC, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 54, 890, 810));
+        pnGuardar.setBackground(new java.awt.Color(204, 204, 204));
 
         btnGuardarHC.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnGuardarHC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -552,20 +594,50 @@ public class HistoriaClinica extends javax.swing.JPanel {
         pnGuardar.setLayout(pnGuardarLayout);
         pnGuardarLayout.setHorizontalGroup(
             pnGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 114, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(pnGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnGuardarLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnGuardarHC, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(btnGuardarHC, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE))
         );
         pnGuardarLayout.setVerticalGroup(
             pnGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
+            .addGap(0, 52, Short.MAX_VALUE)
             .addGroup(pnGuardarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(btnGuardarHC, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
+                .addComponent(btnGuardarHC, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE))
         );
 
-        add(pnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 0, 110, -1));
+        javax.swing.GroupLayout pnMovLayout = new javax.swing.GroupLayout(pnMov);
+        pnMov.setLayout(pnMovLayout);
+        pnMovLayout.setHorizontalGroup(
+            pnMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnMovLayout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addGroup(pnMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(pnContactoReferencia, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnInfoPersonal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnAlergiasAntecedentes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnAtenciones, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(92, Short.MAX_VALUE))
+        );
+        pnMovLayout.setVerticalGroup(
+            pnMovLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnMovLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnInfoPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnContactoReferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnAlergiasAntecedentes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(pnAtenciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(141, Short.MAX_VALUE))
+        );
+
+        movPnHC.setViewportView(pnMov);
+
+        add(movPnHC, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 54, 870, 840));
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbTipoIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTipoIDActionPerformed
@@ -579,24 +651,37 @@ public class HistoriaClinica extends javax.swing.JPanel {
     }//GEN-LAST:event_cbTipoIDActionPerformed
 
     private void btnGuardarHCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarHCMouseClicked
-        int id_historia = Integer.parseInt(txtNumHC.getText());
+
+        String id_historia = txtNumHC.getText();
         String num_DocumentoID = txtFieldNumeroID.getText();
         String contacto_emergencia_apellido = txtFieldApellidosContacto.getText();
         String contacto_emergencia_nombre = txtFieldNombresContacto.getText();
         String contacto_emergencia_celular = txtFieldTelefonoContacto.getText();
         String alergia = txtAlergias.getText();
         String enfermedad_hereditaria = txtNombreEnfHereditaria.getText();
+        String enfermedad_hereditaria1 = txtNombreEnfHereditaria1.getText();
+        String enfermedad_hereditaria2 = txtNombreEnfHereditaria2.getText();
         String tiempoVacío = txtTiempo.getText();
+        String tiempoVacío1 = txtTiempo1.getText();
+        String tiempoVacío2 = txtTiempo2.getText();
         int tiempo = 0;
-        if (tiempoVacío.isEmpty()) {
-            tiempo = 0;
-        } else {
+        int tiempo1 = 0;
+        int tiempo2 = 0;
+        if (!tiempoVacío.isEmpty() && !tiempoVacío1.isEmpty() && !tiempoVacío2.isEmpty()) {
             tiempo = Integer.parseInt(txtTiempo.getText());
+            tiempo1 = Integer.parseInt(txtTiempo1.getText());
+            tiempo2 = Integer.parseInt(txtTiempo2.getText());
         }
         String contacto_emergencia_parentesco = cbParentesco.getSelectedItem().toString();
-        String grado = cbGradoParentesco.getSelectedItem().toString();
-        if (enfermedad_hereditaria == "Ninguna" || enfermedad_hereditaria == "ninguna") {
-            grado = "0";
+        String grado = "0";
+        String grado1 = "0";
+        String grado2 = "0";
+        if (!enfermedad_hereditaria.toLowerCase().equals("ninguno")
+                && !enfermedad_hereditaria1.toLowerCase().equals("ninguno")
+                && !enfermedad_hereditaria2.toLowerCase().equals("ninguno")) {
+            grado = cbGradoParentesco.getSelectedItem().toString();
+            grado1 = cbGradoParentesco1.getSelectedItem().toString();
+            grado2 = cbGradoParentesco2.getSelectedItem().toString();
         }
 
         if (contacto_emergencia_nombre.isEmpty() || contacto_emergencia_apellido.isEmpty() || contacto_emergencia_celular.isEmpty()) {
@@ -604,9 +689,7 @@ public class HistoriaClinica extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos.", "CAMPOS VACÍOS", JOptionPane.WARNING_MESSAGE);
         } else {
             // Validar campos uno por uno
-            if (!validarNumeroHC(txtNumHC.getText())) {
-                JOptionPane.showMessageDialog(null, "Ingrese un número de historia clínica válido.");
-            } else if (!validarNombres(contacto_emergencia_nombre)) {
+            if (!validarNombres(contacto_emergencia_nombre)) {
                 JOptionPane.showMessageDialog(null, "Ingrese nombres de contacto válidos.");
             } else if (!validarApellidos(contacto_emergencia_apellido)) {
                 JOptionPane.showMessageDialog(null, "Ingrese apellidos de contacto válidos.");
@@ -625,17 +708,23 @@ public class HistoriaClinica extends javax.swing.JPanel {
                     try {
                         Connection con = ConexionPacientes.getConexion();
 
-                        PreparedStatement ps = con.prepareStatement("INSERT INTO historia_clinica(id_historia, num_DocumentoID, contacto_emergencia_nombre, contacto_emergencia_apellido, contacto_emergencia_celular, contacto_emergencia_parentesco, alergia, enfermedad_hereditaria, tiempo, grado) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
-                        ps.setInt(1, id_historia);
+                        PreparedStatement ps = con.prepareStatement("INSERT INTO historia_clinica(id_historia, num_DocumentoID, contacto_emergencia_nombre, contacto_emergencia_apellido, contacto_emergencia_celular, contacto_emergencia_parentesco, alergia, enfermedad_hereditaria, enfermedad_hereditaria_1, enfermedad_hereditaria_2, tiempo, tiempo_1, tiempo_2, grado, grado_1, grado_2) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+                        ps.setString(1, id_historia);
                         ps.setString(2, num_DocumentoID);
                         ps.setString(3, contacto_emergencia_nombre);
                         ps.setString(4, contacto_emergencia_apellido);
                         ps.setString(5, contacto_emergencia_celular);
                         ps.setString(6, contacto_emergencia_parentesco);
                         ps.setString(7, enfermedad_hereditaria);
-                        ps.setString(8, alergia);
-                        ps.setInt(9, tiempo);
-                        ps.setString(10, grado);
+                        ps.setString(8, enfermedad_hereditaria1);
+                        ps.setString(9, enfermedad_hereditaria2);
+                        ps.setString(10, alergia);
+                        ps.setInt(11, tiempo);
+                        ps.setInt(12, tiempo1);
+                        ps.setInt(13, tiempo2);
+                        ps.setString(14, grado);
+                        ps.setString(15, grado1);
+                        ps.setString(16, grado2);
 
                         ps.executeUpdate();
                         JOptionPane.showMessageDialog(null, "Historia clínica guardada con éxito");
@@ -650,12 +739,6 @@ public class HistoriaClinica extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_btnGuardarHCMouseClicked
-
-    
-    private boolean validarNumeroHC(String id_historia) {
-        String regex = "[0-9]{0,3}$";
-        return id_historia.matches(regex);
-    }
 
     public static boolean validarNombres(String nombres) {
         String regex = "^[a-zA-ZáéíóúÁÉÍÓÚñÑ¨`~ ]{1,60}$";
@@ -691,6 +774,8 @@ public class HistoriaClinica extends javax.swing.JPanel {
     private javax.swing.JLabel btnGuardarHC;
     private javax.swing.JComboBox<String> cbEstadoCivil;
     private javax.swing.JComboBox<String> cbGradoParentesco;
+    private javax.swing.JComboBox<String> cbGradoParentesco1;
+    private javax.swing.JComboBox<String> cbGradoParentesco2;
     private javax.swing.JComboBox<String> cbNacionalidad;
     private javax.swing.JComboBox<String> cbParentesco;
     private javax.swing.JComboBox<String> cbSexo;
@@ -698,6 +783,9 @@ public class HistoriaClinica extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cbxTipoSangre;
     private com.toedter.calendar.JDateChooser jDateChooser;
     private javax.swing.JLabel lblAlergias;
+    private javax.swing.JLabel lblAntecedenteFamiliar;
+    private javax.swing.JLabel lblAntecedenteFamiliar1;
+    private javax.swing.JLabel lblAntecedenteFamiliar2;
     private javax.swing.JLabel lblApellidos;
     private javax.swing.JLabel lblApellidosContacto;
     private javax.swing.JLabel lblAtencionMedica;
@@ -705,10 +793,11 @@ public class HistoriaClinica extends javax.swing.JPanel {
     private javax.swing.JLabel lblDireccion;
     private javax.swing.JLabel lblEstadoCivil;
     private javax.swing.JLabel lblGradoParentesco;
+    private javax.swing.JLabel lblGradoParentesco1;
+    private javax.swing.JLabel lblGradoParentesco2;
     private javax.swing.JLabel lblIdentificador;
     private javax.swing.JLabel lblNacimiento;
     private javax.swing.JLabel lblNacionalidad;
-    private javax.swing.JLabel lblNombreEnfHereditaria;
     private javax.swing.JLabel lblNombres;
     private javax.swing.JLabel lblNombresContacto;
     private javax.swing.JLabel lblNumeroID;
@@ -717,6 +806,8 @@ public class HistoriaClinica extends javax.swing.JPanel {
     private javax.swing.JLabel lblTelefonoCelular;
     private javax.swing.JLabel lblTelefonoCelularContacto;
     private javax.swing.JLabel lblTiempo;
+    private javax.swing.JLabel lblTiempo1;
+    private javax.swing.JLabel lblTiempo2;
     private javax.swing.JLabel lblTipoID;
     private javax.swing.JLabel lblTipoSangre;
     private javax.swing.JLabel lblTrabajo;
@@ -741,8 +832,13 @@ public class HistoriaClinica extends javax.swing.JPanel {
     private javax.swing.JTextField txtFieldTelefonoContacto;
     private javax.swing.JTextField txtFieldTrabajo;
     private javax.swing.JTextField txtNombreEnfHereditaria;
+    private javax.swing.JTextField txtNombreEnfHereditaria1;
+    private javax.swing.JTextField txtNombreEnfHereditaria2;
     private javax.swing.JTextField txtNumHC;
     private javax.swing.JTextField txtTiempo;
+    private javax.swing.JTextField txtTiempo1;
+    private javax.swing.JTextField txtTiempo2;
     // End of variables declaration//GEN-END:variables
+
 
 }

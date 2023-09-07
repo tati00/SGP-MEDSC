@@ -52,7 +52,6 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         lblUsuarioIcon = new javax.swing.JLabel();
-        cbTipoDeUsuarios = new javax.swing.JComboBox<>();
         btnIniciarSesion = new javax.swing.JButton();
         txtFldUsuario = new javax.swing.JTextField();
         jPasswordField = new javax.swing.JPasswordField();
@@ -71,9 +70,6 @@ public class Menu extends javax.swing.JFrame {
         lblUsuarioIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/user25px.png"))); // NOI18N
         getContentPane().add(lblUsuarioIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, -1, -1));
 
-        cbTipoDeUsuarios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Principal", "General" }));
-        getContentPane().add(cbTipoDeUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 250, -1));
-
         btnIniciarSesion.setBackground(new java.awt.Color(216, 180, 152));
         btnIniciarSesion.setText("Iniciar sesión");
         btnIniciarSesion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(90, 58, 35)));
@@ -82,7 +78,7 @@ public class Menu extends javax.swing.JFrame {
                 btnIniciarSesionActionPerformed(evt);
             }
         });
-        getContentPane().add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 250, -1));
+        getContentPane().add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 250, 30));
 
         txtFldUsuario.setText("grupo1admin");
         txtFldUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -176,7 +172,7 @@ public class Menu extends javax.swing.JFrame {
             
         }*/
         try {
-            if (!conexión.verificarParametro(AtributosUser.Username.getValue(),login.getUsername()) || !conexión.verificarParametro(AtributosUser.Contraseña.getValue(), login.getPasswd())) {
+            if (!conexión.verificarParametro(AtributosUser.Nombre_de_Usuario.getValue(),login.getUsername()) || !conexión.verificarParametro(AtributosUser.Contraseña.getValue(), login.getPasswd())) {
                     intentos++;
                         
                     if (intentos > 0 && intentos < 3) {
@@ -188,7 +184,7 @@ public class Menu extends javax.swing.JFrame {
                     }
             } else {
                 // todo actualizar esto en la tabla :conexión.consultarTipoUsuario(login.getUsername())
-                login.setUserType("Medico General");
+                login.setUserType(conexión.consultarTipoUsuario(login.getUsername()));
                 SGP_MEDSC_admin sgp = new SGP_MEDSC_admin(login);
                 sgp.setVisible(true);
                 this.dispose();
@@ -256,7 +252,6 @@ public class Menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIniciarSesion;
     private javax.swing.JButton btnReseatPass;
-    private javax.swing.JComboBox<String> cbTipoDeUsuarios;
     private javax.swing.JPasswordField jPasswordField;
     private javax.swing.JLabel lblClinica;
     private javax.swing.JLabel lblContraseñaIcon;

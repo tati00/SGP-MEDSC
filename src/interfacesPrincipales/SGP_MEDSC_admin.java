@@ -37,13 +37,15 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
         this.setExtendedState(this.MAXIMIZED_BOTH);
         this.setTitle("SISTEMA DE GESTIÓN DE PACIENTES PARA LA CLÍNICA MEDSC");
         this.setLocationRelativeTo(null);
-        if (login.getUserType().equals("Medico Normal")) {
+        if (!login.getUserType().equals("Medico Principal")) {
             pnAdministracion.setVisible(false);
             lblbtnAdministracion.setEnabled(false);
         }
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
+ public LogUser obtenerUser(){
+     return this.user;
+ }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -312,7 +314,7 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void lblbtnPacientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblbtnPacientesMouseClicked
-        Paciente p = new Paciente(this); //ES UN JPANEL
+        Paciente p = new Paciente(this,user); //ES UN JPANEL
         p.setSize(1015, 647);
         p.setLocation(0, 0);
 

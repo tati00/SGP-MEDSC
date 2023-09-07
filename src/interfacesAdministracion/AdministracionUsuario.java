@@ -8,11 +8,15 @@ import Logica.LogicaPrincipal.Encriptador;
 import Logica.LogicaPrincipal.AtributosUser;
 import Logica.LogicaPrincipal.Usuario;
 import Logica.LogicaPrincipal.UsuarioParametrosInvalidos;
+import Logica.LogicaPrincipal.ValidaciónUsuario;
+import java.awt.HeadlessException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
@@ -42,11 +46,13 @@ public class AdministracionUsuario extends javax.swing.JFrame {
         panelUpdate.setVisible(false);
         // Identificar la opción del comboBoxNecesaria
         dictionary = new HashMap<>();
-        dictionary.put(AtributosUser.Username.toString(), AtributosUser.Username.getValue());
+        dictionary.put(AtributosUser.Nombre_de_Usuario.toString(), AtributosUser.Nombre_de_Usuario.getValue());
         dictionary.put(AtributosUser.Correo_Electrónico.toString(), AtributosUser.Correo_Electrónico.getValue());
+        dictionary.put(AtributosUser.Contraseña.toString(), AtributosUser.Contraseña.getValue());
         cmbParametro.addItem("");
-        cmbParametro.addItem(AtributosUser.Username.toString());
+        cmbParametro.addItem(AtributosUser.Nombre_de_Usuario.toString());
         cmbParametro.addItem(AtributosUser.Correo_Electrónico.toString());
+        cmbParametro.addItem(AtributosUser.Contraseña.toString());
         limpiarUpdate();
         this.setLocationRelativeTo(null);
     }
@@ -82,13 +88,10 @@ public class AdministracionUsuario extends javax.swing.JFrame {
         txtId = new javax.swing.JTextField();
         txtUserName = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        btnSalir = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
-        lblPassMes = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
         search = new javax.swing.JPanel();
-        btnSalir1 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         txtNombres = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -97,9 +100,7 @@ public class AdministracionUsuario extends javax.swing.JFrame {
         txtApellidos = new javax.swing.JTextField();
         txtUsername = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
         txtemail = new javax.swing.JTextField();
-        txtUsertype = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         txtCedulaConsulta = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
@@ -117,7 +118,6 @@ public class AdministracionUsuario extends javax.swing.JFrame {
         lblNuevo = new javax.swing.JLabel();
         txtNuevo = new javax.swing.JTextField();
         txtActual = new javax.swing.JTextField();
-        btnSalir2 = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         delete = new javax.swing.JPanel();
@@ -149,24 +149,24 @@ public class AdministracionUsuario extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/usuario.png"))); // NOI18N
         jLabel1.setAlignmentX(0.5F);
-        insert.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 70, 70));
+        insert.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 70, 70));
 
         jLabel2.setText("Nombre de Usuario");
         jLabel2.setToolTipText("");
-        insert.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, -1, -1));
+        insert.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, -1, -1));
 
         jLabel3.setText("Correo Electrónico");
-        insert.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, 10));
+        insert.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 240, -1, 10));
 
         jLabel4.setText("Contraseña");
-        insert.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, -1, -1));
-        insert.add(txtLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 120, -1));
+        insert.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, -1, -1));
+        insert.add(txtLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, 120, -1));
 
         jLabel6.setText("Nombres");
-        insert.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
+        insert.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, -1, -1));
 
         jLabel7.setText("Número de Cédula");
-        insert.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, -1, -1));
+        insert.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, -1, -1));
 
         btnRegistrar.setBackground(new java.awt.Color(50, 139, 232));
         btnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
@@ -176,51 +176,34 @@ public class AdministracionUsuario extends javax.swing.JFrame {
                 btnRegistrarActionPerformed(evt);
             }
         });
-        insert.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 110, 30));
+        insert.add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 390, 110, 30));
 
         txtPassw.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtPasswKeyReleased(evt);
             }
         });
-        insert.add(txtPassw, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 120, -1));
-        insert.add(txtNames, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 120, -1));
-        insert.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 120, -1));
-        insert.add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 120, -1));
+        insert.add(txtPassw, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 330, 120, -1));
+        insert.add(txtNames, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 120, -1));
+        insert.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 120, -1));
+        insert.add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 120, -1));
 
-        jLabel8.setText("Regístrate");
-        insert.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, -1));
-
-        btnSalir.setText("Salir");
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
-            }
-        });
-        insert.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 100, 30));
+        jLabel8.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel8.setText("Registrar Usuario");
+        insert.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, -1, -1));
 
         jLabel9.setText("Apellidos");
-        insert.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, -1, -1));
-        insert.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 120, -1));
-
-        lblPassMes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/x.png"))); // NOI18N
-        insert.add(lblPassMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 30, 30));
+        insert.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, -1, -1));
+        insert.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, 120, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/fondov3.jpg"))); // NOI18N
-        insert.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 450, 380));
+        insert.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 640, 520));
 
         Container.addTab("Nuevo Usuario", insert);
 
         search.setBackground(new java.awt.Color(255, 255, 255));
         search.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnSalir1.setText("Salir");
-        btnSalir1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalir1ActionPerformed(evt);
-            }
-        });
-        search.add(btnSalir1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 100, 30));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Usuario", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(0, 153, 255))); // NOI18N
@@ -245,11 +228,7 @@ public class AdministracionUsuario extends javax.swing.JFrame {
 
         jLabel12.setText("Apellidos");
 
-        jLabel13.setText("Tipo De Usuario");
-
         txtemail.setEditable(false);
-
-        txtUsertype.setEditable(false);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -257,28 +236,23 @@ public class AdministracionUsuario extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel5Layout.createSequentialGroup()
-                            .addComponent(jLabel5)
-                            .addGap(101, 101, 101)
-                            .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel5Layout.createSequentialGroup()
-                            .addComponent(jLabel12)
-                            .addGap(96, 96, 96)
-                            .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel5Layout.createSequentialGroup()
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel11)
-                                .addComponent(jLabel10))
-                            .addGap(47, 47, 47)
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtUsertype, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel5)
+                        .addGap(101, 101, 101)
+                        .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addGap(96, 96, 96)
+                        .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel10))
+                        .addGap(47, 47, 47)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(34, 45, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -300,14 +274,10 @@ public class AdministracionUsuario extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtUsertype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        search.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 370, 220));
+        search.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 370, 170));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -353,10 +323,10 @@ public class AdministracionUsuario extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        search.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
+        search.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, -1, -1));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/fondov3.jpg"))); // NOI18N
-        search.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 380));
+        search.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 520));
 
         Container.addTab("Consultar Usuario", search);
 
@@ -368,7 +338,7 @@ public class AdministracionUsuario extends javax.swing.JFrame {
 
         jLabel18.setText("Número de cédula");
 
-        jLabel19.setText("Parametro");
+        jLabel19.setText("Atributo");
 
         cmbParametro.setToolTipText("");
 
@@ -418,7 +388,7 @@ public class AdministracionUsuario extends javax.swing.JFrame {
                 .addGap(18, 18, 18))
         );
 
-        update.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 320, 130));
+        update.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 320, 130));
 
         panelUpdate.setBackground(new java.awt.Color(255, 255, 255));
         panelUpdate.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(51, 153, 255))); // NOI18N
@@ -434,7 +404,7 @@ public class AdministracionUsuario extends javax.swing.JFrame {
                 .addGroup(panelUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblActual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(panelUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtActual, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -454,15 +424,7 @@ public class AdministracionUsuario extends javax.swing.JFrame {
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
-        update.add(panelUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 360, 120));
-
-        btnSalir2.setText("Salir");
-        btnSalir2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalir2ActionPerformed(evt);
-            }
-        });
-        update.add(btnSalir2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 100, 30));
+        update.add(panelUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 360, 120));
 
         btnActualizar.setBackground(new java.awt.Color(51, 153, 255));
         btnActualizar.setFont(new java.awt.Font("Sitka Subheading", 1, 12)); // NOI18N
@@ -474,10 +436,10 @@ public class AdministracionUsuario extends javax.swing.JFrame {
                 btnActualizarActionPerformed(evt);
             }
         });
-        update.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 105, 30));
+        update.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, 105, 30));
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/fondov3.jpg"))); // NOI18N
-        update.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 380));
+        update.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 520));
 
         Container.addTab("Actualizar Usuario", update);
 
@@ -527,7 +489,7 @@ public class AdministracionUsuario extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        delete.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
+        delete.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, -1, -1));
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Usuario", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 12), new java.awt.Color(0, 153, 255))); // NOI18N
@@ -577,7 +539,7 @@ public class AdministracionUsuario extends javax.swing.JFrame {
                 .addContainerGap(11, Short.MAX_VALUE))
         );
 
-        delete.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 370, 90));
+        delete.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 370, 90));
 
         btnDelete.setBackground(new java.awt.Color(51, 153, 255));
         btnDelete.setFont(new java.awt.Font("Sitka Subheading", 1, 12)); // NOI18N
@@ -589,37 +551,35 @@ public class AdministracionUsuario extends javax.swing.JFrame {
                 btnDeleteActionPerformed(evt);
             }
         });
-        delete.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 110, 30));
+        delete.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 360, 110, 30));
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/fondov3.jpg"))); // NOI18N
-        delete.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 380));
+        delete.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 520));
 
         Container.addTab("Eliminar Usuario", delete);
 
-        jPanel1.add(Container, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 440, 410));
+        jPanel1.add(Container, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 630, 550));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-8, -6, 440, 410));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-8, -6, 640, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         try {
-            // TODO add your handling code here:
-            //conexión.conectar();
+            // TODO add your handling code here:            
             Usuario nuevo = new Usuario(txtNames.getText(),txtLastName.getText(),txtEmail.getText(),txtId.getText(), txtUserName.getText(),txtPassw.getText());
             confirmacion = JOptionPane.showConfirmDialog(rootPane, "¿Estas seguro de crear al usuario con los datos actuales?","Confirmación",JOptionPane.YES_NO_OPTION);
             if (confirmacion == JOptionPane.YES_NO_OPTION){
                 conexión.postUsuario(nuevo);
-                System.out.println("Registro completo"); 
+                JOptionPane.showMessageDialog(rootPane, "El usuario se ha creado exisitosamente", "Guardado", HEIGHT);
                 limpiarRegistro();
             }
-            //conexión.cerrarConexión();
         } catch (UsuarioParametrosInvalidos ex) {
             
             JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Error Registro", HEIGHT);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Error Conexion", HEIGHT);
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Error", HEIGHT);
       }  
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
@@ -634,17 +594,7 @@ public class AdministracionUsuario extends javax.swing.JFrame {
     }
     private void txtPasswKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswKeyReleased
         // TODO add your handling code here:
-        lblPassMes.setVisible(true);
-        if (Usuario.validarPassword(txtPassw.getText())){
-            lblPassMes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/visto.png")));
-        }else{
-            lblPassMes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/x.png")));
-        }
     }//GEN-LAST:event_txtPasswKeyReleased
-
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSalirActionPerformed
 
     private void txtNombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombresActionPerformed
         // TODO add your handling code here:
@@ -657,19 +607,23 @@ public class AdministracionUsuario extends javax.swing.JFrame {
             return;
         }
         try {
-            Usuario consultado = conexión.consultarInfoUsuario(txtCedulaConsulta.getText());
-            if (consultado == null){
+            Usuario consultado = conexión.consultarInfoUsuario(txtCedulaConsulta.getText()); 
+            
+            if (!ValidaciónUsuario.verificarCedula(txtCedulaConsulta.getText())){
                 JOptionPane.showMessageDialog(rootPane, "La cedula ingresa es no Valida", "Error Número de Cedula", HEIGHT);
+                return;
+            }
+            
+            if (consultado == null){
+                JOptionPane.showMessageDialog(rootPane, "El usuario no está registrado", "Error Número de Cedula", HEIGHT);
                 return;
             }
             txtNombres.setText(consultado.getNombres());
             txtApellidos.setText(consultado.getApellidos());
             txtUsername.setText(consultado.getUsernames());
             txtemail.setText(consultado.getEmail());
-            txtUsertype.setText(consultado.getUsetype());
-        } catch (SQLException | InvalidKeyException | IllegalBlockSizeException | 
-                BadPaddingException | NoSuchAlgorithmException | NoSuchPaddingException  ex) {
-            JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Error Consulta", HEIGHT);
+        } catch (HeadlessException | InvalidKeyException | NoSuchAlgorithmException | SQLException | BadPaddingException | IllegalBlockSizeException | NoSuchPaddingException  ex) {
+            JOptionPane.showMessageDialog(rootPane,ex.getMessage(), "Error Consulta", HEIGHT);
             //Logger.getLogger(AdministracionUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnConsultarActionPerformed
@@ -683,20 +637,25 @@ public class AdministracionUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Ingrese todos los parametros", "Error Consulta", HEIGHT);
         }else{
             try {
-                if (!conexión.verificarParametro(AtributosUser.Contraseña.getValue(), txtCedulaUpdate.getText())){
-                    JOptionPane.showMessageDialog(rootPane, "El usuario No existe", "Error Cedula", HEIGHT);
+                if (!ValidaciónUsuario.verificarCedula(txtCedulaConsulta.getText())){
+                    JOptionPane.showMessageDialog(rootPane, "La cedula ingresa es no Valida", "Error Número de Cedula", HEIGHT);
+                    return;
+                }
+                
+                if (!conexión.verificarEstaRegistrado(txtCedulaUpdate.getText())){
+                    JOptionPane.showMessageDialog(rootPane, "Usuario no registrado", "Error Cedula", HEIGHT);
                     return;
                 }
                 panelUpdate.setVisible(true);
                 limpiarUpdate();
                 parametro = conexión.consultarParametroPorId(dictionary.get(cmbParametro.getSelectedItem().toString()), txtCedulaUpdate.getText());
-                if (cmbParametro.getSelectedItem().toString().equals(AtributosUser.Username.toString())){
+                if (!cmbParametro.getSelectedItem().toString().equals(AtributosUser.Correo_Electrónico.toString())){
                     parametro = crpyt.desencriptar(parametro);
                 }
                 lblActual.setText(cmbParametro.getSelectedItem().toString()+" "+lblActual.getText());
                 lblNuevo.setText(cmbParametro.getSelectedItem().toString()+" "+lblNuevo.getText());
                 txtActual.setText(parametro);
-                //conexión.actualizarAtributo("User_nameU", parametro, txtNuevo.getText());
+                //conexión.actualizarAtributo(, parametro, txtNuevo.getText());
             } catch (SQLException | InvalidKeyException | IllegalBlockSizeException | 
                 BadPaddingException | NoSuchAlgorithmException | NoSuchPaddingException  ex){
                 JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Error Consulta", HEIGHT);
@@ -710,15 +669,32 @@ public class AdministracionUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Ingresa el nuevo Valor", "Error Actualizar", HEIGHT);
         }else{
             try {
-                confirmacion = JOptionPane.showConfirmDialog(rootPane, "¿Estas seguro de actualizar el "+cmbParametro.getSelectedItem().toString()+" ?","Confirmación",JOptionPane.YES_NO_OPTION);
-                if (confirmacion == JOptionPane.YES_NO_OPTION){
-                    conexión.actualizarAtributo(cmbParametro.getSelectedItem().toString(), txtCedulaUpdate.getText(), crpyt.encriptar(txtNuevo.getText()));
+                String os = dictionary.get(cmbParametro.getSelectedItem().toString());
+                if (!ValidaciónUsuario.validarEmail(txtNuevo.getText())){
+                    JOptionPane.showMessageDialog(rootPane,"El correo electrónico es no válido", "Error CorreoElectrónico", HEIGHT);
+                    return;
+                }
+                 if (conexión.verificarEstaRegistrado(txtCedulaDelete.getText())){
+                     JOptionPane.showMessageDialog(rootPane, "Usuario no está registrado", "Error Número de Cedula", HEIGHT);
+                     return;
+                 }
+                //confirmacion = JOptionPane.showConfirmDialog(rootPane, "¿Estas seguro de actualizar el "+cmbParametro.getSelectedItem().toString()+" ?","Confirmación",JOptionPane.YES_NO_OPTION);
+                //if (confirmacion == JOptionPane.YES_NO_OPTION){
+                    if (cmbParametro.getSelectedItem().toString().equals("Correo_Electrónico")){
+                      
+                        conexión.actualizarAtributo(os, txtCedulaUpdate.getText(), txtNuevo.getText());
+                    }else{
+                        
+                        conexión.actualizarAtributo(os, txtCedulaUpdate.getText(), crpyt.encriptar(txtNuevo.getText()));
+                       
+                    }
+                    
+                    JOptionPane.showMessageDialog(rootPane,cmbParametro.getSelectedItem().toString()+" actualizado exisitosamente", "Guardado", HEIGHT);
                     limpiarActualización();
-                    System.out.print("Actualización exitosa");
-                } 
+                //} 
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Error Consulta", HEIGHT);
-            }
+            } 
         }
     }//GEN-LAST:event_btnActualizarActionPerformed
 
@@ -729,17 +705,38 @@ public class AdministracionUsuario extends javax.swing.JFrame {
         txtNuevo.setText("");
         txtActual.setText("");
     }
-    private void btnSalir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir1ActionPerformed
-        // TODO add your handling code here:
-       
-    }//GEN-LAST:event_btnSalir1ActionPerformed
-
-    private void btnSalir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSalir2ActionPerformed
-
     private void btnConsultarDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarDeleteActionPerformed
         // TODO add your handling code here:
+        if (txtCedulaDelete.getText().isBlank()){
+            JOptionPane.showMessageDialog(rootPane, "Ingrese todos los parametros", "Error Consulta", HEIGHT);
+        }else{
+            if (!ValidaciónUsuario.verificarCedula(txtCedulaDelete.getText())){
+                JOptionPane.showMessageDialog(rootPane, "La cedula ingresa es no Valida", "Error Número de Cedula", HEIGHT);
+                return;
+            }
+             try {
+                 if (!conexión.verificarEstaRegistrado(txtCedulaDelete.getText())){
+                     JOptionPane.showMessageDialog(rootPane, "Usuario no está registrado", "Error Número de Cedula", HEIGHT);
+                     return;
+                 }
+                Usuario consultado = conexión.consultarInfoUsuario(txtCedulaDelete.getText());
+               
+                txtNombres1.setText(consultado.getNombres());
+                txtApellidos1.setText(consultado.getApellidos());
+                } catch (SQLException ex) {
+                Logger.getLogger(AdministracionUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InvalidKeyException ex) {
+                Logger.getLogger(AdministracionUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalBlockSizeException ex) {
+                Logger.getLogger(AdministracionUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (BadPaddingException ex) {
+                Logger.getLogger(AdministracionUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (NoSuchAlgorithmException ex) {
+                Logger.getLogger(AdministracionUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (NoSuchPaddingException ex) {
+                Logger.getLogger(AdministracionUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btnConsultarDeleteActionPerformed
 
     private void txtNombres1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombres1ActionPerformed
@@ -748,6 +745,15 @@ public class AdministracionUsuario extends javax.swing.JFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+       confirmacion = JOptionPane.showConfirmDialog(rootPane, "¿Estas seguro de eliminar al usuarios","Confirmación",JOptionPane.YES_NO_OPTION);
+        if (confirmacion == JOptionPane.YES_NO_OPTION){
+            try {
+                conexión.eliminarUsuario(txtCedulaDelete.getText());
+            } catch (SQLException ex) {
+                Logger.getLogger(AdministracionUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+         }
+
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
@@ -794,9 +800,6 @@ public class AdministracionUsuario extends javax.swing.JFrame {
     private javax.swing.JButton btnConsultarDelete;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnRegistrar;
-    private javax.swing.JButton btnSalir;
-    private javax.swing.JButton btnSalir1;
-    private javax.swing.JButton btnSalir2;
     private javax.swing.JButton btnsearch;
     private javax.swing.JComboBox<String> cmbParametro;
     private javax.swing.JPanel delete;
@@ -805,7 +808,6 @@ public class AdministracionUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -831,7 +833,6 @@ public class AdministracionUsuario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JLabel lblActual;
     private javax.swing.JLabel lblNuevo;
-    private javax.swing.JLabel lblPassMes;
     private javax.swing.JPanel panelUpdate;
     private javax.swing.JPanel search;
     private javax.swing.JTextField txtActual;
@@ -850,7 +851,6 @@ public class AdministracionUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField txtPassw;
     private javax.swing.JTextField txtUserName;
     private javax.swing.JTextField txtUsername;
-    private javax.swing.JTextField txtUsertype;
     private javax.swing.JTextField txtemail;
     private javax.swing.JPanel update;
     // End of variables declaration//GEN-END:variables

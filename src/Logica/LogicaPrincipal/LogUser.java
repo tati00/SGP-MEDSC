@@ -19,8 +19,6 @@ public class LogUser {
         cryp = new Encriptador();
         this.username = cryp.encriptar(username);
         this.passwd = cryp.encriptar(passwd);
-        System.out.println(this.passwd);
-        System.out.println(this.username);
     }
     
 
