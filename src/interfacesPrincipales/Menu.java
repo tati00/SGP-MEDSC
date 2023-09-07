@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import Logica.LogicaPrincipal.LogUser;
 import Logica.LogicaPrincipal.AtributosUser;
+///*******//////
 
 public class Menu extends javax.swing.JFrame {
 
