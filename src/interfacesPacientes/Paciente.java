@@ -32,12 +32,12 @@ public class Paciente extends javax.swing.JPanel {
         cbNacionalidad.setEnabled(false);
         /*if (!sgpMedscAdmin.obtenerUser().getUserType().equals("Medico Principal")) {
             pnActualizarDisponibles1.setVisible(false);
-        }*/
+        }
         //pnActualizarDisponibles1.setVisible(false);
         //if (!user.getUserType().equals("Medico Principal")) {
         //pnActualizarDisponibles1.setVisible(false);
         //}
-        //pnActualizarDisponibles1.setVisible(false);
+        //pnActualizarDisponibles1.setVisible(false);*/
     }
 
     @SuppressWarnings("unchecked")
@@ -1164,8 +1164,13 @@ public class Paciente extends javax.swing.JPanel {
         String estado_civil = cbEstadoCivil.getSelectedItem().toString();
         String sexo = cbSexo.getSelectedItem().toString();
         String tipo_sangre = cbxTipoSangre.getSelectedItem().toString();
+        // Consultar si el número de documento ya existe en la base de datos
+        boolean documentoExiste = consultarExistenciaDocumento(num_DocumentoID);
 
-        if (!validarNombres(nombres)) {
+        if (documentoExiste) {
+            JOptionPane.showMessageDialog(null, "Paciente anteriormente registrado.");
+            limpiar();
+        } else if (!validarNombres(nombres)) {
             JOptionPane.showMessageDialog(null, "Ingrese nombres válidos.");
         } else if (cbTipoID.getSelectedItem().equals("Pasaporte") && !validarPasaporte(num_DocumentoID)) {
             JOptionPane.showMessageDialog(null, "El número de pasaporte no es válido");
@@ -1209,10 +1214,6 @@ public class Paciente extends javax.swing.JPanel {
                     System.out.println(e.toString());
                     JOptionPane.showMessageDialog(null, e.toString());
                 }
-
-                /*HistoriaClinica1 hc = new HistoriaClinica1();
-                hc.setVisible(true);
-                sgpMedscAdmin.dispose();*/
                 HistoriaClinica hc = new HistoriaClinica(this); // ES UN JPANEL
                 hc.setSize(sgpMedscAdmin.getPnContenido().getWidth(), sgpMedscAdmin.getPnContenido().getHeight());
                 hc.setLocation(0, 0);
@@ -1224,6 +1225,34 @@ public class Paciente extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_lblAbrirHCMouseClicked
+    private void limpiar() {
+        cbTipoID.setSelectedItem("Seleccionar");
+        cbNacionalidad.setSelectedItem("Seleccionar");
+        txtFieldNumeroID.setText("");
+        txtFieldNombres.setText("");
+        txtFieldApellidos.setText("");
+        txtFieldCorreo.setText("");
+        txtFieldDireccion.setText("");
+        txtFieldTelefono.setText("");
+        txtFieldTrabajo.setText("");
+        cbEstadoCivil.setSelectedItem("Seleccionar");
+        cbSexo.setSelectedItem("Seleccionar");
+        cbxTipoSangre.setSelectedItem("Seleccionar");
+        jDateChooser.setDate(null);
+    }
+
+    private boolean consultarExistenciaDocumento(String numDocumento) {
+        try {
+            Connection con = ConexionPacientes.getConexion();
+            PreparedStatement ps = con.prepareStatement("SELECT num_DocumentoID FROM paciente WHERE num_DocumentoID = ?");
+            ps.setString(1, numDocumento);
+            ResultSet rs = ps.executeQuery();
+            return rs.next(); // Devuelve true si existe un registro con ese número de documento
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+            return false; // En caso de error, asumimos que el documento no existe
+        }
+    }
 
     private boolean validarPasaporte(String numeroID) {
         String regex = "^[a-zA-Z0-9]{6,10}$";
@@ -1434,6 +1463,7 @@ public class Paciente extends javax.swing.JPanel {
         String tipoDocumento = " ", nacionalidad = " ", sexo = " ", tipoSangre = "", estadoCivil = " ";
         String fechaNacimiento = " ", parentesco = " ", grado = " ", grado1 = " ", grado2 = "";
         bloquearEdicion();
+
         try {
             Connection con = ConexionPacientes.getConexion();
             String consulta = "SELECT tipo_DocumentoID, p.num_DocumentoID, nacionalidad, nombres, apellidos, direccion, celular, fecha_nacimiento, sexo, estado_civil, ocupacion, tipo_sangre, correo, contacto_emergencia_nombre, contacto_emergencia_apellido, contacto_emergencia_celular, contacto_emergencia_parentesco, alergia, enfermedad_hereditaria, enfermedad_hereditaria_1, enfermedad_hereditaria_2, tiempo, tiempo_1, tiempo_2, grado, grado_1, grado_2 FROM historia_clinica hc join paciente p ON hc.num_DocumentoID = p.num_DocumentoID where id_historia=?;";
@@ -1471,10 +1501,10 @@ public class Paciente extends javax.swing.JPanel {
                 grado2 = rs.getString("grado_2");
             }
 
-            modificarComboBox(cbTipoID1, tipoDocumento);
-            modificarComboBox(cbNacionalidad1, nacionalidad);
+            cbTipoID1 = modificarComboBox(cbTipoID1, tipoDocumento);
+            cbNacionalidad1 = modificarComboBox(cbNacionalidad1, nacionalidad);
             try {
-                SimpleDateFormat dateFormat = new SimpleDateFormat("DD-MM-yyyy"); // Ajusta el formato según la representación de la fecha en tu base de datos
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy"); // Ajusta el formato según la representación de la fecha en tu base de datos
                 java.util.Date fechaNacimientoN = dateFormat.parse(fechaNacimiento);
 
                 jDateChooser1.setDate(fechaNacimientoN);
@@ -1482,26 +1512,27 @@ public class Paciente extends javax.swing.JPanel {
                 // Maneja la excepción en caso de un formato de fecha incorrecto
                 e.printStackTrace(); // Aquí puedes imprimir un mensaje de error o realizar otra acción
             }
-            modificarComboBox(cbSexo1, sexo);
-            modificarComboBox(cbEstadoCivil2, estadoCivil);
-            modificarComboBox(cbxTipoSangre1, tipoSangre);
-            modificarComboBox(cbParentesco, parentesco);
-            modificarComboBox(cbGradoParentesco, grado);
-            modificarComboBox(cbGradoParentesco, grado1);
-            modificarComboBox(cbGradoParentesco, grado2);
+            cbSexo1 = modificarComboBox(cbSexo1, sexo);
+            cbEstadoCivil2 = modificarComboBox(cbEstadoCivil2, estadoCivil);
+            cbxTipoSangre1 = modificarComboBox(cbxTipoSangre1, tipoSangre);
+            cbParentesco = modificarComboBox(cbParentesco, parentesco);
+            cbGradoParentesco = modificarComboBox(cbGradoParentesco, grado);
+            cbGradoParentesco1 = modificarComboBox(cbGradoParentesco1, grado1);
+            cbGradoParentesco2 = modificarComboBox(cbGradoParentesco2, grado2);
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "FALLA SIGNIFICATIVA: problemas con la base de datos");
         }
     }//GEN-LAST:event_lblBTNConsultarMouseClicked
 
-    private void modificarComboBox(JComboBox cb, String select) {
+    private JComboBox modificarComboBox(JComboBox cb, String select) {
         for (int i = 0; i < cb.getItemCount(); i++) {
             if (cb.getItemAt(i).equals(select)) {
                 cb.setSelectedItem(select);
                 break; // Termina el bucle cuando se encuentra el elemento
             }
         }
+        return cb;
     }
 
     private void bloquearEdicion() {
