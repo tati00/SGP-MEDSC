@@ -30,9 +30,9 @@ public class Paciente extends javax.swing.JPanel {
         this.sgpMedscAdmin = sgpMedscAdmin;
         initComponents();
         cbNacionalidad.setEnabled(false);
-        if (!sgpMedscAdmin.obtenerUser().getUserType().equals("Medico Principal")) {
+        /*if (!sgpMedscAdmin.obtenerUser().getUserType().equals("Medico Principal")) {
             pnActualizarDisponibles1.setVisible(false);
-        }
+        }*/
         //pnActualizarDisponibles1.setVisible(false);
         //if (!user.getUserType().equals("Medico Principal")) {
         //pnActualizarDisponibles1.setVisible(false);
@@ -1044,15 +1044,17 @@ public class Paciente extends javax.swing.JPanel {
         pnBTNConsultar.setLayout(pnBTNConsultarLayout);
         pnBTNConsultarLayout.setHorizontalGroup(
             pnBTNConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 223, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(pnBTNConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(lblBTNConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE))
+                .addComponent(lblBTNConsultar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))
         );
         pnBTNConsultarLayout.setVerticalGroup(
             pnBTNConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(pnBTNConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(lblBTNConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
+                .addGroup(pnBTNConsultarLayout.createSequentialGroup()
+                    .addComponent(lblBTNConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout pnActualizarDisponibles2Layout = new javax.swing.GroupLayout(pnActualizarDisponibles2);
@@ -1060,14 +1062,14 @@ public class Paciente extends javax.swing.JPanel {
         pnActualizarDisponibles2Layout.setHorizontalGroup(
             pnActualizarDisponibles2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnActualizarDisponibles2Layout.createSequentialGroup()
-                .addGap(266, 266, 266)
+                .addGap(331, 331, 331)
                 .addGroup(pnActualizarDisponibles2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnBTNConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnActualizarDisponibles2Layout.createSequentialGroup()
                         .addComponent(lblIdentificador2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtNumHCAct1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(pnBTNConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(342, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNumHCAct1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnActualizarDisponibles2Layout.setVerticalGroup(
             pnActualizarDisponibles2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1077,8 +1079,8 @@ public class Paciente extends javax.swing.JPanel {
                     .addComponent(lblIdentificador2)
                     .addComponent(txtNumHCAct1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnBTNConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addComponent(pnBTNConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnSubConsultarLayout = new javax.swing.GroupLayout(pnSubConsultar);
@@ -1088,7 +1090,7 @@ public class Paciente extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnSubConsultarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnSubConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1069, Short.MAX_VALUE)
                     .addComponent(pnActualizarDisponibles2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(15, 15, 15))
         );
@@ -1112,7 +1114,7 @@ public class Paciente extends javax.swing.JPanel {
             pnConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnConsultarLayout.createSequentialGroup()
                 .addComponent(pnSubConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 10, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Consultar", pnConsultar);
@@ -1208,6 +1210,9 @@ public class Paciente extends javax.swing.JPanel {
                     JOptionPane.showMessageDialog(null, e.toString());
                 }
 
+                /*HistoriaClinica1 hc = new HistoriaClinica1();
+                hc.setVisible(true);
+                sgpMedscAdmin.dispose();*/
                 HistoriaClinica hc = new HistoriaClinica(this); // ES UN JPANEL
                 hc.setSize(sgpMedscAdmin.getPnContenido().getWidth(), sgpMedscAdmin.getPnContenido().getHeight());
                 hc.setLocation(0, 0);
@@ -1526,6 +1531,7 @@ public class Paciente extends javax.swing.JPanel {
         cbGradoParentesco.setEnabled(false);
         cbGradoParentesco1.setEnabled(false);
         cbGradoParentesco2.setEnabled(false);
+        cbParentesco.setEnabled(false);
     }
 
     private void cbTipoID1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTipoID1ActionPerformed
