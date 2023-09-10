@@ -192,15 +192,15 @@ public class Paciente extends javax.swing.JPanel {
 
         txtFieldTelefono.setText("09");
 
-        cbxTipoSangre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A+", "A-\t", "B+", "B-", "AB+", "AB-", "O+", "O-" }));
+        cbxTipoSangre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "A+", "A-\t", "B+", "B-", "AB+", "AB-", "O+", "O-" }));
 
         lblEstadoCivil.setText("Estado Civil: ");
 
-        cbEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Soltero(a)", "Divorciado(a)", "Unión libre", "Viudo(a)" }));
+        cbEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Soltero(a)", "Divorciado(a)", "Unión libre", "Viudo(a)" }));
 
         lblTipoID.setText("Tipo de documento de identificación:");
 
-        cbTipoID.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cédula de identidad", "Pasaporte" }));
+        cbTipoID.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Cédula de identidad", "Pasaporte" }));
         cbTipoID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbTipoIDActionPerformed(evt);
@@ -209,11 +209,11 @@ public class Paciente extends javax.swing.JPanel {
 
         lblNacionalidad.setText("Nacionalidad: ");
 
-        cbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Femenino", "Masculino", " " }));
+        cbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Femenino", "Masculino", " " }));
 
         lblNacimiento.setText("Fecha de nacimiento:");
 
-        cbNacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nacional", "Extranjero" }));
+        cbNacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Nacional", "Extranjero" }));
 
         jDateChooser.setDateFormatString("dd-MM-yyyy");
 

@@ -190,15 +190,15 @@ public class HistoriaClinica extends javax.swing.JPanel {
 
         txtFieldTelefono.setText("09");
 
-        cbxTipoSangre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A+", "A-\t", "B+", "B-", "AB+", "AB-", "O+", "O-" }));
+        cbxTipoSangre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "A+", "A-\t", "B+", "B-", "AB+", "AB-", "O+", "O-" }));
 
         lblEstadoCivil.setText("Estado Civil: ");
 
-        cbEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Soltero(a)", "Divorciado(a)", "Unión libre", "Viudo(a)" }));
+        cbEstadoCivil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Soltero(a)", "Divorciado(a)", "Unión libre", "Viudo(a)" }));
 
         lblTipoID.setText("Tipo de documento de identificación:");
 
-        cbTipoID.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cédula de identidad", "Pasaporte" }));
+        cbTipoID.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Cédula de identidad", "Pasaporte" }));
         cbTipoID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbTipoIDActionPerformed(evt);
@@ -207,11 +207,11 @@ public class HistoriaClinica extends javax.swing.JPanel {
 
         lblNacionalidad.setText("Nacionalidad: ");
 
-        cbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Femenino", "Masculino", " " }));
+        cbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Femenino", "Masculino", " " }));
 
         lblNacimiento.setText("Fecha de nacimiento:");
 
-        cbNacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nacional", "Extranjero" }));
+        cbNacionalidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Nacional", "Extranjero" }));
 
         jDateChooser.setDateFormatString("dd-MM-yyyy");
 
@@ -368,7 +368,7 @@ public class HistoriaClinica extends javax.swing.JPanel {
 
         lblParentesco.setText("Parentesco por: ");
 
-        cbParentesco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Consanguinidad", "Afinidad", "Adopción", "Sin parentesco" }));
+        cbParentesco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Consanguinidad", "Afinidad", "Adopción", "Sin parentesco" }));
 
         javax.swing.GroupLayout pnContactoReferenciaLayout = new javax.swing.GroupLayout(pnContactoReferencia);
         pnContactoReferencia.setLayout(pnContactoReferenciaLayout);
@@ -431,7 +431,7 @@ public class HistoriaClinica extends javax.swing.JPanel {
 
         lblGradoParentesco.setText("Grado de parentesco: ");
 
-        cbGradoParentesco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
+        cbGradoParentesco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4" }));
 
         lblAntecedenteFamiliar1.setText("Antecedente Familiar (2)");
 
@@ -439,7 +439,7 @@ public class HistoriaClinica extends javax.swing.JPanel {
 
         lblGradoParentesco1.setText("Grado de parentesco: ");
 
-        cbGradoParentesco1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
+        cbGradoParentesco1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4" }));
 
         lblAntecedenteFamiliar2.setText("Antecedente Familiar (3)");
 
@@ -447,7 +447,7 @@ public class HistoriaClinica extends javax.swing.JPanel {
 
         lblGradoParentesco2.setText("Grado de parentesco: ");
 
-        cbGradoParentesco2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
+        cbGradoParentesco2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4" }));
 
         javax.swing.GroupLayout pnAlergiasAntecedentesLayout = new javax.swing.GroupLayout(pnAlergiasAntecedentes);
         pnAlergiasAntecedentes.setLayout(pnAlergiasAntecedentesLayout);
