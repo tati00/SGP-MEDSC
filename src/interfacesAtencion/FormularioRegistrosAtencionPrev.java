@@ -5,6 +5,7 @@
 package interfacesAtencion;
 
 import Logica.Database.Conexion;
+import interfacesPacientes.ConexionPacientes;
 import interfacesPacientes.Paciente;
 import java.util.Date;
 import javax.swing.JDesktopPane;
@@ -137,10 +138,9 @@ public class FormularioRegistrosAtencionPrev extends javax.swing.JInternalFrame 
             } else {
                 int respuesta = JOptionPane.showConfirmDialog(null, "Paciente no registrado, ¿desea registrarlo?", "Registro de Paciente", JOptionPane.YES_NO_OPTION);
                 if (respuesta == JOptionPane.YES_OPTION) {
-                    /*Paciente paciente = new Paciente();
+                    Paciente paciente = new Paciente();
                     desktopPane.add(paciente);
                     paciente.setVisible(true);
-                     */
                     this.setVisible(false);
             // Aquí puedes agregar la lógica para registrar al paciente.
                 } else if (respuesta == JOptionPane.NO_OPTION || respuesta == JOptionPane.CLOSED_OPTION) {
@@ -172,52 +172,46 @@ public class FormularioRegistrosAtencionPrev extends javax.swing.JInternalFrame 
     }
     
 public static boolean verificarDocumento(String numDocumentoID) {
-    /*
-    Conexion conn = new Conexion() {};    
-    try {
-            // Preparar la consulta SQL
+        try {
+            Connection con = ConexionPacientes.getConexion();
             String sql = "SELECT COUNT(*) FROM paciente WHERE num_DocumentoID = ?";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, numDocumentoID);
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, numDocumentoID);
 
             // Ejecutar la consulta y obtener el resultado
-            ResultSet resultSet = statement.executeQuery();
+            ResultSet resultSet = ps.executeQuery();
             resultSet.next();
             int count = resultSet.getInt(1);
 
             // Si count es mayor que 0, el num_DocumentoID existe en la tabla
             return count > 0;
         } catch (SQLException e) {
-            e.printStackTrace();
-            return false; // En caso de error, consideramos que el documento no existe
+            System.out.println(e.toString());
+            return false; // En caso de error, asumimos que el documento no existe
         }
-        */
-        return false;
     }
+    
 
 public static boolean verificarMedico(String identificador) {
-    /*    
-    Conexion conn = new Conexion() {};
-        try {
-            // Preparar la consulta SQL
+    try {
+            Connection con = ConexionPacientes.getConexion();
             String sql = "SELECT COUNT(*) FROM medicos WHERE IDENTIFICADOR = ?";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, identificador);
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, identificador);
 
             // Ejecutar la consulta y obtener el resultado
-            ResultSet resultSet = statement.executeQuery();
+            ResultSet resultSet = ps.executeQuery();
             resultSet.next();
             int count = resultSet.getInt(1);
 
-            // Si count es mayor que 0, el identificador existe en la tabla
+            // Si count es mayor que 0, el num_DocumentoID existe en la tabla
             return count > 0;
         } catch (SQLException e) {
-            e.printStackTrace();
-            return false; // En caso de error, consideramos que el identificador no existe
+            System.out.println(e.toString());
+            return false; // En caso de error, asumimos que el documento no existe
         }
-        */
-        return false;        
-    }
+}
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -231,4 +225,6 @@ public static boolean verificarMedico(String identificador) {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
+
 }
+

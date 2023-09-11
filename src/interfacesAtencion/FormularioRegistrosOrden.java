@@ -4,6 +4,16 @@
  */
 package interfacesAtencion;
 
+import static interfacesAtencion.FormularioRegistrosAtencionPrev.verificarDocumento;
+import interfacesPacientes.ConexionPacientes;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Usuario
@@ -47,15 +57,15 @@ public class FormularioRegistrosOrden extends javax.swing.JInternalFrame {
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Cédula del Paciente");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, -1));
+        jLabel1.setText("Identificador del Paciente");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 100, -1));
+        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 100, -1));
 
         jButton1.setText("Registrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -80,7 +90,7 @@ public class FormularioRegistrosOrden extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Prioridad");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, -1, -1));
-        jPanel2.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 130, -1));
+        jPanel2.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 130, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 420, 200));
         jPanel2.getAccessibleContext().setAccessibleDescription("");
@@ -93,10 +103,61 @@ public class FormularioRegistrosOrden extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (verificarCamposLlenos()) {   
+            if (verificarDocumento(jTextField1.getText())) {
+                
+            }
+        }else{
+        JOptionPane.showMessageDialog(null, "Por favor, ingrese todos los parámetros para continuar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
 
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public static boolean verificarDocumento(String numDocumentoID) {
+        try {
+            Connection con = ConexionPacientes.getConexion();
+            String sql = "SELECT COUNT(*) FROM paciente WHERE num_DocumentoID = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, numDocumentoID);
 
+            // Ejecutar la consulta y obtener el resultado
+            ResultSet resultSet = ps.executeQuery();
+            resultSet.next();
+            int count = resultSet.getInt(1);
+
+            // Si count es mayor que 0, el num_DocumentoID existe en la tabla
+            return count > 0;
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+            return false; // En caso de error, asumimos que el documento no existe
+        }
+    }
+    
+         public boolean verificarCamposLlenos() {
+        JTextField[] textFields = new JTextField[1];
+
+        textFields[0] = jTextField1;
+        
+        if (jComboBox1.getSelectedIndex() != 0) {
+            if (jComboBox2.getSelectedIndex() != 0) {
+            for (JTextField textField : textFields) {
+            if (textField.getText().isEmpty()|| (jDateChooser1.getDate()==null)) {
+                return false; // Al menos un campo está vacío
+            }
+        }
+            return true; // Todos los campos están llenos
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un item de Tipo de examen valido");
+        }
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un item de Prioridad valido");
+
+        }
+
+        return false;
+        
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;

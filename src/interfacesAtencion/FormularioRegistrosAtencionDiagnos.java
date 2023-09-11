@@ -14,12 +14,14 @@ import javax.swing.JOptionPane;
  */
 public class FormularioRegistrosAtencionDiagnos extends javax.swing.JInternalFrame {
     private JDesktopPane desktopPane;
+    logicaAtencionMedica atencionMedica;
     /**
      * Creates new form FormularioRegistros
      */
-    public FormularioRegistrosAtencionDiagnos(JDesktopPane desktopPane) {
+    public FormularioRegistrosAtencionDiagnos(JDesktopPane desktopPane, logicaAtencionMedica atencionMedica) {
         initComponents();
         this.desktopPane = desktopPane;
+        this.atencionMedica = atencionMedica;
     }
 
     /**
@@ -89,6 +91,11 @@ public class FormularioRegistrosAtencionDiagnos extends javax.swing.JInternalFra
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, -1, -1));
 
         jButton2.setText("Validar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 50, -1, -1));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selección...", "Presuntivo", "Definitivo inicial", "Definitivo inicial confirmado por Laboratorio", "Definitivo control" }));
@@ -121,6 +128,10 @@ public class FormularioRegistrosAtencionDiagnos extends javax.swing.JInternalFra
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

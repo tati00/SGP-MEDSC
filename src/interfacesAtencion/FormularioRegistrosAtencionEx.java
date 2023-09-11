@@ -99,11 +99,11 @@ public class FormularioRegistrosAtencionEx extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (verificarCamposLlenos()) {
-            FormularioRegistrosAtencionDiagnos formulario = new FormularioRegistrosAtencionDiagnos(desktopPane);
             atencionMedica.setOrganoSistema((String) jComboBox2.getSelectedItem());
             atencionMedica.setDescripcionOS(jTextArea2.getText());
             atencionMedica.setReg((String) jComboBox1.getSelectedItem());
             atencionMedica.setDescripcionR(jTextArea1.getText());
+            FormularioRegistrosAtencionDiagnos formulario = new FormularioRegistrosAtencionDiagnos(desktopPane, atencionMedica);
             desktopPane.add(formulario);
             formulario.setVisible(true);
             this.setVisible(false);
@@ -120,8 +120,8 @@ public class FormularioRegistrosAtencionEx extends javax.swing.JInternalFrame {
         textAreas[0] = jTextArea1;
         textAreas[1] = jTextArea2;
         
-        if (jComboBox1.getSelectedIndex() == 0) {
-            if (jComboBox1.getSelectedIndex() == 0) {
+        if (jComboBox1.getSelectedIndex() != 0) {
+            if (jComboBox2.getSelectedIndex() != 0) {
             for (JTextArea textArea : textAreas) {
             if (textArea.getText().isEmpty()) {
                 return false; // Al menos un campo está vacío
