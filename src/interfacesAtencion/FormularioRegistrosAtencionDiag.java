@@ -5,10 +5,13 @@
 package interfacesAtencion;
 
 import interfacesMédicos.*;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  *
@@ -16,12 +19,14 @@ import javax.swing.JOptionPane;
  */
 public class FormularioRegistrosAtencionDiag extends javax.swing.JInternalFrame {
     private JDesktopPane desktopPane;
+    logicaAtencionMedica atencionMedica;
     /**
      * Creates new form FormularioRegistros
      */
-    public FormularioRegistrosAtencionDiag(JDesktopPane desktopPane) {
+    public FormularioRegistrosAtencionDiag(JDesktopPane desktopPane, logicaAtencionMedica atencionMedica) {
         initComponents();
         this.desktopPane = desktopPane;
+        this.atencionMedica = atencionMedica;
     }
 
     /**
@@ -94,7 +99,18 @@ public class FormularioRegistrosAtencionDiag extends javax.swing.JInternalFrame 
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        FormularioRegistrosAtencionEx formulario = new FormularioRegistrosAtencionEx(desktopPane);
+        if (verificarCamposLlenos()) {
+            atencionMedica.setmConsulta(jTextArea2.getText());
+            atencionMedica.setEnfermedadA(jTextArea1.getText());
+            FormularioRegistrosAtencionEx formulario = new FormularioRegistrosAtencionEx(desktopPane, atencionMedica);
+            desktopPane.add(formulario);
+            formulario.setVisible(true);
+            this.setVisible(false);
+        } else{
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese todos los parámetros para continuar.", "Advertencia", JOptionPane.WARNING_MESSAGE);      
+        }
+        
+        FormularioRegistrosAtencionEx formulario = new FormularioRegistrosAtencionEx(desktopPane, atencionMedica);
         desktopPane.add(formulario);
         formulario.setVisible(true);
         this.setVisible(false);
@@ -116,6 +132,21 @@ public class FormularioRegistrosAtencionDiag extends javax.swing.JInternalFrame 
         return matcher.matches();
     }
 
+        public boolean verificarCamposLlenos() {
+        JTextArea[] textAreas = new JTextArea[2];
+
+        textAreas[0] = jTextArea1;
+        textAreas[1] = jTextArea2;
+        
+        
+        for (JTextArea textArea : textAreas) {
+            if (textArea.getText().isEmpty()) {
+                return false; // Al menos un campo está vacío
+            }
+        }
+        return true; // Todos los campos están llenos
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

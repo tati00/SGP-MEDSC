@@ -61,7 +61,7 @@ public class FormConsultarAtencionPaciente extends javax.swing.JInternalFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Fecha", "Enfermedad", "Medicamento", "Evoluciones"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -87,7 +87,7 @@ public class FormConsultarAtencionPaciente extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, -1, -1));
         getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, 180, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Motivo de consulta", "Enfermedad actual", "Signos vitales", "Revision de organos y sistemas", "Examen fisico regional", "Diagnosticos", "Preescripciones medicas", "Ordenes medicas", "Interconsultas", "Evoluciones", " " }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Motivo de consulta", "Enfermedad actual", "Signos vitales", "Revisión de órganos y sistemas", "Examen físico regional", "Diagnósticos", "Prescripciones médicas", "Órdenes médicas", "Interconsultas", "Evoluciones" }));
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, -1, -1));
 
         jLabel5.setText("Campo a buscar");

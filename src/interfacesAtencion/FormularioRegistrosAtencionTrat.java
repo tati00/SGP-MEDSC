@@ -6,6 +6,7 @@ package interfacesAtencion;
 
 import interfacesMédicos.*;
 import javax.swing.JDesktopPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -89,7 +90,7 @@ public class FormularioRegistrosAtencionTrat extends javax.swing.JInternalFrame 
         });
         jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 100, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ml", "Tabletas", "Captsulas", "ppm" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selección...", "ml", "puff", "aplicación", "mg", "mcg", "UI", "Gotas", "Unidad" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -141,9 +142,35 @@ public class FormularioRegistrosAtencionTrat extends javax.swing.JInternalFrame 
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+//         try (Connection conn = DriverManager.getConnection(jdbcUrl, usuario, contraseña)) {
+//            String sql = "INSERT INTO atencion (id_medico, n_documento, fecha, motivo_consulta, enfermedad_actual, organo_sistema, evidencia_patologica_organo_sistema, descripcion_organo_sistema, region, evidencia_patologica_region, descripcion_region) " +
+//                         "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+//
+//            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+//
+//            // Reemplaza los valores de los parámetros (?) con los datos que deseas insertar
+//            preparedStatement.setString(1, "ID_MEDICO");
+//            preparedStatement.setString(2, "N_DOCUMENTO");
+//            preparedStatement.setDate(3, java.sql.Date.valueOf("2023-09-01"));
+//            preparedStatement.setString(4, "MOTIVO_CONSULTA");
+//            preparedStatement.setString(5, "ENFERMEDAD_ACTUAL");
+//            preparedStatement.setString(6, "ORGANO_SISTEMA");
+//            preparedStatement.setString(7, "EVIDENCIA_PATOLOGICA_ORGANO_SISTEMA");
+//            preparedStatement.setString(8, "DESCRIPCION_ORGANO_SISTEMA");
+//            preparedStatement.setString(9, "REGION");
+//            preparedStatement.setString(10, "EVIDENCIA_PATOLOGICA_REGION");
+//            preparedStatement.setString(11, "DESCRIPCION_REGION");
+//
+//            int filasInsertadas = preparedStatement.executeUpdate();
+//            System.out.println("Filas insertadas: " + filasInsertadas);
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+        
+        
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-
+                                      
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

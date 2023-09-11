@@ -7,6 +7,7 @@ package interfacesAtencion;
 import interfacesMédicos.*;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -14,12 +15,14 @@ import javax.swing.JOptionPane;
  */
 public class FormularioRegistrosAtencionEx extends javax.swing.JInternalFrame {
     private JDesktopPane desktopPane;
+    logicaAtencionMedica atencionMedica;
     /**
      * Creates new form FormularioRegistros
      */
-    public FormularioRegistrosAtencionEx(JDesktopPane desktopPane) {
+    public FormularioRegistrosAtencionEx(JDesktopPane desktopPane, logicaAtencionMedica atencionMedica) {
         initComponents();
         this.desktopPane = desktopPane;
+        this.atencionMedica = atencionMedica;
     }
 
     /**
@@ -79,7 +82,7 @@ public class FormularioRegistrosAtencionEx extends javax.swing.JInternalFrame {
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 360, 120));
         jPanel2.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -20, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selección...", "Cabeza", "Cuello", "Tórax", "Abdomen", "Extremidades", " " }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selección...", "Cabeza", "Cuello", "Tórax", "Abdomen", "Extremidades" }));
         jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selección...", "Respiratorio", "Digestivo", "Genital" }));
@@ -95,12 +98,47 @@ public class FormularioRegistrosAtencionEx extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        FormularioRegistrosAtencionDiagnos formulario = new FormularioRegistrosAtencionDiagnos(desktopPane);
-        desktopPane.add(formulario);
-        formulario.setVisible(true);
-        this.setVisible(false);
+        if (verificarCamposLlenos()) {
+            FormularioRegistrosAtencionDiagnos formulario = new FormularioRegistrosAtencionDiagnos(desktopPane);
+            atencionMedica.setOrganoSistema((String) jComboBox2.getSelectedItem());
+            atencionMedica.setDescripcionOS(jTextArea2.getText());
+            atencionMedica.setReg((String) jComboBox1.getSelectedItem());
+            atencionMedica.setDescripcionR(jTextArea1.getText());
+            desktopPane.add(formulario);
+            formulario.setVisible(true);
+            this.setVisible(false);
+        } else{
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese todos los parámetros para continuar.", "Advertencia", JOptionPane.WARNING_MESSAGE);      
+        }
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
+     public boolean verificarCamposLlenos() {
+        JTextArea[] textAreas = new JTextArea[2];
+
+        textAreas[0] = jTextArea1;
+        textAreas[1] = jTextArea2;
+        
+        if (jComboBox1.getSelectedIndex() == 0) {
+            if (jComboBox1.getSelectedIndex() == 0) {
+            for (JTextArea textArea : textAreas) {
+            if (textArea.getText().isEmpty()) {
+                return false; // Al menos un campo está vacío
+            }
+        }
+            return true; // Todos los campos están llenos
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un item de Revision de organos y sistemas valido");
+        }
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un item de Examen fisico regional valido");
+
+        }
+
+        
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

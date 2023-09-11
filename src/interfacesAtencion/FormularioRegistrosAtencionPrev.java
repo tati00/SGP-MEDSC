@@ -4,8 +4,17 @@
  */
 package interfacesAtencion;
 
+import Logica.Database.Conexion;
+import interfacesPacientes.Paciente;
+import java.util.Date;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -14,6 +23,8 @@ import javax.swing.JOptionPane;
 public class FormularioRegistrosAtencionPrev extends javax.swing.JInternalFrame {
 
     private JDesktopPane desktopPane;
+    
+     
 
     /**
      * Creates new form FormularioRegistros
@@ -107,16 +118,99 @@ public class FormularioRegistrosAtencionPrev extends javax.swing.JInternalFrame 
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        FormularioRegistrosAtencionAnam formulario = new FormularioRegistrosAtencionAnam(desktopPane);
-        desktopPane.add(formulario);
-        formulario.setVisible(true);
-        this.setVisible(false);
+        if (verificarCamposLlenos()) {
+            
+            if (verificarDocumento(jTextField1.getText())) {
+                if (verificarMedico(jTextField2.getText())) {
+                    logicaAtencionMedica atencionMedica = new logicaAtencionMedica();
+                    atencionMedica.setCedulaPaciente(jTextField1.getText());
+                    atencionMedica.setCedulaMedico(jTextField1.getText());
+                    Date fechaAtencion = jDateChooser1.getDate();
+                    atencionMedica.setFechaConsulta(fechaAtencion);
+                    FormularioRegistrosAtencionAnam formulario = new FormularioRegistrosAtencionAnam(desktopPane, atencionMedica);
+                    desktopPane.add(formulario);
+                    formulario.setVisible(true);
+                    this.setVisible(false);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Ingrese un identificador de medico valido", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                }
+            } else {
+                int respuesta = JOptionPane.showConfirmDialog(null, "Paciente no registrado, ¿desea registrarlo?", "Registro de Paciente", JOptionPane.YES_NO_OPTION);
+                if (respuesta == JOptionPane.YES_OPTION) {
+                    Paciente paciente = new Paciente();
+                    desktopPane.add(paciente);
+                    paciente.setVisible(true);
+                    this.setVisible(false);
+            // Aquí puedes agregar la lógica para registrar al paciente.
+                } else if (respuesta == JOptionPane.NO_OPTION || respuesta == JOptionPane.CLOSED_OPTION) {
+        }
+            }
+        } else{
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese todos los parámetros para continuar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+                                        
+    public boolean verificarCamposLlenos() {
+        JTextField[] textFields = new JTextField[2];
 
+        textFields[0] = jTextField1;
+        textFields[1] = jTextField2;
+        
+        for (JTextField textField : textFields) {
+            if (textField.getText().isEmpty()|| (jDateChooser1.getDate()==null)) {
+                return false; // Al menos un campo está vacío
+            }
+        }
+        return true; // Todos los campos están llenos
+    }
+    
+public static boolean verificarDocumento(String numDocumentoID) {
+    Conexion conn = new Conexion() {};    
+    try {
+            // Preparar la consulta SQL
+            String sql = "SELECT COUNT(*) FROM paciente WHERE num_DocumentoID = ?";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, numDocumentoID);
+
+            // Ejecutar la consulta y obtener el resultado
+            ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
+            int count = resultSet.getInt(1);
+
+            // Si count es mayor que 0, el num_DocumentoID existe en la tabla
+            return count > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false; // En caso de error, consideramos que el documento no existe
+        }
+    }
+
+public static boolean verificarMedico(String identificador) {
+        Conexion conn = new Conexion() {};
+        try {
+            // Preparar la consulta SQL
+            String sql = "SELECT COUNT(*) FROM medicos WHERE IDENTIFICADOR = ?";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, identificador);
+
+            // Ejecutar la consulta y obtener el resultado
+            ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
+            int count = resultSet.getInt(1);
+
+            // Si count es mayor que 0, el identificador existe en la tabla
+            return count > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false; // En caso de error, consideramos que el identificador no existe
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

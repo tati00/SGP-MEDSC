@@ -180,11 +180,14 @@
                 <StringItem index="0" value="Selecci&#xf3;n..."/>
                 <StringItem index="1" value="Presuntivo"/>
                 <StringItem index="2" value="Definitivo inicial"/>
-                <StringItem index="3" value="Definitivo inicial conformado por Laboratorio"/>
+                <StringItem index="3" value="Definitivo inicial confirmado por Laboratorio"/>
                 <StringItem index="4" value="Definitivo control"/>
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>

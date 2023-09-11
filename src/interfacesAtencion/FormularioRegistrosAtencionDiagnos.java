@@ -91,7 +91,12 @@ public class FormularioRegistrosAtencionDiagnos extends javax.swing.JInternalFra
         jButton2.setText("Validar");
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 50, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selección...", "Presuntivo", "Definitivo inicial", "Definitivo inicial conformado por Laboratorio", "Definitivo control" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selección...", "Presuntivo", "Definitivo inicial", "Definitivo inicial confirmado por Laboratorio", "Definitivo control" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, -1, -1));
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selección...", "Primera", "Subsecuente" }));
@@ -112,6 +117,10 @@ public class FormularioRegistrosAtencionDiagnos extends javax.swing.JInternalFra
         formulario.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
