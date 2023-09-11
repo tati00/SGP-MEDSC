@@ -7,7 +7,7 @@ package interfacesPrincipales;
 import interfacesAdministracion.AdministracionSistema;
 import interfacesAtencion.JAtencionMedicaP;
 import interfacesCitas.CitaMedica;
-import interfacesMédicos.Medico;
+import interfacesMédicos.Medicos;
 import interfacesPacientes.Paciente;
 import Logica.LogicaPrincipal.LogUser;
 import java.awt.BorderLayout;
@@ -41,7 +41,6 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
             pnAdministracion.setVisible(false);
             lblbtnAdministracion.setEnabled(false);
         }
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
  public LogUser obtenerUser(){
      return this.user;
@@ -315,7 +314,7 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
 
     private void lblbtnPacientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblbtnPacientesMouseClicked
         Paciente p = new Paciente(this,user); //ES UN JPANEL
-        p.setSize(1015, 647);
+        p.setSize(1100, 740);
         p.setLocation(0, 0);
 
         pnContenido.removeAll();
@@ -325,8 +324,8 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
     }//GEN-LAST:event_lblbtnPacientesMouseClicked
 
     private void lblbtnMedicosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblbtnMedicosMouseClicked
-        Medico p = new Medico(this); //ES UN JPANEL
-        p.setSize(1015, 647);
+        Medicos p = new Medicos(this,user); //ES UN JPANEL
+        p.setSize(1100, 740);
         p.setLocation(0, 0);
 
         pnContenido.removeAll();
@@ -336,8 +335,8 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
     }//GEN-LAST:event_lblbtnMedicosMouseClicked
 
     private void lblbtnCitasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblbtnCitasMouseClicked
-        CitaMedica p = new CitaMedica(this); //ES UN JPANEL
-        p.setSize(1015, 647);
+        CitaMedica p = new CitaMedica(this,user); //ES UN JPANEL
+        p.setSize(1100, 740);
         p.setLocation(0, 0);
 
         pnContenido.removeAll();
@@ -348,7 +347,7 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
 
     private void lblbtnAtencionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblbtnAtencionMouseClicked
         JAtencionMedicaP p = new JAtencionMedicaP(this); //ES UN JPANEL
-        p.setSize(1015, 647);
+        p.setSize(1015, 780);
         p.setLocation(0, 0);
 
         pnContenido.removeAll();
@@ -359,7 +358,7 @@ public class SGP_MEDSC_admin extends javax.swing.JFrame {
 
     private void lblbtnAdministracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblbtnAdministracionMouseClicked
         AdministracionSistema p = new AdministracionSistema(this); //ES UN JPANEL
-        p.setSize(1015, 647);
+        p.setSize(1015,780);
         p.setLocation(0, 0);
 
         pnContenido.removeAll();

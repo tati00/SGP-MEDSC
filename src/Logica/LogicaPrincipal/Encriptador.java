@@ -51,9 +51,7 @@ public final class  Encriptador {
             // Descifrar el mensaje
         byte[] decryptedBytes = cipher.doFinal(Base64.getDecoder().decode(word));
         String decryptedMessage = new String(decryptedBytes);
-
-        System.out.println("Encrypted Message: " + word);
-        System.out.println("Decrypted Message: " + decryptedMessage);       
+    
         return decryptedMessage;
     }
 }

@@ -5,7 +5,6 @@
 package interfacesAtencion;
 
 import interfacesCitas.*;
-import interfacesPrincipales.SGP_MEDSC;
 import interfacesPrincipales.SGP_MEDSC_admin;
 
 /**

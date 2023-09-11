@@ -4,19 +4,18 @@
  */
 package interfacesPrincipales;
 
-import Logica.LogicaPrincipal.LogUser;
-import Logica.LogicaPrincipal.ConexiónUsuarios;
-import java.awt.Color;
+
+import Logica.LogicaUsuario.ConexiónUsuarios;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import Logica.LogicaPrincipal.LogUser;
-import Logica.LogicaPrincipal.AtributosUser;
+import Logica.LogicaUsuario.AtributosUser;
 ///*******//////
 
 public class Menu extends javax.swing.JFrame {
@@ -184,7 +183,6 @@ public class Menu extends javax.swing.JFrame {
                             
                     }
             } else {
-                // todo actualizar esto en la tabla :conexión.consultarTipoUsuario(login.getUsername())
                 login.setUserType(conexión.consultarTipoUsuario(login.getUsername()));
                 SGP_MEDSC_admin sgp = new SGP_MEDSC_admin(login);
                 sgp.setVisible(true);

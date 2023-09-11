@@ -137,9 +137,10 @@ public class FormularioRegistrosAtencionPrev extends javax.swing.JInternalFrame 
             } else {
                 int respuesta = JOptionPane.showConfirmDialog(null, "Paciente no registrado, ¿desea registrarlo?", "Registro de Paciente", JOptionPane.YES_NO_OPTION);
                 if (respuesta == JOptionPane.YES_OPTION) {
-                    Paciente paciente = new Paciente();
+                    /*Paciente paciente = new Paciente();
                     desktopPane.add(paciente);
                     paciente.setVisible(true);
+                     */
                     this.setVisible(false);
             // Aquí puedes agregar la lógica para registrar al paciente.
                 } else if (respuesta == JOptionPane.NO_OPTION || respuesta == JOptionPane.CLOSED_OPTION) {
@@ -171,6 +172,7 @@ public class FormularioRegistrosAtencionPrev extends javax.swing.JInternalFrame 
     }
     
 public static boolean verificarDocumento(String numDocumentoID) {
+    /*
     Conexion conn = new Conexion() {};    
     try {
             // Preparar la consulta SQL
@@ -189,10 +191,13 @@ public static boolean verificarDocumento(String numDocumentoID) {
             e.printStackTrace();
             return false; // En caso de error, consideramos que el documento no existe
         }
+        */
+        return false;
     }
 
 public static boolean verificarMedico(String identificador) {
-        Conexion conn = new Conexion() {};
+    /*    
+    Conexion conn = new Conexion() {};
         try {
             // Preparar la consulta SQL
             String sql = "SELECT COUNT(*) FROM medicos WHERE IDENTIFICADOR = ?";
@@ -210,6 +215,8 @@ public static boolean verificarMedico(String identificador) {
             e.printStackTrace();
             return false; // En caso de error, consideramos que el identificador no existe
         }
+        */
+        return false;        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

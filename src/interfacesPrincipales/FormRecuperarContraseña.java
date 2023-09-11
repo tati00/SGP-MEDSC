@@ -3,15 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package interfacesPrincipales;
-import Logica.LogicaPrincipal.AtributosUser;
-import Logica.LogicaPrincipal.ConexiónUsuarios;
+import Logica.LogicaUsuario.AtributosUser;
+import Logica.LogicaUsuario.ConexiónUsuarios;
 import Logica.LogicaPrincipal.Encriptador;
-import Logica.LogicaPrincipal.RecuperadorContraseña;
+import Logica.LogicaPrincipal.ErrorValidaciones;
+import Logica.LogicaPrincipal.Validaciones;
 import static java.awt.image.ImageObserver.HEIGHT;
-import java.security.SecureRandom;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.swing.JOptionPane;
 /**
  *
@@ -22,26 +27,17 @@ public class FormRecuperarContraseña extends javax.swing.JFrame {
     /**
      * Creates new form FormRecuperarContraseña
      */
-    private String email;
-    private String emailEmisor;
-    RecuperadorContraseña newpas;
-    String randomPassword;
+    private String contraseña;
+    private String reingreso;
     private Encriptador crp;
     int passwordLength = 4; // Cambia la longitud de la contraseña según tus necesidades
-    
-    private static final String CHAR_LOWER = "abcdefghijklmnopqrstuvwxyz";
-    private static final String CHAR_UPPER = CHAR_LOWER.toUpperCase();
-    private static final String DIGIT = "0123456789";
-    private static final String OTHER_SPECIAL = "!@#$%^&*()_-+=<>?/[]{},.:;";
-    private static final String ALL_ALLOWED = CHAR_LOWER + CHAR_UPPER + DIGIT + OTHER_SPECIAL;
-
-    private static SecureRandom random = new SecureRandom();
-    
+    private ConexiónUsuarios conec;
     public FormRecuperarContraseña() {
         initComponents();
         crp = new Encriptador();
-        newpas = new RecuperadorContraseña();
         this.setLocationRelativeTo(null);
+        Cambio.setVisible(false);
+        conec = new ConexiónUsuarios();
     }
 
     /**
@@ -55,70 +51,196 @@ public class FormRecuperarContraseña extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
-        btnRecuperar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        txtPIN = new javax.swing.JTextField();
+        btnRecuperar1 = new javax.swing.JButton();
+        Cambio = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        btnCambiar = new javax.swing.JButton();
+        txtActual = new javax.swing.JPasswordField();
+        txtNuevo = new javax.swing.JPasswordField();
         fondo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Recuperar Contraseña");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, -1, -1));
+        jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 153, 255));
+        jLabel1.setText("Resetear Contraseña");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, -1, -1));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setText("Número de Cedula");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
-        jPanel1.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 120, -1));
 
-        btnRecuperar.setText("Recuperar");
-        btnRecuperar.addActionListener(new java.awt.event.ActionListener() {
+        jLabel3.setText("PIN");
+
+        btnRecuperar1.setBackground(new java.awt.Color(0, 153, 255));
+        btnRecuperar1.setForeground(new java.awt.Color(255, 255, 255));
+        btnRecuperar1.setText("Verificar");
+        btnRecuperar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRecuperarActionPerformed(evt);
+                btnRecuperar1ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRecuperar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, -1));
-        jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(53, 53, 53)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPIN, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(125, 125, 125)
+                        .addComponent(btnRecuperar1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(42, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtPIN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnRecuperar1)
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 360, 140));
+
+        Cambio.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel4.setText("Nueva Contraseña");
+
+        jLabel5.setText("Reingreso Contraseña ");
+
+        btnCambiar.setBackground(new java.awt.Color(0, 153, 255));
+        btnCambiar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCambiar.setText("Restablecer");
+        btnCambiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCambiarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout CambioLayout = new javax.swing.GroupLayout(Cambio);
+        Cambio.setLayout(CambioLayout);
+        CambioLayout.setHorizontalGroup(
+            CambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CambioLayout.createSequentialGroup()
+                .addGroup(CambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(CambioLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(CambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4))
+                        .addGap(51, 51, 51)
+                        .addGroup(CambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtActual, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                            .addComponent(txtNuevo)))
+                    .addGroup(CambioLayout.createSequentialGroup()
+                        .addGap(118, 118, 118)
+                        .addComponent(btnCambiar, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        CambioLayout.setVerticalGroup(
+            CambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CambioLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(CambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(CambioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnCambiar)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(Cambio, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 350, 140));
+
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/fondov4.jpg"))); // NOI18N
+        jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 450));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 450));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRecuperarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecuperarActionPerformed
+    private void btnCambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarActionPerformed
         // TODO add your handling code here:
-        ConexiónUsuarios conec = new ConexiónUsuarios();
-        try {
-            if (!conec.verificarParametro(AtributosUser.Id_User.getValue(), txtId.getText())){
-                JOptionPane.showMessageDialog(rootPane, "El numero ingresado no está registrado", "Error", HEIGHT);
-                return;
+        contraseña = descifrarContraseña(txtActual.getPassword());
+        reingreso = descifrarContraseña(txtNuevo.getPassword());
+        if (contraseña != "" && contraseña != ""){
+            try {
+                if (!contraseña.equals(reingreso)){
+                    throw new ErrorValidaciones("Las contraseñas no coinciden");
+                }
+                Validaciones.validarPassword(contraseña);
+                conec.actualizarAtributo(AtributosUser.Contraseña.getValue(),txtId.getText() ,crp.encriptar(contraseña));
+                JOptionPane.showMessageDialog(rootPane,"La contraseña cambiada exitosamente", "Reseteo Realizado", JOptionPane.INFORMATION_MESSAGE);
+                Cambio.setVisible(false);
+                txtActual.setText("");
+                txtNuevo.setText("");
+                txtPIN.setText("");
+                txtId.setText("");
+            } catch (ErrorValidaciones | SQLException ex) {
+                JOptionPane.showMessageDialog(rootPane,ex.getMessage(), "Error Recuperacion", HEIGHT);
             }
-            email = conec.consultarParametroPorId(AtributosUser.Correo_Electrónico.getValue(), txtId.getText());
-            emailEmisor = conec.consultarEmail();
-            randomPassword = generateRandomPassword(passwordLength);
-            conec.actualizarAtributo(AtributosUser.Contraseña.getValue(),txtId.getText(), crp.encriptar(randomPassword));
-            newpas.recuperarContraseña(emailEmisor,email, randomPassword);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Error Recuperacion", HEIGHT);
-        }      
-    }//GEN-LAST:event_btnRecuperarActionPerformed
-
-    
-    
-    public static String generateRandomPassword(int length) {
-        if (length <= 0) {
-            throw new IllegalArgumentException("La longitud debe ser mayor que cero.");
+        }else{
+            JOptionPane.showMessageDialog(rootPane,"Ingresa la nueva contraseña", "Error Recuperacion", HEIGHT);
         }
+     
+    }//GEN-LAST:event_btnCambiarActionPerformed
 
-        StringBuilder password = new StringBuilder();
-        for (int i = 0; i < length; i++) {
-            int randomIndex = random.nextInt(ALL_ALLOWED.length());
-            password.append(ALL_ALLOWED.charAt(randomIndex));
+    private String descifrarContraseña(char[] password) {
+        String passcode = "";
+        for (int i = 0; i < password.length; i++) {
+            passcode += password[i];
         }
-
-        return password.toString();
+        return passcode;
     }
+    
+    private void btnRecuperar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecuperar1ActionPerformed
+        // TODO add your handling code here:
+        try {
+            if (txtId.getText().isBlank() || txtPIN.getText().isBlank()){
+                throw new ErrorValidaciones("Ingrese todos los parametros");
+            }
+            Validaciones.validarPIN(txtPIN.getText());
+            Validaciones.validarCedula(txtId.getText());
+            if (conec.verificarEstaRegistrado(txtId.getText()) && conec.verificarParametro(AtributosUser.PIN.getValue(),txtPIN.getText())){
+                Cambio.setVisible(true);
+            }
+        } catch (ErrorValidaciones | SQLException ex) {
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage(), "Error Recuperacion", HEIGHT);
+        }  
+    }//GEN-LAST:event_btnRecuperar1ActionPerformed
+
+    
+    
 
     /**
      * @param args the command line arguments
@@ -156,11 +278,20 @@ public class FormRecuperarContraseña extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnRecuperar;
+    private javax.swing.JPanel Cambio;
+    private javax.swing.JButton btnCambiar;
+    private javax.swing.JButton btnRecuperar1;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPasswordField txtActual;
     private javax.swing.JTextField txtId;
+    private javax.swing.JPasswordField txtNuevo;
+    private javax.swing.JTextField txtPIN;
     // End of variables declaration//GEN-END:variables
 }

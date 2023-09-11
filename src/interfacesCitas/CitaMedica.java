@@ -4,7 +4,23 @@
  */
 package interfacesCitas;
 
+import Logica.LogicaCitas.Cita;
+import Logica.LogicaCitas.ConexionCita;
+import Logica.LogicaMedicos.ConexionMedicos;
+import Logica.LogicaPrincipal.ErrorValidaciones;
+import Logica.LogicaPrincipal.LogUser;
+import Logica.LogicaPrincipal.Validaciones;
 import interfacesPrincipales.SGP_MEDSC_admin;
+import static java.awt.image.ImageObserver.HEIGHT;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,16 +31,87 @@ public class CitaMedica extends javax.swing.JPanel {
     /**
      * Creates new form CitaMedica
      */
+    DefaultTableModel model;
+    DefaultTableModel model2;
+    DefaultTableModel model3;    
+    DefaultTableModel model4;    
+    private Cita cita;
+    private String code;
+    private SimpleDateFormat dateFormat;
     private SGP_MEDSC_admin sgpMedscAdmin;
-
-    public CitaMedica(SGP_MEDSC_admin sgpMedscAdmin) {
+    private ConexionCita conexion;
+    private ConexionMedicos medicoConect;
+    List<Cita> citas;
+    Map<String, String> medicos;
+    Map<String, String> especialidad;
+    List<String> horas;
+    
+    public CitaMedica(SGP_MEDSC_admin sgpMedscAdmin,LogUser user){
         this.sgpMedscAdmin = sgpMedscAdmin;
         initComponents();
+        medicoConect = new ConexionMedicos();
+        conexion = new ConexionCita();
+        if (!user.getUserType().equals("Medico Principal")){
+            Contenedor.setEnabledAt(4, false);
+        }
+        try {
+            especialidad = medicoConect.consultarEspecialidades();
+            medicos = medicoConect.consultarMedicos();
+            String esp = "";
+            for (Map.Entry<String, String> entry : especialidad.entrySet()) {
+                if (!entry.getValue().equals(esp)){
+                    cbmEspecialidades.addItem(entry.getValue());
+                    esp = entry.getValue();
+                }
+            } 
+        } catch (SQLException ex) {
+            System.out.println("Error carga de datos");
+        }
 
+        String columnas[] = {"Código cita","Nombre","Apellido","Fecha","Hora","Médico"};
+        String columnas1[] = {"Nombre","Apellido","Fecha","Hora","Médico"};
+        model = new DefaultTableModel();
+        model2 = new DefaultTableModel();
+        model3 = new DefaultTableModel();
+        model4 = new DefaultTableModel();
+        model.setColumnIdentifiers(columnas);
+        model2.setColumnIdentifiers(columnas1);
+        model3.setColumnIdentifiers(columnas);
+        model4.setColumnIdentifiers(columnas);
+        citasPacienteC.setModel(model2);
+        citasPacienteU.setModel(model);
+        pacienteCitaD.setModel(model3);
+        Listado.setModel(model4);
+        horas = new ArrayList<>();
+        inicializarHorario();
     }
 
-    public CitaMedica() {
-        
+    private void inicializarHorario(){        
+        // Agrega las horas a la lista
+        horas.add("07:00");
+        horas.add("07:30");
+        horas.add("08:00");
+        horas.add("08:30");
+        horas.add("09:00");
+        horas.add("09:30");
+        horas.add("10:00");
+        horas.add("10:30");
+        horas.add("11:00");
+        horas.add("11:30");
+        horas.add("12:00");
+        horas.add("12:30");
+        horas.add("13:00");
+        horas.add("13:30");
+        horas.add("14:00");
+        horas.add("14:30");
+        horas.add("15:00");
+        horas.add("15:30");
+        horas.add("16:00");
+        for (String hour: horas){
+            cbmHora.addItem(hour);
+            cbmNuevaHora.addItem(hour);
+        }
+
     }
 
     /**
@@ -36,76 +123,97 @@ public class CitaMedica extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        Contenedor = new javax.swing.JTabbedPane();
+        created = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
+        btnAgendar = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         txt3 = new javax.swing.JLabel();
         lblNuevo3 = new javax.swing.JLabel();
-        txtNuevo3 = new javax.swing.JTextField();
-        txtCedula3 = new javax.swing.JTextField();
+        txtNombresC = new javax.swing.JTextField();
+        txtCedulaC = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        cbmEspecialidades3 = new javax.swing.JComboBox<>();
+        cbmEspecialidades = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
-        txtApellido4 = new javax.swing.JTextField();
-        cmbMédicos3 = new javax.swing.JComboBox<>();
-        jCalendar1 = new com.toedter.calendar.JCalendar();
-        btnAgendar = new javax.swing.JButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        txtApellidoCR = new javax.swing.JTextField();
+        Fecha = new com.toedter.calendar.JCalendar();
+        cbmMedicos = new javax.swing.JComboBox<>();
+        jLabel18 = new javax.swing.JLabel();
+        cbmHora = new javax.swing.JComboBox<>();
+        jLabel19 = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        txt = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        txtCedulaUpdate = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        btnBuscaActualizar = new javax.swing.JButton();
+        jPanel8 = new javax.swing.JPanel();
+        lblActual = new javax.swing.JLabel();
         lblNuevo = new javax.swing.JLabel();
-        txtNuevo = new javax.swing.JTextField();
-        txtCedula = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        cbmEspecialidades = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
-        txtApellido1 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jCalendar2 = new com.toedter.calendar.JCalendar();
-        btnAgendar1 = new javax.swing.JButton();
-        cmbMédicos = new javax.swing.JComboBox<>();
-        jSpinField1 = new com.toedter.components.JSpinField();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jLocaleChooser1 = new com.toedter.components.JLocaleChooser();
-        jDayChooser1 = new com.toedter.calendar.JDayChooser();
-        jCalendar3 = new com.toedter.calendar.JCalendar();
-        jMonthChooser1 = new com.toedter.calendar.JMonthChooser();
-        jYearChooser1 = new com.toedter.calendar.JYearChooser();
-        jPanel3 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        btnConsultar = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        txtCedula1 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        txtAntiguo = new javax.swing.JLabel();
-        lblNuevo1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jDayChooser2 = new com.toedter.calendar.JDayChooser();
+        txtActualHora = new javax.swing.JTextField();
+        lblActual1 = new javax.swing.JLabel();
+        lblActual2 = new javax.swing.JLabel();
+        txtFechaActual = new javax.swing.JTextField();
+        FechaNueva = new com.toedter.calendar.JDateChooser();
+        cbmNuevaHora = new javax.swing.JComboBox<>();
+        btnActualizar = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        citasPacienteU = new javax.swing.JTable();
+        jLabel20 = new javax.swing.JLabel();
+        CONSULTAR = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
+        txtCedulaConsult = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jDateChooser3 = new com.toedter.calendar.JDateChooser();
-        jDateChooser4 = new com.toedter.calendar.JDateChooser();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel15 = new javax.swing.JLabel();
-        btnConsultar1 = new javax.swing.JButton();
-        txtCedula2 = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
+        btnRegistrar1 = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        citasPacienteC = new javax.swing.JTable();
+        jLabel21 = new javax.swing.JLabel();
+        LISTA = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
+        btnBuscaListado = new javax.swing.JButton();
+        FechaInicio = new com.toedter.calendar.JDateChooser();
+        FechaFin = new com.toedter.calendar.JDateChooser();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        resultados = new javax.swing.JTable();
-        jLabel17 = new javax.swing.JLabel();
+        Listado = new javax.swing.JTable();
+        jLabel22 = new javax.swing.JLabel();
+        DELETE = new javax.swing.JPanel();
+        jPanel12 = new javax.swing.JPanel();
+        txtCedulaDelete = new javax.swing.JTextField();
+        jLabel26 = new javax.swing.JLabel();
+        btnBuscaActualizar1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        pacienteCitaD = new javax.swing.JTable();
+        btnEliminar = new javax.swing.JButton();
+        jLabel25 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+        setMinimumSize(new java.awt.Dimension(2042, 780));
+        setPreferredSize(new java.awt.Dimension(1742, 780));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Contenedor.setBackground(new java.awt.Color(255, 255, 255));
+
+        created.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel10.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel10.setMinimumSize(new java.awt.Dimension(1040, 830));
+        jPanel10.setPreferredSize(new java.awt.Dimension(1040, 830));
         jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnAgendar.setBackground(new java.awt.Color(51, 153, 255));
+        btnAgendar.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgendar.setText("AgendarCita");
+        btnAgendar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgendarActionPerformed(evt);
+            }
+        });
+        jPanel10.add(btnAgendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 560, 140, 40));
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
         txt3.setText("Nombres");
 
@@ -116,366 +224,268 @@ public class CitaMedica extends javax.swing.JPanel {
 
         jLabel11.setText("Médico");
 
-        cbmEspecialidades3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbmEspecialidades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbmEspecialidadesActionPerformed(evt);
+            }
+        });
 
         jLabel12.setText("Especialidad");
 
-        cmbMédicos3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jLabel18.setText("Hora:");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 310, Short.MAX_VALUE)
-            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel6Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txt3)
-                                    .addComponent(jLabel10))
-                                .addComponent(lblNuevo3, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addComponent(jLabel11))
-                        .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtNuevo3)
-                        .addComponent(txtCedula3)
-                        .addComponent(cbmEspecialidades3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtApellido4, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cmbMédicos3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(12, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblNuevo3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txt3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cbmMedicos, 0, 134, Short.MAX_VALUE)
+                    .addComponent(cbmEspecialidades, 0, 134, Short.MAX_VALUE)
+                    .addComponent(txtApellidoCR, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                    .addComponent(txtNombresC)
+                    .addComponent(txtCedulaC))
+                .addGap(85, 85, 85)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58)
+                        .addComponent(cbmHora, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(99, 99, 99))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 190, Short.MAX_VALUE)
-            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel6Layout.createSequentialGroup()
-                    .addGap(16, 16, 16)
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel10)
-                        .addComponent(txtCedula3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txt3)
-                        .addComponent(txtNuevo3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblNuevo3)
-                        .addComponent(txtApellido4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cbmEspecialidades3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel12))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel11)
-                        .addComponent(cmbMédicos3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
-
-        jPanel10.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 310, 190));
-        jPanel10.add(jCalendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, -1, -1));
-
-        btnAgendar.setText("AgendarCita");
-        btnAgendar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgendarActionPerformed(evt);
-            }
-        });
-        jPanel10.add(btnAgendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 110, 30));
-        jPanel10.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 250, 160, 30));
-
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/fondov3.jpg"))); // NOI18N
-        jPanel10.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 420));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 766, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 671, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        jTabbedPane1.addTab("Actualizar", jPanel1);
-
-        txt.setText("Nombres");
-
-        lblNuevo.setText("Apellido");
-        lblNuevo.setToolTipText("");
-
-        jLabel1.setText("Número de Cédula Paciente");
-
-        jLabel2.setText("Médico");
-
-        cbmEspecialidades.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabel3.setText("Especialidad");
-
-        jLabel4.setText("Fecha:");
-
-        jLabel5.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
-        jLabel5.setText("Registro Cita Médica");
-
-        btnAgendar1.setText("AgendarCita");
-
-        cmbMédicos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(txt)
-                                        .addComponent(jLabel1))
-                                    .addComponent(lblNuevo, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addComponent(jLabel2))
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(160, 160, 160)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNuevo)
-                                    .addComponent(txtCedula)
-                                    .addComponent(txtApellido1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cbmEspecialidades, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cmbMédicos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(32, 32, 32)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel4))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jSpinField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jCalendar3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(74, 74, 74))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(238, 238, 238)
-                                .addComponent(btnAgendar1))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(213, 213, 213)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(62, 62, 62)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jDayChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jMonthChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jYearChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(cbmHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLocaleChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel5)
-                        .addGap(91, 91, 91)
-                        .addComponent(jMonthChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jYearChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jCalendar3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jDayChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt)
-                            .addComponent(txtNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblNuevo)
-                            .addComponent(txtApellido1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbmEspecialidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(cmbMédicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(12, 12, 12))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jCalendar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 361, Short.MAX_VALUE)
-                                .addComponent(jSpinField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)))))
-                .addComponent(jLocaleChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAgendar1)
-                .addGap(19, 19, 19))
-        );
-
-        jTabbedPane1.addTab("Agendar", jPanel2);
-
-        jTextField1.setEditable(false);
-
-        btnConsultar.setText("Buscar");
-
-        jLabel6.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel6.setText("*");
-
-        jLabel7.setFont(new java.awt.Font("Sitka Heading", 1, 14)); // NOI18N
-        jLabel7.setText("Información Cita");
-
-        jLabel8.setText("Código de Cita");
-
-        txtAntiguo.setText("Actual:");
-
-        lblNuevo1.setText("Nuevo:");
-        lblNuevo1.setToolTipText("");
-
-        jButton1.setText("Modificar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(225, 225, 225)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel7)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel8))
-                            .addComponent(txtAntiguo))
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(35, 35, 35)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnConsultar)
-                                    .addComponent(txtCedula1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(43, 43, 43)
-                                .addComponent(lblNuevo1))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jDayChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jLabel7)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(txtCedulaC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(txtCedula1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6)
-                            .addComponent(lblNuevo1))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnConsultar)
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtAntiguo)))
-                    .addComponent(jDayChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addContainerGap(470, Short.MAX_VALUE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt3)
+                    .addComponent(txtNombresC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNuevo3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtApellidoCR, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cbmEspecialidades, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbmMedicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
+                .addGap(120, 120, 120))
         );
 
-        jTabbedPane1.addTab("Cambiar", jPanel3);
+        jPanel10.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 970, 370));
 
-        jLabel9.setFont(new java.awt.Font("Sitka Heading", 1, 14)); // NOI18N
-        jLabel9.setText("Listado de Citas");
+        jLabel19.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(51, 153, 255));
+        jLabel19.setText("Agendar Nueva Cita");
+        jPanel10.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, 190, 30));
 
-        jLabel13.setText("Fecha de Inicio");
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/fondov4.jpg"))); // NOI18N
+        jPanel10.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 750));
 
-        jLabel14.setText("Fecha Fin");
+        javax.swing.GroupLayout createdLayout = new javax.swing.GroupLayout(created);
+        created.setLayout(createdLayout);
+        createdLayout.setHorizontalGroup(
+            createdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 2133, Short.MAX_VALUE)
+            .addGroup(createdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(createdLayout.createSequentialGroup()
+                    .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 2133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        createdLayout.setVerticalGroup(
+            createdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 830, Short.MAX_VALUE)
+            .addGroup(createdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Contenedor.addTab("Agendar Cita", created);
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel7.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        jLabel23.setText("Número de cédula del Paciente");
+
+        btnBuscaActualizar.setBackground(new java.awt.Color(51, 153, 255));
+        btnBuscaActualizar.setFont(new java.awt.Font("Sitka Subheading", 1, 12)); // NOI18N
+        btnBuscaActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscaActualizar.setText("Buscar");
+        btnBuscaActualizar.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        btnBuscaActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscaActualizarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel23)
+                        .addGap(27, 27, 27)
+                        .addComponent(txtCedulaUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(134, 134, 134)
+                        .addComponent(btnBuscaActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(26, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel23)
+                    .addComponent(txtCedulaUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(btnBuscaActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
+        );
+
+        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 100, 390, 120));
+
+        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Cita", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Trebuchet MS", 1, 12), new java.awt.Color(51, 153, 255))); // NOI18N
+
+        lblActual.setText("Fecha Actual");
+
+        lblNuevo.setText("Fecha Nuevo");
+
+        txtActualHora.setEditable(false);
+
+        lblActual1.setText("Hora Nueva");
+
+        lblActual2.setText("Hora Actual");
+
+        txtFechaActual.setEditable(false);
+
+        cbmNuevaHora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblActual2)
+                    .addComponent(lblActual)
+                    .addComponent(lblNuevo)
+                    .addComponent(lblActual1))
+                .addGap(110, 110, 110)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(FechaNueva, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                    .addComponent(txtActualHora)
+                    .addComponent(cbmNuevaHora, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtFechaActual))
+                .addGap(34, 34, 34))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFechaActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblActual))
+                .addGap(8, 8, 8)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblNuevo)
+                    .addComponent(FechaNueva, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblActual2)
+                    .addComponent(txtActualHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbmNuevaHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblActual1))
+                .addGap(20, 20, 20))
+        );
+
+        jPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 260, 420, 180));
+
+        btnActualizar.setBackground(new java.awt.Color(51, 153, 255));
+        btnActualizar.setFont(new java.awt.Font("Sitka Subheading", 1, 12)); // NOI18N
+        btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizar.setText("Actualizar");
+        btnActualizar.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 500, 100, 30));
+
+        citasPacienteU.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        citasPacienteU.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                citasPacienteUMousePressed(evt);
+            }
+        });
+        jScrollPane3.setViewportView(citasPacienteU);
 
-        jButton2.setText("BuscarCitas");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 470, 180));
+
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/fondov4.jpg"))); // NOI18N
+        jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1180, 710));
+
+        Contenedor.addTab("Actualizar Fecha y Hora", jPanel2);
+
+        CONSULTAR.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        jLabel13.setText("Número de cédula del Paciente");
+
+        btnRegistrar1.setBackground(new java.awt.Color(51, 153, 255));
+        btnRegistrar1.setFont(new java.awt.Font("Sitka Subheading", 1, 12)); // NOI18N
+        btnRegistrar1.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistrar1.setText("Consultar");
+        btnRegistrar1.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        btnRegistrar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnRegistrar1ActionPerformed(evt);
             }
         });
 
@@ -484,215 +494,467 @@ public class CitaMedica extends javax.swing.JPanel {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(193, 193, 193)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(109, 109, 109)
-                        .addComponent(jLabel9))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel13))
-                        .addGap(55, 55, 55)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jDateChooser4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(125, 125, 125)
-                        .addComponent(jButton2)))
-                .addContainerGap(220, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addComponent(jLabel13)
+                .addGap(27, 27, 27)
+                .addComponent(txtCedulaConsult, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRegistrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(130, 130, 130))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jLabel9)
-                .addGap(29, 29, 29)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(17, 17, 17)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jDateChooser4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCedulaConsult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel14)
-                    .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addGap(13, 13, 13)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(276, Short.MAX_VALUE))
+                .addComponent(btnRegistrar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Consultar Lista", jPanel4);
+        CONSULTAR.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 390, 110));
 
-        jLabel15.setText("Código de la Cita");
-
-        btnConsultar1.setText("Buscar");
-
-        jLabel16.setFont(new java.awt.Font("Sitka Heading", 1, 14)); // NOI18N
-        jLabel16.setText("Información Cita Agendada");
-
-        resultados.setModel(new javax.swing.table.DefaultTableModel(
+        citasPacienteC.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Código Cita", "Title 2"
+
             }
         ));
-        resultados.setShowGrid(false);
-        resultados.setShowVerticalLines(true);
-        jScrollPane2.setViewportView(resultados);
+        citasPacienteC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                citasPacienteCMousePressed(evt);
+            }
+        });
+        jScrollPane4.setViewportView(citasPacienteC);
 
-        jLabel17.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel17.setText("*");
+        CONSULTAR.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, 540, 150));
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(172, 172, 172)
-                        .addComponent(btnConsultar1))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(144, 144, 144)
-                        .addComponent(jLabel16))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel17)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel15)
-                                .addGap(49, 49, 49)
-                                .addComponent(txtCedula2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(322, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel16)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(txtCedula2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel17))
-                .addGap(24, 24, 24)
-                .addComponent(btnConsultar1)
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/fondov4.jpg"))); // NOI18N
+        CONSULTAR.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1180, 710));
+
+        Contenedor.addTab("Consultar Citas Paciente", CONSULTAR);
+
+        LISTA.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel11.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel11.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        btnBuscaListado.setBackground(new java.awt.Color(51, 153, 255));
+        btnBuscaListado.setFont(new java.awt.Font("Sitka Subheading", 1, 12)); // NOI18N
+        btnBuscaListado.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscaListado.setText("Buscar");
+        btnBuscaListado.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        btnBuscaListado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscaListadoActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Fecha Fin");
+
+        jLabel7.setText("Fecha Inicio");
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(51, 51, 51)
+                        .addComponent(FechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17))
+                    .addComponent(btnBuscaListado, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel6)
                 .addGap(37, 37, 37)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(444, Short.MAX_VALUE))
+                .addComponent(FechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
         );
-
-        jTabbedPane1.addTab("Consultar Citas", jPanel5);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 766, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(FechaInicio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FechaFin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addComponent(btnBuscaListado, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+
+        LISTA.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 560, 110));
+
+        Listado.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(Listado);
+
+        LISTA.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 320, 640, 230));
+
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/fondov4.jpg"))); // NOI18N
+        LISTA.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1180, 710));
+
+        Contenedor.addTab("Consultar Citas", null, LISTA, "");
+
+        DELETE.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel12.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel12.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        jLabel26.setText("Número de cédula del Paciente");
+
+        btnBuscaActualizar1.setBackground(new java.awt.Color(51, 153, 255));
+        btnBuscaActualizar1.setFont(new java.awt.Font("Sitka Subheading", 1, 12)); // NOI18N
+        btnBuscaActualizar1.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscaActualizar1.setText("Buscar");
+        btnBuscaActualizar1.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        btnBuscaActualizar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscaActualizar1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel26)
+                        .addGap(27, 27, 27)
+                        .addComponent(txtCedulaDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGap(135, 135, 135)
+                        .addComponent(btnBuscaActualizar1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel26)
+                    .addComponent(txtCedulaDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnBuscaActualizar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        DELETE.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 380, 100));
+
+        pacienteCitaD.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        pacienteCitaD.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                pacienteCitaDMousePressed(evt);
+            }
+        });
+        jScrollPane1.setViewportView(pacienteCitaD);
+
+        DELETE.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 500, 150));
+
+        btnEliminar.setBackground(new java.awt.Color(51, 153, 255));
+        btnEliminar.setFont(new java.awt.Font("Sitka Subheading", 1, 12)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        DELETE.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 420, 100, 30));
+
+        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons/fondov4.jpg"))); // NOI18N
+        DELETE.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1180, 710));
+
+        Contenedor.addTab("Eliminar Cita", DELETE);
+
+        add(Contenedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1844, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendarActionPerformed
         // TODO add your handling code here:
+
+        if (!txtCedulaC.getText().isBlank()&& !txtNombresC.getText().isBlank() && !txtApellidoCR.getText().isBlank()
+                && cbmHora.getSelectedIndex() != -1 && cbmMedicos.getSelectedIndex() != -1){
+                dateFormat = new SimpleDateFormat("dd/MM/yyyy"); //transforma la fecha selecionada en en formato dd/mm/aaaa
+            try {
+                 
+                Validaciones.validarCedula(txtCedulaC.getText());
+                Validaciones.validarNombre(txtNombresC.getText());
+                Validaciones.validarNombre(txtApellidoCR.getText()); 
+                java.util.Date fechaUtil = Fecha.getDate();
+                Validaciones.validarFecha(Fecha.getDate());
+// Convertir la fecha de java.util.Date a java.sql.Date
+                java.sql.Date fechaSQL = new java.sql.Date(fechaUtil.getTime());
+                cita = new Cita(txtCedulaC.getText(),txtNombresC.getText(),txtApellidoCR.getText(),
+                    cbmEspecialidades.getSelectedItem().toString(),medicos.get(cbmMedicos.getSelectedItem()),
+                    fechaSQL,cbmHora.getSelectedItem().toString());    
+                horas.remove(cbmHora.getSelectedItem().toString());
+                conexion.postCita(cita);
+                JOptionPane.showMessageDialog(null, "La cita médica ha sido agendada.", "Registrado",JOptionPane.INFORMATION_MESSAGE);
+                txtCedulaC.setText("");
+                txtNombresC.setText("");
+                txtApellidoCR.setText("");
+            } catch (ErrorValidaciones | SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Error Registro", HEIGHT);
+            }  
+        }else{
+            JOptionPane.showMessageDialog(null,"Ingrese todos los campos.", "Error Campos", HEIGHT);
+        }
+
     }//GEN-LAST:event_btnAgendarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnBuscaActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaActualizarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        if (!txtCedulaUpdate.getText().isBlank()){
+            try{
+                Validaciones.validarCedula(txtCedulaUpdate.getText());
+                if (!conexion.verificarCita(txtCedulaUpdate.getText())){
+                    throw new ErrorValidaciones("No existen citas agendadas al paciente");
+                }
+                model.setRowCount(0);
+                citas = conexion.consultarCitasPaciente(txtCedulaUpdate.getText());
+                //System.out.println(citas.toArray().length);
+                for (Cita cita : citas){
+                    Object[] fila = {cita.getCodigo(),cita.getNombres(),cita.getApellidos(), cita.getFecha(),cita.getHora(),cita.getMedico()};
+                    model.addRow(fila);
+                }    
+            }catch (ErrorValidaciones | SQLException ex){
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Error Consulta", HEIGHT);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Ingrese el número de cédula", "Error", HEIGHT);
+        }
+    }//GEN-LAST:event_btnBuscaActualizarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnBuscaListadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaListadoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+            try{
+                model4.setRowCount(0);
+                java.util.Date fechaUtil = FechaInicio.getDate();
+                java.util.Date fechaUtil2 = FechaFin.getDate();
+                // Convertir la fecha de java.util.Date a java.sql.Date
+                
+                java.sql.Date fechaSQL = new java.sql.Date(fechaUtil.getTime());
+                java.sql.Date fechaSQL2 = new java.sql.Date(fechaUtil.getTime());                
+                citas = conexion.consultarListaDeCitas(fechaSQL, fechaSQL2);
+                for (Cita cita : citas){
+                    Object[] fila = {cita.getCodigo(),cita.getNombres(),cita.getApellidos(), cita.getFecha(),cita.getHora(),cita.getMedico()};
+                    model4.addRow(fila);
+                }
+                
+            }catch (ErrorValidaciones | SQLException ex){
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Error Consulta", HEIGHT);
+            }
+                
+    }//GEN-LAST:event_btnBuscaListadoActionPerformed
+
+    private void btnRegistrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrar1ActionPerformed
+        // TODO add your handling code here:
+        if (!txtCedulaConsult.getText().isBlank()){
+            try{
+                Validaciones.validarCedula(txtCedulaConsult.getText());
+                if (!conexion.verificarCita(txtCedulaConsult.getText())){
+                    throw new ErrorValidaciones("No existen citas agendadas al paciente");
+                }
+
+                model2.setRowCount(0);
+                citas = conexion.consultarCitasPaciente(txtCedulaConsult.getText());
+                for (Cita cita : citas){
+                    Object[] fila = {cita.getNombres(),cita.getApellidos(), cita.getFecha(),cita.getHora(),cita.getMedico()};
+                    model2.addRow(fila);
+                } 
+            }catch (ErrorValidaciones | SQLException ex){
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Error Registro", HEIGHT);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Ingrese el número de cédula", "Error", HEIGHT);
+        }        
+        
+    }//GEN-LAST:event_btnRegistrar1ActionPerformed
+
+    private void btnBuscaActualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaActualizar1ActionPerformed
+        // TODO add your handling code here:
+        if (!txtCedulaDelete.getText().isBlank()){
+            try{
+
+                Validaciones.validarCedula(txtCedulaDelete.getText());
+                if (!conexion.verificarCita(txtCedulaDelete.getText())){
+                    throw new ErrorValidaciones("No existen citas agendadas al paciente");
+                }
+                model3.setRowCount(0);
+                citas = conexion.consultarCitasPaciente(txtCedulaDelete.getText());
+                for (Cita cita : citas){
+                    Object[] fila = {cita.getCodigo(),cita.getNombres(),cita.getApellidos(), cita.getFecha(),cita.getHora(),cita.getMedico()};
+                    model3.addRow(fila);
+                }     
+            }catch (ErrorValidaciones | SQLException ex){
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Error Registro", HEIGHT);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null,"Ingrese el número de cédula", "Error", HEIGHT);
+        }          
+    }//GEN-LAST:event_btnBuscaActualizar1ActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        try {
+            conexion.eliminarCita(code);
+            JOptionPane.showMessageDialog(null, "La cita médica ha sido eliminada", "Cancelación", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error Registro", HEIGHT);
+        }    
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        // TODO add your handling code here:
+        if (cbmNuevaHora.getSelectedIndex() != -1){
+            try {
+                Validaciones.validarFecha(FechaNueva.getDate());
+                java.util.Date fechaUtil = FechaNueva.getDate();
+                java.sql.Date fechaSQL = new java.sql.Date(fechaUtil.getTime());                
+                conexion.ActualizarFechayHora(fechaSQL,cbmNuevaHora.getSelectedItem().toString(),code);
+                JOptionPane.showMessageDialog(null, "Fecha Actualizada exitosamente.", "Confirmación",JOptionPane.INFORMATION_MESSAGE);
+            } catch (ErrorValidaciones | SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", HEIGHT);
+            }
+        }
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void cbmEspecialidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbmEspecialidadesActionPerformed
+        // TODO add your handling code here:
+        cbmMedicos.removeAllItems();
+        for (Map.Entry<String, String> entry : especialidad.entrySet()) {
+            if (cbmEspecialidades.getSelectedItem().toString().equals(entry.getValue())){
+                cbmMedicos.addItem(entry.getKey());
+            }
+        }           
+    }//GEN-LAST:event_cbmEspecialidadesActionPerformed
+
+    private void citasPacienteUMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_citasPacienteUMousePressed
+        // TODO add your handling code here:
+        if (evt.getClickCount() == 1){
+            Date fechaSQL = (Date) model.getValueAt(citasPacienteU.getSelectedRow(),3); // Cambia la fecha según tus necesidades
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // Define el formato deseado
+            String fechaFormateada = sdf.format(fechaSQL);
+            txtFechaActual.setText(fechaFormateada);
+            code = (String) model.getValueAt(citasPacienteU.getSelectedRow(), 0);
+            txtActualHora.setText((String) model.getValueAt(citasPacienteU.getSelectedRow(), 4));            
+        } 
+    }//GEN-LAST:event_citasPacienteUMousePressed
+
+
+    private void citasPacienteCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_citasPacienteCMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_citasPacienteCMousePressed
+
+    private void pacienteCitaDMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pacienteCitaDMousePressed
+        // TODO add your handling code here:
+        if (evt.getClickCount() == 1){
+            code = (String) model.getValueAt(citasPacienteU.getSelectedRow(), 0);            
+        }         
+    }//GEN-LAST:event_pacienteCitaDMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel CONSULTAR;
+    private javax.swing.JTabbedPane Contenedor;
+    private javax.swing.JPanel DELETE;
+    private com.toedter.calendar.JCalendar Fecha;
+    private com.toedter.calendar.JDateChooser FechaFin;
+    private com.toedter.calendar.JDateChooser FechaInicio;
+    private com.toedter.calendar.JDateChooser FechaNueva;
+    private javax.swing.JPanel LISTA;
+    private javax.swing.JTable Listado;
     private javax.swing.JLabel background;
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAgendar;
-    private javax.swing.JButton btnAgendar1;
-    private javax.swing.JButton btnConsultar;
-    private javax.swing.JButton btnConsultar1;
+    private javax.swing.JButton btnBuscaActualizar;
+    private javax.swing.JButton btnBuscaActualizar1;
+    private javax.swing.JButton btnBuscaListado;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnRegistrar1;
     private javax.swing.JComboBox<String> cbmEspecialidades;
-    private javax.swing.JComboBox<String> cbmEspecialidades3;
-    private javax.swing.JComboBox<String> cmbMédicos;
-    private javax.swing.JComboBox<String> cmbMédicos3;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private com.toedter.calendar.JCalendar jCalendar1;
-    private com.toedter.calendar.JCalendar jCalendar2;
-    private com.toedter.calendar.JCalendar jCalendar3;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
-    private com.toedter.calendar.JDateChooser jDateChooser3;
-    private com.toedter.calendar.JDateChooser jDateChooser4;
-    private com.toedter.calendar.JDayChooser jDayChooser1;
-    private com.toedter.calendar.JDayChooser jDayChooser2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JComboBox<String> cbmHora;
+    private javax.swing.JComboBox<String> cbmMedicos;
+    private javax.swing.JComboBox<String> cbmNuevaHora;
+    private javax.swing.JTable citasPacienteC;
+    private javax.swing.JTable citasPacienteU;
+    private javax.swing.JPanel created;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private com.toedter.components.JLocaleChooser jLocaleChooser1;
-    private com.toedter.calendar.JMonthChooser jMonthChooser1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private com.toedter.components.JSpinField jSpinField1;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private com.toedter.calendar.JYearChooser jYearChooser1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JLabel lblActual;
+    private javax.swing.JLabel lblActual1;
+    private javax.swing.JLabel lblActual2;
     private javax.swing.JLabel lblNuevo;
-    private javax.swing.JLabel lblNuevo1;
     private javax.swing.JLabel lblNuevo3;
-    private javax.swing.JTable resultados;
-    private javax.swing.JLabel txt;
+    private javax.swing.JTable pacienteCitaD;
     private javax.swing.JLabel txt3;
-    private javax.swing.JLabel txtAntiguo;
-    private javax.swing.JTextField txtApellido1;
-    private javax.swing.JTextField txtApellido4;
-    private javax.swing.JTextField txtCedula;
-    private javax.swing.JTextField txtCedula1;
-    private javax.swing.JTextField txtCedula2;
-    private javax.swing.JTextField txtCedula3;
-    private javax.swing.JTextField txtNuevo;
-    private javax.swing.JTextField txtNuevo3;
+    private javax.swing.JTextField txtActualHora;
+    private javax.swing.JTextField txtApellidoCR;
+    private javax.swing.JTextField txtCedulaC;
+    private javax.swing.JTextField txtCedulaConsult;
+    private javax.swing.JTextField txtCedulaDelete;
+    private javax.swing.JTextField txtCedulaUpdate;
+    private javax.swing.JTextField txtFechaActual;
+    private javax.swing.JTextField txtNombresC;
     // End of variables declaration//GEN-END:variables
 }
