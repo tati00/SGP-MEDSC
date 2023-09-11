@@ -389,8 +389,6 @@ public class CitaMedica extends javax.swing.JPanel {
 
         txtFechaActual.setEditable(false);
 
-        cbmNuevaHora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
