@@ -406,7 +406,7 @@ public class Paciente extends javax.swing.JPanel {
         pnActualizarDisponibles.setBackground(new java.awt.Color(255, 255, 255));
         pnActualizarDisponibles.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)), "ACTUALIZAR"));
 
-        txtDisponibles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N° de teléfono celular", "Dirección Domiciliaria", "Estado Civil" }));
+        txtDisponibles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "N° de teléfono celular", "Dirección Domiciliaria", "Estado Civil" }));
         txtDisponibles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDisponiblesActionPerformed(evt);
@@ -417,11 +417,11 @@ public class Paciente extends javax.swing.JPanel {
 
         lblIdentificador.setText("N° de la historia clínica: ");
 
-        cbEstadoCivil1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Soltero(a)", "Divorciado(a)", "Unión libre", "Viudo(a)" }));
+        cbEstadoCivil1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Soltero(a)", "Divorciado(a)", "Unión libre", "Viudo(a)" }));
 
         lblNuevo.setText("Nuevo: ");
 
-        lblNuevoCB.setText("Nuevo: ");
+        lblNuevoCB.setText("Nuevo estado civil: ");
 
         javax.swing.GroupLayout pnActualizarDisponiblesLayout = new javax.swing.GroupLayout(pnActualizarDisponibles);
         pnActualizarDisponibles.setLayout(pnActualizarDisponiblesLayout);
@@ -1175,7 +1175,7 @@ public class Paciente extends javax.swing.JPanel {
         } else if (cbTipoID.getSelectedItem().equals("Pasaporte") && !validarPasaporte(num_DocumentoID)) {
             JOptionPane.showMessageDialog(null, "El número de pasaporte no es válido");
         } else if (cbTipoID.getSelectedItem().equals("Cédula de identidad") && !verificarCedula(num_DocumentoID)) {
-            JOptionPane.showMessageDialog(null, "El número de cédula no existe");
+            JOptionPane.showMessageDialog(null, "El número de cédula no es válido");
         } else if (!validarApellidos(apellidos)) {
             JOptionPane.showMessageDialog(null, "Ingrese apellidos válidos.");
         } else if (!validarDireccion(direccion)) {
@@ -1374,7 +1374,7 @@ public class Paciente extends javax.swing.JPanel {
 
         String eleccion = txtDisponibles.getSelectedItem().toString();
         if (eleccion == "N° de teléfono celular") {
-            cbEstadoCivil1.setEnabled(false);
+            //cbEstadoCivil1.setEnabled(false);
             String nuevoNC = txtActualizarCampo.getText();
             if (!nuevoNC.isEmpty()) {
                 try {
@@ -1393,6 +1393,7 @@ public class Paciente extends javax.swing.JPanel {
             }
 
         } else if (eleccion == "Dirección Domiciliaria") {
+            //cbEstadoCivil1.setEnabled(false);
             String nuevoDD = txtActualizarCampo.getText();
             if (!nuevoDD.isEmpty()) {
                 try {
@@ -1412,18 +1413,22 @@ public class Paciente extends javax.swing.JPanel {
             }
         } else {
             cbEstadoCivil1.setEnabled(true);
-            String nuevoEC = txtDisponibles.getSelectedItem().toString();
-            try {
+            String nuevoEC = cbEstadoCivil1.getSelectedItem().toString();
+            if (!nuevoEC.equals("Seleccionar")) {
+                try {
 
-                Connection con = ConexionPacientes.getConexion();
-                PreparedStatement ps = con.prepareStatement("UPDATE paciente SET estado_civil=? WHERE num_DocumentoID=?");
+                    Connection con = ConexionPacientes.getConexion();
+                    PreparedStatement ps = con.prepareStatement("UPDATE paciente SET estado_civil=? WHERE num_DocumentoID=?");
 
-                ps.setString(1, nuevoEC);
-                ps.setString(2, num_DocumentoID);
-                ps.executeUpdate();
-                JOptionPane.showMessageDialog(null, "ESTADO CIVIL ACTUALIZADO");
-            } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, e.toString());
+                    ps.setString(1, nuevoEC);
+                    ps.setString(2, num_DocumentoID);
+                    ps.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "ESTADO CIVIL ACTUALIZADO");
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, e.toString());
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Seleccione el estado civil del paciente.");
             }
         }
     }//GEN-LAST:event_btnActualizarMouseClicked
