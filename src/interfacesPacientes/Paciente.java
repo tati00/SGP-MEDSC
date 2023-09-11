@@ -21,6 +21,7 @@ import java.sql.ResultSet;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.SwingConstants;
 
 public class Paciente extends javax.swing.JPanel {
 
@@ -30,6 +31,7 @@ public class Paciente extends javax.swing.JPanel {
         this.sgpMedscAdmin = sgpMedscAdmin;
         initComponents();
         cbNacionalidad.setEnabled(false);
+        
         /*if (!sgpMedscAdmin.obtenerUser().getUserType().equals("Medico Principal")) {
             pnActualizarDisponibles1.setVisible(false);
         }
@@ -44,7 +46,7 @@ public class Paciente extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        pacientePestañas = new javax.swing.JTabbedPane();
         pnRegistrar = new javax.swing.JPanel();
         pnSubRegistrar = new javax.swing.JPanel();
         lblNumeroID = new javax.swing.JLabel();
@@ -167,7 +169,8 @@ public class Paciente extends javax.swing.JPanel {
 
         setMinimumSize(new java.awt.Dimension(1015, 647));
 
-        jTabbedPane1.setPreferredSize(new java.awt.Dimension(802, 780));
+        pacientePestañas.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+        pacientePestañas.setPreferredSize(new java.awt.Dimension(802, 780));
 
         pnSubRegistrar.setBackground(new java.awt.Color(255, 255, 255));
         pnSubRegistrar.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true), "REGISTRAR PACIENTE"));
@@ -401,7 +404,7 @@ public class Paciente extends javax.swing.JPanel {
                 .addContainerGap(393, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Registrar", pnRegistrar);
+        pacientePestañas.addTab("Registrar", pnRegistrar);
 
         pnActualizarDisponibles.setBackground(new java.awt.Color(255, 255, 255));
         pnActualizarDisponibles.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)), "ACTUALIZAR"));
@@ -585,7 +588,7 @@ public class Paciente extends javax.swing.JPanel {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Actualizar", pnActualizar);
+        pacientePestañas.addTab("Actualizar", pnActualizar);
 
         pnInfoPersonal.setBackground(new java.awt.Color(255, 255, 255));
         pnInfoPersonal.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true), "INFORMACIÓN PERSONAL"));
@@ -1117,7 +1120,7 @@ public class Paciente extends javax.swing.JPanel {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Consultar", pnConsultar);
+        pacientePestañas.addTab("Consultar", pnConsultar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -1125,14 +1128,14 @@ public class Paciente extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1090, Short.MAX_VALUE)
+                .addComponent(pacientePestañas, javax.swing.GroupLayout.DEFAULT_SIZE, 1090, Short.MAX_VALUE)
                 .addGap(41, 41, 41))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pacientePestañas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(35, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -1653,7 +1656,6 @@ public class Paciente extends javax.swing.JPanel {
     private com.toedter.calendar.JDateChooser jDateChooser;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblAbrirHC;
     private javax.swing.JLabel lblAlergias;
     private javax.swing.JLabel lblAntecedenteFamiliar;
@@ -1705,6 +1707,7 @@ public class Paciente extends javax.swing.JPanel {
     private javax.swing.JLabel lblTipoSangre1;
     private javax.swing.JLabel lblTrabajo;
     private javax.swing.JLabel lblTrabajo1;
+    private javax.swing.JTabbedPane pacientePestañas;
     private javax.swing.JPanel pnAbrirHC;
     private javax.swing.JPanel pnActualizar;
     private javax.swing.JPanel pnActualizarDisponibles;
