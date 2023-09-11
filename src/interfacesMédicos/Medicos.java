@@ -85,8 +85,8 @@ public class Medicos extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txtCedulaR = new javax.swing.JTextField();
-        txtNombresR = new javax.swing.JTextField();
         txtApellidosR = new javax.swing.JTextField();
+        txtNombresR = new javax.swing.JTextField();
         txtNumeroR = new javax.swing.JTextField();
         txtEspecialidad = new javax.swing.JTextField();
         txtEmailR = new javax.swing.JTextField();
@@ -172,8 +172,8 @@ public class Medicos extends javax.swing.JPanel {
         jLabel7.setText("Especialidad");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, -1, -1));
         jPanel1.add(txtCedulaR, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, 140, -1));
-        jPanel1.add(txtNombresR, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 250, 140, -1));
-        jPanel1.add(txtApellidosR, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 250, 140, -1));
+        jPanel1.add(txtApellidosR, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 250, 140, -1));
+        jPanel1.add(txtNombresR, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 250, 140, -1));
         jPanel1.add(txtNumeroR, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 320, 140, -1));
 
         txtEspecialidad.setToolTipText("");
@@ -717,15 +717,15 @@ public class Medicos extends javax.swing.JPanel {
     
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // TODO add your handling code here:
-        if (!txtNombresR.getText().isBlank() && !txtApellidosR.getText().isBlank() && !txtCedulaR.getText().isBlank() &&
+        if (!txtApellidosR.getText().isBlank() && !txtNombresR.getText().isBlank() && !txtCedulaR.getText().isBlank() &&
                 !txtNumeroR.getText().isBlank() && !txtEmailR.getText().isBlank() && !txtEspecialidad.getText().isBlank() || !Dirección.getText().isBlank()){
             try {
                 Validaciones.validarCedula(txtCedulaR.getText());
                 if(conexion.verificarEstaRegistrado(txtCedulaR.getText())){
                     throw new ErrorValidaciones("Ya existe un médico registrado con este número de cédula.");            
                 }                
-                Validaciones.validarNombre(txtNombresR.getText());
-                Validaciones.validarApellido(txtApellidosR.getText());
+                Validaciones.validarNombre(txtApellidosR.getText());
+                Validaciones.validarApellido(txtNombresR.getText());
                 Validaciones.validarEspecialidad(txtEspecialidad.getText());
                 Validaciones.validarCelular(txtNumeroR.getText());
                 Validaciones.validarDireccionDomiciliaria(Dirección.getText());
@@ -736,7 +736,7 @@ public class Medicos extends javax.swing.JPanel {
                 confirmacion = JOptionPane.showConfirmDialog(null, "¿Estas seguro de registrar al médico con los datos actuales?","Confirmación",JOptionPane.YES_OPTION);
                 if (confirmacion == JOptionPane.YES_NO_OPTION){
                    conexion.postMedico(medic);
-                  JOptionPane.showMessageDialog(null, "El Médico se ha creado exisitosamente", "Registrado", JOptionPane.INFORMATION_MESSAGE);
+                  JOptionPane.showMessageDialog(null, "El Médico se ha creado exitosamente", "Registrado", JOptionPane.INFORMATION_MESSAGE);
                    limpiarRegistro();
                 }                
             } catch (ErrorValidaciones | SQLException ex) {
@@ -817,8 +817,8 @@ public class Medicos extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void limpiarRegistro() {
-        txtNombresR.setText("");
         txtApellidosR.setText("");
+        txtNombresR.setText("");
         txtEmailR.setText("");
         txtNumeroR.setText("");
         txtCedulaR.setText("");
