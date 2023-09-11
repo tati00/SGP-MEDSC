@@ -76,7 +76,7 @@ public class FormularioRegistrosAtencionAnam extends javax.swing.JInternalFrame 
         jLabel3.setText("Tensión arterial");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, -1, -1));
 
-        jLabel4.setText("Talla");
+        jLabel4.setText("Estatura");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, -1, -1));
 
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {

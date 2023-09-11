@@ -6,6 +6,7 @@ package interfacesAtencion;
 
 import static interfacesAtencion.FormularioRegistrosAtencionPrev.verificarDocumento;
 import interfacesPacientes.ConexionPacientes;
+import interfacesPacientes.Paciente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -105,7 +106,37 @@ public class FormularioRegistrosOrden extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (verificarCamposLlenos()) {   
             if (verificarDocumento(jTextField1.getText())) {
-                
+                try {
+                Connection con = ConexionPacientes.getConexion();
+                String sql = "INSERT INTO orden_medica (num_DocumentoID, fecha_actual, tipo_examen, prioridad) " +
+                             "VALUES (?, ?, ?, ?)";
+                PreparedStatement preparedStatement = con.prepareStatement(sql);
+
+                // Establecer los parámetros para la nueva orden médica
+                preparedStatement.setString(1, this.jTextField1.getText());
+                preparedStatement.setString(2, this.jDateChooser1.getDateFormatString());
+                preparedStatement.setString(3, (String) jComboBox2.getSelectedItem());
+                preparedStatement.setString(4, (String) jComboBox1.getSelectedItem());
+
+            // Ejecutar la sentencia SQL
+                int filasAfectadas = preparedStatement.executeUpdate();
+
+                if (filasAfectadas > 0) {
+                    JOptionPane.showMessageDialog(null, "Orden registrada exitosamente", "Actualizacion de eventos", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se pudo registrar la orden medica", "Error", JOptionPane.WARNING_MESSAGE);
+                }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }else{
+                int respuesta = JOptionPane.showConfirmDialog(null, "Paciente no registrado, ¿desea registrarlo?", "Registro de Paciente", JOptionPane.YES_NO_OPTION);
+                if (respuesta == JOptionPane.YES_OPTION) {
+                    Paciente paciente = new Paciente();
+                    jDesktopPane1.add(paciente);
+                    paciente.setVisible(true);
+                    this.setVisible(false);
+                }
             }
         }else{
         JOptionPane.showMessageDialog(null, "Por favor, ingrese todos los parámetros para continuar.", "Advertencia", JOptionPane.WARNING_MESSAGE);

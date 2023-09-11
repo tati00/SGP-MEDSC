@@ -135,10 +135,9 @@ public class FormularioRegistrosAtencionEx extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Seleccione un item de Examen fisico regional valido");
 
         }
-
         return false;
-        
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

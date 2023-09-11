@@ -4,7 +4,17 @@
  */
 package interfacesAtencion;
 
+import static interfacesAtencion.FormularioRegistrosAtencionPrev.verificarMedico;
 import interfacesCitas.*;
+import interfacesPacientes.ConexionPacientes;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,6 +27,7 @@ public class FormConsultarAtencionMedico extends javax.swing.JInternalFrame {
      */
     public FormConsultarAtencionMedico() {
         initComponents();
+        this.jDateChooser1.setVisible(false);
     }
 
     /**
@@ -48,8 +59,8 @@ public class FormConsultarAtencionMedico extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, -1));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 71, -1, -1));
 
-        jLabel2.setText("Cédula del Médico");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, -1, -1));
+        jLabel2.setText("Identificador del Médico");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -59,12 +70,12 @@ public class FormConsultarAtencionMedico extends javax.swing.JInternalFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Fecha", "Enfermedad", "Medicamento", "Evoluciones"
+                "Fecha", "Identificador Paciente", "Enfermedad", "Medicamento"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 353, 182));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 180, 560, 270));
 
         jButton1.setText("Buscar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -84,20 +95,93 @@ public class FormConsultarAtencionMedico extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Fecha");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, -1, -1));
+
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        if (verificarMedico(jTextField1.getText())) {
+            try {
+                Connection con = ConexionPacientes.getConexion();
+            String sql = "SELECT A.fecha, A.num_DocumentoID, E.N_enfermedad AS Enfermedad, M.nombre_medicamento AS Medicamento " +
+                    "FROM atencion AS A " +
+                    "INNER JOIN atencion_enfermedad AS AE ON A.id_atencion = AE.id_atencion " +
+                    "INNER JOIN enfermedad AS E ON AE.id_enfermedad = E.id_enfermedad " +
+                    "LEFT JOIN atencion_medicacion AS AM ON A.id_atencion = AM.id_atencion " +
+                    "LEFT JOIN medicacion AS M ON AM.id_medicacion = M.id_medicacion " +
+                    "WHERE A.IDENTIFICADOR = ?";
+
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            preparedStatement.setString(1, this.jTextField1.getText());
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            // Crear un DefaultTableModel para almacenar los datos
+            DefaultTableModel tableModel = new DefaultTableModel();
+            tableModel.addColumn("Fecha");
+            tableModel.addColumn("Número de Documento");
+            tableModel.addColumn("Enfermedad");
+            tableModel.addColumn("Medicamento");
+
+            // Llenar el modelo de tabla con los resultados
+            while (resultSet.next()) {
+                String fecha = resultSet.getString("fecha");
+                String numDocumentoID = resultSet.getString("num_DocumentoID");
+                String enfermedad = resultSet.getString("Enfermedad");
+                String medicamento = resultSet.getString("Medicamento");
+
+                tableModel.addRow(new String[]{fecha, numDocumentoID, enfermedad, medicamento});
+            }
+
+            // Agregar la tabla a un JScrollPane para que tenga barras de desplazamiento si es necesario
+            JScrollPane scrollPane = new JScrollPane(jTable1);
+
+            this.getContentPane().add(scrollPane);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        }else{
+                        JOptionPane.showMessageDialog(null, "Medico no encontrado en los registros", "Advertencia", JOptionPane.WARNING_MESSAGE);
+
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        this.jDateChooser1.setVisible(true);
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
 
+    public static boolean verificarMedico(String identificador) {
+    try {
+            Connection con = ConexionPacientes.getConexion();
+            String sql = "SELECT COUNT(*) FROM medicos WHERE IDENTIFICADOR = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, identificador);
+
+            // Ejecutar la consulta y obtener el resultado
+            ResultSet resultSet = ps.executeQuery();
+            resultSet.next();
+            int count = resultSet.getInt(1);
+
+            // Si count es mayor que 0, el num_DocumentoID existe en la tabla
+            return count > 0;
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+            return false; // En caso de error, asumimos que el documento no existe
+        }
+}
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
